@@ -1,6 +1,6 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.5 Chrome/126.0.6478.183 Electron/31.3.0 Safari/537.36" version="24.7.5">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.0.6 Chrome/138.0.7204.100 Electron/37.2.3 Safari/537.36" version="28.0.6">
   <diagram name="Page-1" id="dkQLu9_Pv0OsYfWn-f4m">
-    <mxGraphModel dx="1995" dy="797" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2226" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -34,7 +34,7 @@
         <mxCell id="R4f9LEcT8n_5qt4tV5or-33" value="&lt;div&gt;ScreeningID&lt;/div&gt;MovieID&lt;div&gt;ShowroomID&lt;/div&gt;&lt;div&gt;ScheduledTime&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;whiteSpace=wrap;" parent="R4f9LEcT8n_5qt4tV5or-32" vertex="1">
           <mxGeometry y="50" width="160" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="i67RvXWwB7_Bmj-XABEH-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="-8nk2-v7uBcIj9ztQp3N-2" target="R4f9LEcT8n_5qt4tV5or-33">
+        <mxCell id="i67RvXWwB7_Bmj-XABEH-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERoneToMany;startFill=0;endArrow=ERmandOne;endFill=0;" parent="1" source="-8nk2-v7uBcIj9ztQp3N-2" target="R4f9LEcT8n_5qt4tV5or-33" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="-8nk2-v7uBcIj9ztQp3N-2" value="Ticket" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -121,8 +121,20 @@
         <mxCell id="-8nk2-v7uBcIj9ztQp3N-55" value="Had By" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="-220" y="660" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="i67RvXWwB7_Bmj-XABEH-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="R4f9LEcT8n_5qt4tV5or-25" target="-8nk2-v7uBcIj9ztQp3N-3">
+        <mxCell id="i67RvXWwB7_Bmj-XABEH-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" parent="1" source="R4f9LEcT8n_5qt4tV5or-25" target="-8nk2-v7uBcIj9ztQp3N-3" edge="1">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7pOK_XD2bYWCJ5yNDafH-2" value="Owns a" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-5" y="660" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7pOK_XD2bYWCJ5yNDafH-3" value="Owned by" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="80" y="690" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7pOK_XD2bYWCJ5yNDafH-4" value="Associated with" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="240" y="570" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7pOK_XD2bYWCJ5yNDafH-5" value="Has available" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="145" y="520" width="100" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
