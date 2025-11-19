@@ -5,4 +5,6 @@ module com.example.theaterproject {
 
     opens com.example.theaterproject to javafx.fxml;
     exports com.example.theaterproject;
+    exports com.example.theaterproject.Controllers;
+    opens com.example.theaterproject.Controllers to javafx.fxml;
 }
