@@ -7,14 +7,14 @@ public class Movie {
     private String aYear;
     private String aDescription;
 
-    public Movie(String aGenre, String aTitle, String aDirector, String aYear, String aDescription) {
-        this.aGenre = aGenre;
-        this.aTitle = aTitle;
-        this.aDirector = aDirector;
-        this.aYear = aYear;
-        this.aDescription = aDescription;
+    public Movie(String pGenre, String pTitle, String pDirector, String pYear, String pDescription) {
+        this.aGenre = pGenre;
+        this.aTitle = pTitle;
+        this.aDirector = pDirector;
+        this.aYear = pYear;
+        this.aDescription = pDescription;
     }
-    
+
     public String getTitle() {
         return aTitle;
     }
