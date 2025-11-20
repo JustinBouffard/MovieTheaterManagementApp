@@ -4,7 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d50d9fac-eadc-4d88-84b3-44890e37ffb9" name="Changes" comment="" />
+    <list default="true" id="c58ca1d0-effb-4558-b8b8-438baf703402" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/mainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/TheaterProject/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/TheaterProject/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Controllers/mainViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/HelloApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Launcher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Manager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Movie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Screening.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Showroom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Ticket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/resources/com/example/theaterproject/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/resources/com/example/theaterproject/mainView.fxml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +41,25 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "JustinBouffard"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/JustinBouffard/FinalProject.git",
+    "accountId": "d69045b1-6eb6-4364-a5db-6ea27b835a7b"
+  }
+}]]></component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -23,10 +71,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.HelloApplication.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "features/model",
+    "git-widget-placeholder": "views/Mainview",
+    "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/FinalProject",
@@ -35,6 +85,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -42,20 +95,22 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
+        <option value="bundled-jdk-9823dce3aa75-84258761d1cc-intellij.indexing.shared.core-IU-243.28141.18" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.28141.18" />
       </set>
     </attachedChunks>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d50d9fac-eadc-4d88-84b3-44890e37ffb9" name="Changes" comment="" />
+      <changelist id="c58ca1d0-effb-4558-b8b8-438baf703402" name="Changes" comment="" />
       <created>1763648802193</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1763648802193</updated>
       <workItem from="1763648803492" duration="236000" />
       <workItem from="1763649265990" duration="524000" />
+      <workItem from="1763650125680" duration="646000" />
     </task>
     <servers />
   </component>
