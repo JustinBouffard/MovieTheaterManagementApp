@@ -5,24 +5,29 @@ public class Account {
     private String aPassword;
 
     public Account(String pUserName, String pPassword) {
-        aUserName = pUserName;
-        aPassword = pPassword;
+        this.aUserName = pUserName;
+        this.aPassword = pPassword;
+    }
+
+    public Account(Account pAccount) {
+        this.aUserName = pAccount.aUserName;
+        this.aPassword = pAccount.aPassword;
     }
 
     public String getUserName() {
-        return aUserName;
+        return this.aUserName;
     }
 
     public String getPassword() {
-        return aPassword;
+        return this.aPassword;
     }
 
     // These methods would contain more security if it were in a real-world scenario
     public void setUserName(String pUserName) {
-        aUserName = pUserName;
+        this.aUserName = pUserName;
     }
 
     public void setPassword(String pPassword) {
-        aPassword = pPassword;
+        this.aPassword = pPassword;
     }
 }

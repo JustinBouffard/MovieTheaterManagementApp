@@ -4,4 +4,8 @@ public class Manager extends Account {
     public Manager(String pUserName, String pPassword) {
         super(pUserName, pPassword);
     }
+
+    public Manager(Client pClient) {
+        super(pClient);
+    }
 }
