@@ -5,34 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c58ca1d0-effb-4558-b8b8-438baf703402" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/mainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/TheaterProject/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/TheaterProject/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Controllers/mainViewController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Launcher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Account.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Manager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Movie.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Screening.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Showroom.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/com/example/theaterproject/Models/Ticket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/java/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/resources/com/example/theaterproject/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheaterProject/src/main/resources/com/example/theaterproject/mainView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,18 +17,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "JustinBouffard"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;JustinBouffard&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/JustinBouffard/FinalProject.git",
-    "accountId": "d69045b1-6eb6-4364-a5db-6ea27b835a7b"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/JustinBouffard/FinalProject.git&quot;,
+    &quot;accountId&quot;: &quot;d69045b1-6eb6-4364-a5db-6ea27b835a7b&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -75,7 +50,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "views/Mainview",
+    "git-widget-placeholder": "features/views",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
