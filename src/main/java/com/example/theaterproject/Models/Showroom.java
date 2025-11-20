@@ -19,6 +19,12 @@ public class Showroom {
      * @param pCapacity the seating capacity of the showroom
      */
     public Showroom (String pName, int pCapacity) {
+        if (pName == null || pName.isBlank()) {
+            throw new IllegalArgumentException("Showroom name cannot be empty");
+        }
+        if (pCapacity <= 0) {
+            throw new IllegalArgumentException("Showroom capacity cannot be 0 or below.");
+        }
         this.aName = pName;
         this.aCapacity = pCapacity;
     }
