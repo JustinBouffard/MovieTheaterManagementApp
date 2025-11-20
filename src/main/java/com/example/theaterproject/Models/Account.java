@@ -18,6 +18,9 @@ public abstract class Account {
      * @param pPassword the password associated with this account
      */
     public Account(String pUserName, String pPassword) {
+        validateUsername(pUserName);
+        validatePassword(pPassword);
+
         this.aUserName = pUserName;
         this.aPassword = pPassword;
     }
@@ -72,5 +75,17 @@ public abstract class Account {
      */
     public void setPassword(String pPassword) {
         this.aPassword = pPassword;
+    }
+
+    private void validateUsername(String pUsername) {
+        if (pUsername == null || pUsername.isBlank())
+            throw new IllegalArgumentException("Username cannot be blank.");
+        if (!pUsername.matches("[A-Za-z0-9_]"))
+            throw new IllegalArgumentException("Username can only be composed of letters, numbers and underscores");
+    }
+
+    private void validatePassword(String pPassword) {
+        if (pPassword == null || pPassword.isBlank())
+            throw new IllegalArgumentException("Password cannot be empty");
     }
 }
