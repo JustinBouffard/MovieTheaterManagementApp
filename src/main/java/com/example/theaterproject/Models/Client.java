@@ -10,14 +10,17 @@ package com.example.theaterproject.Models;
  */
 public class Client extends Account {
 
+    private String aEmail;
+
     /**
      * Creates a new Client with the specified username and password.
      *
      * @param pUserName the username for the client
      * @param pPassword the password for the client
      */
-    public Client(String pUserName, String pPassword) {
+    public Client(String pUserName, String pPassword, String pEmail) {
         super(pUserName, pPassword);
+        this.aEmail = pEmail;
     }
 
     /**
@@ -28,5 +31,6 @@ public class Client extends Account {
      */
     public Client(Client pClient) {
         super(pClient);
+        this.aEmail = pClient.aEmail;
     }
 }

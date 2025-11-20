@@ -1,5 +1,7 @@
 package com.example.theaterproject.Models;
 
+import java.time.LocalDate;
+
 /**
  * Represents a movie in the theater project system.
  *
@@ -12,9 +14,9 @@ public class Movie {
     private String aGenre;
     private String aTitle;
     private String aDirector;
-    private String aYear;
+    private int aYear;
     private String aDescription;
-    private String aRuntime;
+    private int aRuntime;
 
     /**
      * Creates a new Movie with the specified details.
@@ -26,7 +28,15 @@ public class Movie {
      * @param pDescription a description of the movie
      * @param pRuntime the runtime of the movie
      */
-    public Movie(String pGenre, String pTitle, String pDirector, String pYear, String pDescription, String pRuntime) {
+    public Movie(String pGenre, String pTitle, String pDirector, int pYear, String pDescription, int pRuntime) {
+        validateString(pGenre);
+        validateString(pTitle);
+        validateString(pDirector);
+        validateYear(pYear);
+        validateString(pDescription);
+        validateRuntime(pRuntime);
+
+
         this.aGenre = pGenre;
         this.aTitle = pTitle;
         this.aDirector = pDirector;
@@ -57,6 +67,29 @@ public class Movie {
      */
     public String getTitle() {
         return this.aTitle;
+    }
+
+    private void validateString(String pString) {
+        if (pString == null || pString.isBlank()) {
+            throw new IllegalArgumentException("Cannot be empty");
+        }
+    }
+
+    private void validateYear(int pYear) {
+        int currentYear = LocalDate.now().getYear();
+        if (pYear < 1888) {
+            throw new IllegalArgumentException("The year cannot be before 1888.");
+        }
+
+        if (pYear > currentYear + 1) {
+            throw new IllegalArgumentException("The year cannot be further than the current year + 1 year");
+        }
+    }
+
+    private void validateRuntime(int pRuntime) {
+        if (pRuntime <= 0 || pRuntime > 51420) {
+            throw new IllegalArgumentException("Please enter a valid runtime in minutes.");
+        }
     }
 
     /**
