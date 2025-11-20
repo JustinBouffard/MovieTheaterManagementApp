@@ -7,7 +7,6 @@ public class Showroom {
     public Showroom (String pName, int pCapacity) {
         this.aName = pName;
         this.aCapacity = pCapacity;
-
     }
 
     private String getShowroomName() {
@@ -26,4 +25,8 @@ public class Showroom {
         this.aCapacity = pCapacity;
     }
 
+    @Override
+    public String toString() {
+        return "Showroom: " + this.aName + "Capacity: " + this.aCapacity;
+    }
 }
