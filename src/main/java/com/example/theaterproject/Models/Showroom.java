@@ -7,7 +7,6 @@ public class Showroom {
     public Showroom (String pName, int pCapacity) {
         this.aName = pName;
         this.aCapacity = pCapacity;
-
     }
 
     private String getShowroomName() {
