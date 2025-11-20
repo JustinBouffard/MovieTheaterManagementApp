@@ -25,6 +25,7 @@ public class Ticket {
     public Ticket(Movie pMovie, Screening pScreening, double pPrice, Client pClient) {
         this.aMovie = pMovie;
         this.aScreening = pScreening;
+        // get screening count up
         this.aPrice = pPrice;
         this.aClient = pClient;
     }

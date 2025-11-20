@@ -17,7 +17,7 @@ public class Screening {
      * This variable stores an integer that corresponds to the assigned seat
      * for a particular screening.
      */
-    private int aSeatNumber;
+    private int aTicketCount;
     /**
      * Represents the price of a specific movie screening.
      * This variable stores the monetary cost associated with attending a particular screening.
@@ -29,12 +29,22 @@ public class Screening {
      * with details about the movie, seat number, and price.
      *
      * @param pMovie The movie associated with this screening.
-     * @param pSeatNumber The seat number for this screening.
+     * @param pTicketCount The seat number for this screening.
      * @param pPrice The price of the screening.
      */
-    public Screening(Movie pMovie, int pSeatNumber, double pPrice) {
+    public Screening(Movie pMovie, int pTicketCount, double pPrice) {
+        if (pMovie == null) {
+            throw new IllegalArgumentException("Movie cannot be null");
+        }
+        if (pTicketCount < 0) {
+            throw new IllegalArgumentException("Tickets sold for this screening cannot be negative");
+        }
+        if (pPrice < 0) {
+            throw new IllegalArgumentException("Price cannot be negative.");
+        }
+
         this.aMovie = pMovie;
-        this.aSeatNumber = pSeatNumber;
+        this.aTicketCount = pTicketCount;
         this.aPrice = pPrice;
     }
 
@@ -44,7 +54,7 @@ public class Screening {
      * @return the {@link Movie} object associated with this screening.
      */
     public Movie getMovie() {
-        return aMovie;
+        return this.aMovie;
     }
 
     /**
@@ -53,7 +63,7 @@ public class Screening {
      * @return the seat number for this screening as an integer.
      */
     public int getSeatNumber() {
-        return aSeatNumber;
+        return this.aTicketCount;
     }
 
     /**
@@ -73,6 +83,6 @@ public class Screening {
      */
     @Override
     public String toString() {
-        return aMovie.getTitle() + " " + aSeatNumber + " " + aPrice;
+        return aMovie.getTitle() + " " + this.aTicketCount + " " + aPrice;
     }
 }
