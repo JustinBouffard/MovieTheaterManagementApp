@@ -25,4 +25,8 @@ public class Showroom {
         this.aCapacity = pCapacity;
     }
 
+    @Override
+    public String toString() {
+        return "Showroom: " + this.aName + "Capacity: " + this.aCapacity;
+    }
 }
