@@ -23,6 +23,18 @@ public class Ticket {
      * @param pClient the client purchasing the ticket
      */
     public Ticket(Movie pMovie, Screening pScreening, double pPrice, Client pClient) {
+        if (pMovie == null) {
+            throw new IllegalArgumentException("Movie cannot be null");
+        }
+        if (pScreening == null) {
+            throw new IllegalArgumentException("Screening cannot be null");
+        }
+        if (pPrice < 0) {
+            throw new IllegalArgumentException("Price cannot be below zero");
+        }
+        if (pClient == null) {
+            throw new IllegalArgumentException("Client cannot be null");
+        }
         this.aMovie = pMovie;
         this.aScreening = pScreening;
         // get screening count up
