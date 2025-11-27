@@ -1,0 +1,22 @@
+Index: src/main/java/com/example/theaterproject/Controllers/loginViewController.java
+===================================================================
+diff --git a/src/main/java/com/example/theaterproject/Controllers/loginViewController.java b/src/main/java/com/example/theaterproject/Controllers/loginViewController.java
+new file mode 100644
+--- /dev/null	(date 1763671019594)
++++ b/src/main/java/com/example/theaterproject/Controllers/loginViewController.java	(date 1763671019594)
+@@ -0,0 +1,4 @@
++package com.example.theaterproject.Controllers;
++
++public class loginViewController {
++}
+Index: src/main/java/com/example/theaterproject/Controllers/newAccountViewController.java
+===================================================================
+diff --git a/src/main/java/com/example/theaterproject/Controllers/newAccountViewController.java b/src/main/java/com/example/theaterproject/Controllers/newAccountViewController.java
+new file mode 100644
+--- /dev/null	(date 1763671031921)
++++ b/src/main/java/com/example/theaterproject/Controllers/newAccountViewController.java	(date 1763671031921)
+@@ -0,0 +1,4 @@
++package com.example.theaterproject.Controllers;
++
++public class newAccountViewController {
++}
