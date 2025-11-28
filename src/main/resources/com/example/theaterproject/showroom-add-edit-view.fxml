@@ -58,7 +58,7 @@
                <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                <VBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" prefHeight="41.0" prefWidth="220.0" VBox.vgrow="ALWAYS">
                   <children>
-                     <Button fx:id="aSaveButton1" alignment="BOTTOM_CENTER" layoutX="70.0" layoutY="10.0" onAction="#onSaveButtonClick" prefWidth="100" text="Save" />
+                     <Button fx:id="aSaveButton" alignment="BOTTOM_CENTER" onAction="#onSaveButtonClick" prefWidth="100" text="Save" VBox.vgrow="ALWAYS" />
                   </children>
                </VBox>
                 </VBox>
@@ -73,9 +73,9 @@
 
                         <HBox alignment="CENTER" spacing="50.0" VBox.vgrow="ALWAYS">
                             <children>
-                                <Button fx:id="aAddScreeningButton" onAction="#onAddScreeningButtonClick" prefWidth="80" text="Add" />
-                                <Button onAction="#onEditScreeningButtonClick" prefWidth="80" text="Edit" />
-                                <Button onAction="#onRemoveScreeningButtonClick" prefWidth="80" text="Remove" />
+                                <Button prefWidth="80" text="Add" />
+                                <Button prefWidth="80" text="Edit" />
+                                <Button prefWidth="80" text="Remove" />
                             </children>
                         </HBox>
                     </children>

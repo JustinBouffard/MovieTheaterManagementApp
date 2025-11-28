@@ -9,10 +9,14 @@ import java.util.List;
  * attributes.
  */
 public class Showroom {
-    /** The name of the showroom. */
+    /**
+     * The name of the showroom.
+     */
     private String aName;
 
-    /** The seating capacity of the showroom. */
+    /**
+     * The seating capacity of the showroom.
+     */
     private int aCapacity;
 
     private List<Screening> aScreenings;
@@ -23,7 +27,7 @@ public class Showroom {
      * @param pName     the name of the showroom
      * @param pCapacity the seating capacity of the showroom
      */
-    public Showroom (String pName, int pCapacity) {
+    public Showroom(String pName, int pCapacity) {
         if (pName == null || pName.isBlank()) {
             throw new IllegalArgumentException("Showroom name cannot be empty");
         }
@@ -80,6 +84,10 @@ public class Showroom {
 
     public void removeScreening(Screening pScreening) {
         this.aScreenings.remove(pScreening);
+    }
+
+    public void resetScreenings() {
+        this.aScreenings.clear();
     }
 
     /**
