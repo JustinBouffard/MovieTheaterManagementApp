@@ -69,7 +69,7 @@
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField alignment="CENTER" maxWidth="200.0" minWidth="200.0" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="usernameTextField" alignment="CENTER" maxWidth="200.0" minWidth="200.0" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -93,7 +93,7 @@
                               <Insets top="5.0" />
                            </padding>
                         </Label>
-                        <PasswordField alignment="CENTER" maxWidth="200.0" minWidth="200.0" HBox.hgrow="ALWAYS">
+                        <PasswordField fx:id="passwordField" alignment="CENTER" maxWidth="200.0" minWidth="200.0" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>

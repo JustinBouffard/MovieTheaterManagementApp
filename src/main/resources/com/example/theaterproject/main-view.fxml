@@ -52,29 +52,6 @@
       </HBox>
       <HBox VBox.vgrow="ALWAYS">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Button fx:id="moviesViewButton" mnemonicParsing="false" onAction="#onMoviesViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Movies">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin></Button>
-                  <Button fx:id="showroomsViewButton" mnemonicParsing="false" onAction="#onShowroomsViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Showrooms">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin></Button>
-                  <Button fx:id="statsViewButton" mnemonicParsing="false" onAction="#onStatsViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Stats">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin></Button>
-               </children>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </VBox>
-            <Separator orientation="VERTICAL">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin></Separator>
             <GridPane fx:id="movieGridPane" prefHeight="200.0" prefWidth="465.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
