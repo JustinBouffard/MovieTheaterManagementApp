@@ -1,5 +1,8 @@
 package com.example.theaterproject.Models;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Represents a showroom in a theater, containing a name and seating capacity.
  * This class provides basic data storage and accessor methods for showroom
@@ -11,6 +14,8 @@ public class Showroom {
 
     /** The seating capacity of the showroom. */
     private int aCapacity;
+
+    private List<Screening> aScreenings;
 
     /**
      * Constructs a new {@code Showroom} with the specified name and capacity.
@@ -34,7 +39,7 @@ public class Showroom {
      *
      * @return the showroom name
      */
-    private String getShowroomName() {
+    public String getShowroomName() {
         return this.aName;
     }
 
@@ -43,7 +48,7 @@ public class Showroom {
      *
      * @return the showroom capacity
      */
-    private int getShowroomCapacity() {
+    public int getShowroomCapacity() {
         return this.aCapacity;
     }
 
@@ -52,7 +57,7 @@ public class Showroom {
      *
      * @param pName the new showroom name
      */
-    private void setShowroomName(String pName) {
+    public void setShowroomName(String pName) {
         this.aName = pName;
     }
 
@@ -61,8 +66,20 @@ public class Showroom {
      *
      * @param pCapacity the new seating capacity
      */
-    private void setShowroomCapacity(int pCapacity) {
+    public void setShowroomCapacity(int pCapacity) {
         this.aCapacity = pCapacity;
+    }
+
+    public List<Screening> getShowroomScreenings() {
+        return Collections.unmodifiableList(this.aScreenings);
+    }
+
+    public void addScreening(Screening pScreening) {
+        this.aScreenings.add(pScreening);
+    }
+
+    public void removeScreening(Screening pScreening) {
+        this.aScreenings.remove(pScreening);
     }
 
     /**

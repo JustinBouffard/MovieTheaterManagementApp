@@ -1,5 +1,7 @@
 package com.example.theaterproject.Models;
 
+import java.time.LocalDate;
+
 /**
  * The Screening class represents information about a specific movie screening,
  * including the movie being screened, the seat number, and the price of the screening.
@@ -19,33 +21,35 @@ public class Screening {
      */
     private int aTicketCount;
     /**
-     * Represents the price of a specific movie screening.
-     * This variable stores the monetary cost associated with attending a particular screening.
+     * Represents the price of a single ticket of that screening
      */
-    private double aPrice;
+    private double aPricePerTicket;
+
+    private LocalDate aDate;
 
     /**
      * Constructs a Screening object representing a specific movie screening
      * with details about the movie, seat number, and price.
      *
-     * @param pMovie The movie associated with this screening.
+     * @param pMovie       The movie associated with this screening.
      * @param pTicketCount The seat number for this screening.
-     * @param pPrice The price of the screening.
+     * @param pPricePerTicket       The price of the screening.
      */
-    public Screening(Movie pMovie, int pTicketCount, double pPrice) {
+    public Screening(Movie pMovie, int pTicketCount, double pPricePerTicket, LocalDate pDate) {
         if (pMovie == null) {
             throw new IllegalArgumentException("Movie cannot be null");
         }
         if (pTicketCount < 0) {
             throw new IllegalArgumentException("Tickets sold for this screening cannot be negative");
         }
-        if (pPrice < 0) {
+        if (pPricePerTicket < 0) {
             throw new IllegalArgumentException("Price cannot be negative.");
         }
 
         this.aMovie = pMovie;
         this.aTicketCount = pTicketCount;
-        this.aPrice = pPrice;
+        this.aPricePerTicket = pPricePerTicket;
+        this.aDate = pDate;
     }
 
     /**
@@ -57,13 +61,21 @@ public class Screening {
         return this.aMovie;
     }
 
+    public void setMovie(Movie pMovie) {
+        this.aMovie = pMovie;
+    }
+
     /**
      * Retrieves the seat number associated with this screening.
      *
      * @return the seat number for this screening as an integer.
      */
-    public int getSeatNumber() {
+    public int geTicketCount() {
         return this.aTicketCount;
+    }
+
+    public void setTicketCount(int aTicketCount) {
+        this.aTicketCount = aTicketCount;
     }
 
     /**
@@ -71,8 +83,24 @@ public class Screening {
      *
      * @return the price of the screening as a double.
      */
-    public double getPrice() {
-        return aPrice;
+    public double getPricePerTicket() {
+        return aPricePerTicket;
+    }
+
+    public void setPricePerTicket(double pPricePerTicket) {
+        this.aPricePerTicket = pPricePerTicket;
+    }
+
+    public LocalDate getDate() {
+        return aDate;
+    }
+
+    public void setDate(LocalDate pDate) {
+        if(pDate.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("Date cannot be in the past.");
+        }
+
+        this.aDate = pDate;
     }
 
     /**
@@ -83,6 +111,6 @@ public class Screening {
      */
     @Override
     public String toString() {
-        return aMovie.getTitle() + " " + this.aTicketCount + " " + aPrice;
+        return aMovie.getTitle() + " " + this.aTicketCount + " " + aPricePerTicket;
     }
 }

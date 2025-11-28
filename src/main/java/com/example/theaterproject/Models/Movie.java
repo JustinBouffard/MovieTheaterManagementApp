@@ -130,6 +130,6 @@ public class Movie {
      */
     @Override
     public String toString() {
-        return this.aTitle + " " + this.aGenre + " " + this.aDirector + " " + this.aYear + " " + this.aDescription;
+        return this.aTitle;
     }
 }
