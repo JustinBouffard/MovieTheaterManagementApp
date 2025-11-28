@@ -54,15 +54,15 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="moviesViewButton" mnemonicParsing="false" onAction="#moviesViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Movies">
+                  <Button fx:id="moviesViewButton" mnemonicParsing="false" onAction="#onMoviesViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Movies">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin></Button>
-                  <Button fx:id="showroomsViewButton" mnemonicParsing="false" onAction="#showroomsViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Showrooms">
+                  <Button fx:id="showroomsViewButton" mnemonicParsing="false" onAction="#onShowroomsViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Showrooms">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin></Button>
-                  <Button fx:id="statsViewButton" mnemonicParsing="false" onAction="#statsViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Stats">
+                  <Button fx:id="statsViewButton" mnemonicParsing="false" onAction="#onStatsViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Stats">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin></Button>

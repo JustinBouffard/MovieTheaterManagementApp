@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c58ca1d0-effb-4558-b8b8-438baf703402" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/loginViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/newAccountViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/statsViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/mainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/mainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/editor-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/editor-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/login-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/main-view.fxml" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/new-account-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/new-account-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/showroom-edit-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/showroom-edit-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/stats-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/stats-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +39,12 @@
     &quot;assignee&quot;: &quot;JustinBouffard&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/JustinBouffard/FinalProject.git",
-    "accountId": "d69045b1-6eb6-4364-a5db-6ea27b835a7b"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/JustinBouffard/FinalProject.git&quot;,
+    &quot;accountId&quot;: &quot;d69045b1-6eb6-4364-a5db-6ea27b835a7b&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -112,7 +119,6 @@
       <workItem from="1763668241661" duration="2457000" />
       <workItem from="1764289867844" duration="19000" />
       <workItem from="1764289908275" duration="4936000" />
-
       <workItem from="1764337356122" duration="1919000" />
     </task>
     <servers />

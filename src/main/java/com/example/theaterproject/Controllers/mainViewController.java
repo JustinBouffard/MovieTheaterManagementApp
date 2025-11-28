@@ -21,19 +21,16 @@ public class mainViewController {
     @FXML
     private Button statsViewButton;
 
-    public void initialize() {
 
-    }
-
-    private void moviesViewButtonClick() {
+    private void onMoviesViewButtonClick() {
         System.out.println("Movies View Button Clicked");
     }
 
-    private void showroomsViewButtonClick() {
+    private void onShowroomsViewButtonClick() {
         System.out.println("Showrooms View Button Clicked");
     }
 
-    private void statsViewButtonClick() {
-        System.out.println("Stats View Button Clicked");
+    private void onStatsViewButtonClick() {
+
     }
 }
