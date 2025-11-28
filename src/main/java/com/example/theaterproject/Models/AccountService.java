@@ -1,24 +1,22 @@
 package com.example.theaterproject.Models;
 
-import javafx.collections.ObservableList;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountRepository {
+public class AccountService {
 
     // Singleton instance
-    private static final AccountRepository aInstance = new AccountRepository();
+    private static final AccountService aInstance = new AccountService();
 
     private final List<Client> aClientList = new ArrayList<>();
     private final Manager aManager; // only one manager
 
-    private AccountRepository() {
+    private AccountService() {
         // initialize manager account
         this.aManager = new Manager("Manager","cinemaPassword");
     }
 
-    public static AccountRepository getInstance() {
+    public static AccountService getInstance() {
         return aInstance;
     }
 
