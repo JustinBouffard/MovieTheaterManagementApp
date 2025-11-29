@@ -4,14 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import com.example.theaterproject.Models.Movie;
 
+import java.util.Collection;
+
 public class MovieService {
 
     private static MovieService aInstance;
 
     private final ObservableList<Movie> aMovies =
             FXCollections.observableArrayList();
-
-    private final double aDefaultTicketPrice = 12;
 
     private MovieService() { }
 
@@ -23,18 +23,14 @@ public class MovieService {
     }
 
     public ObservableList<Movie> getMovies() {
-        return aMovies;
+        return FXCollections.unmodifiableObservableList(aMovies);
     }
 
-    public void addMovie(Movie movie) {
-        aMovies.add(movie);
+    public void addMovie(Movie pMovie) {
+        aMovies.add(pMovie);
     }
 
-    public void removeMovie(Movie movie) {
-        aMovies.remove(movie);
-    }
-
-    public double getaDefaultTicketPrice() {
-        return aDefaultTicketPrice;
+    public void removeMovie(Movie pMovie) {
+        aMovies.remove(pMovie);
     }
 }

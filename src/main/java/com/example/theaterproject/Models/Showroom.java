@@ -1,5 +1,9 @@
 package com.example.theaterproject.Models;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,7 +23,7 @@ public class Showroom {
      */
     private int aCapacity;
 
-    private List<Screening> aScreenings;
+    private ObservableList<Screening> aScreenings;
 
     /**
      * Constructs a new {@code Showroom} with the specified name and capacity.
@@ -27,7 +31,7 @@ public class Showroom {
      * @param pName     the name of the showroom
      * @param pCapacity the seating capacity of the showroom
      */
-    public Showroom(String pName, int pCapacity) {
+    public Showroom(String pName, int pCapacity, ObservableList<Screening> pScreenings) {
         if (pName == null || pName.isBlank()) {
             throw new IllegalArgumentException("Showroom name cannot be empty");
         }
@@ -36,6 +40,7 @@ public class Showroom {
         }
         this.aName = pName;
         this.aCapacity = pCapacity;
+        this.aScreenings = pScreenings;
     }
 
     /**
@@ -74,9 +79,11 @@ public class Showroom {
         this.aCapacity = pCapacity;
     }
 
-    public List<Screening> getShowroomScreenings() {
-        return Collections.unmodifiableList(this.aScreenings);
+    public ObservableList<Screening> getShowroomScreenings() {
+        return FXCollections.unmodifiableObservableList(this.aScreenings);
     }
+
+    public void setShowroomScreenings(ObservableList<Screening> pScreenings) { this.aScreenings = pScreenings; }
 
     public void addScreening(Screening pScreening) {
         this.aScreenings.add(pScreening);

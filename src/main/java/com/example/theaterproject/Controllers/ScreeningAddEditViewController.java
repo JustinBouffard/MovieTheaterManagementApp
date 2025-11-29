@@ -4,6 +4,8 @@ import com.example.theaterproject.Models.Movie;
 import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Models.Showroom;
 import com.example.theaterproject.Services.MovieService;
+import com.example.theaterproject.Services.ScreeningService;
+import com.example.theaterproject.Services.ShowroomService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -24,7 +26,9 @@ public class ScreeningAddEditViewController {
 
     private Screening aScreening;
     private Showroom aShowroom;
-    private MovieService aMovieService = MovieService.getInstance();
+    private final MovieService aMovieService = MovieService.getInstance();
+    private final ShowroomService aShowroomService = ShowroomService.getInstance();
+    private final ScreeningService aScreeningService = ScreeningService.getInstance();
 
     @FXML
     public void initialize() {
@@ -44,18 +48,13 @@ public class ScreeningAddEditViewController {
             LocalDate date = this.aDatePicker.getValue();
 
             if (this.aScreening == null) {
-                this.aScreening = new Screening(selectedMovie, ticketCount, pricePerTicket, date);
-                this.aShowroom.addScreening(this.aScreening);
+                this.aScreeningService.createScreening(this.aShowroom, selectedMovie, ticketCount, pricePerTicket, date);
             } else {
-                this.aScreening.setTicketCount(ticketCount);
-                this.aScreening.setPricePerTicket(pricePerTicket);
-                this.aScreening.setMovie(selectedMovie);
-                this.aScreening.setDate(date);
+                this.aScreeningService.updateScreening(this.aScreening, selectedMovie, ticketCount, pricePerTicket, date);
             }
 
             closeWindow(pEvent);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Something went wrong");
@@ -69,17 +68,20 @@ public class ScreeningAddEditViewController {
         closeWindow(pEvent);
     }
 
-    public void setScreeningView(Showroom pShowroom, Screening pScreening){
+    public void setScreeningView(Showroom pShowroom, Screening pScreening) {
         this.aScreening = pScreening;
         this.aShowroom = pShowroom;
         fillView();
     }
 
-    private void fillView(){
+    private void fillView() {
         this.aMovieComboBox.getItems().addAll(this.aMovieService.getMovies().toString());
-        this.aMovieComboBox.getSelectionModel().select(this.aScreening.getMovie().toString());
-        this.aDatePicker.setValue(this.aScreening.getDate());
-        this.aPriceField.setText(String.valueOf(this.aMovieService.getaDefaultTicketPrice()));
+
+        if (this.aScreening != null) {
+            this.aMovieComboBox.getSelectionModel().select(this.aScreening.getMovie().toString());
+            this.aDatePicker.setValue(this.aScreening.getDate());
+            this.aPriceField.setText(String.valueOf(this.aShowroomService.getaDefaultTicketPrice()));
+        }
     }
 
     private void closeWindow(ActionEvent pEvent) {

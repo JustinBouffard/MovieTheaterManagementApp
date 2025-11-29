@@ -1,19 +1,23 @@
 package com.example.theaterproject.Controllers;
 
+import com.example.theaterproject.Models.Movie;
 import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Models.Showroom;
+import com.example.theaterproject.Services.MovieService;
+import com.example.theaterproject.Services.ShowroomService;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class ShowroomAddEditViewController {
     @FXML
@@ -26,6 +30,7 @@ public class ShowroomAddEditViewController {
     private ListView<Screening> aScreeningList;
 
     private Showroom aShowroom;
+    private final ShowroomService aShowroomService = ShowroomService.getInstance();
 
     @FXML
     public void initialize() {
@@ -38,17 +43,20 @@ public class ShowroomAddEditViewController {
 
     @FXML
     private void onSaveButtonClick(ActionEvent pEvent) {
-        if (aShowroom == null) {
-            this.aShowroom = new Showroom(this.aShowroomNameField.getText(), Integer.parseInt(this.aCapacityTextField.getText()));
-        } else {
-            this.aShowroom.setShowroomName(this.aShowroomNameField.getText());
-            this.aShowroom.setShowroomCapacity(Integer.parseInt(this.aCapacityTextField.getText()));
+        try {
+            String name = this.aShowroomNameField.getText();
+            int capacity = Integer.parseInt(aCapacityTextField.getText());
+            ObservableList<Screening> screenings = aScreeningList.getItems();
+
+            if (this.aShowroom == null)
+                this.aShowroomService.createShowroom(name, capacity, screenings);
+            else
+                this.aShowroomService.updateShowroom(this.aShowroom, name, capacity, screenings);
+
+            closeWindow(pEvent);
         }
-
-        this.aShowroom.resetScreenings();
-
-        for (Screening screening : this.aScreeningList.getItems()) {
-            this.aShowroom.addScreening(screening);
+        catch (Exception e) {
+            showAlert(e.getMessage());
         }
     }
 
@@ -74,18 +82,20 @@ public class ShowroomAddEditViewController {
         if (selectedScreening == null) {
             showAlert("You need to select a screening first");
             return;
-        }
-        else {
+        } else {
             this.aShowroom.removeScreening(selectedScreening);
             this.aScreeningList.getItems().remove(selectedScreening);
         }
     }
 
-    private void setShowroomEditView(Showroom pShowroom) {
+    public void setShowroomEditView(Showroom pShowroom) {
         this.aShowroom = pShowroom;
-        this.aShowroomNameField.setText(pShowroom.getShowroomName());
-        this.aCapacityTextField.setText(String.valueOf(pShowroom.getShowroomCapacity()));
-        this.aScreeningList.getItems().setAll(pShowroom.getShowroomScreenings());
+
+        if (this.aShowroom != null) {
+            this.aShowroomNameField.setText(pShowroom.getShowroomName());
+            this.aCapacityTextField.setText(String.valueOf(pShowroom.getShowroomCapacity()));
+            this.aScreeningList.getItems().setAll(pShowroom.getShowroomScreenings());
+        }
     }
 
     private void openScreeningView(Screening pScreening) {
@@ -112,5 +122,11 @@ public class ShowroomAddEditViewController {
         alert.setHeaderText("Something went wrong");
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void closeWindow(javafx.event.ActionEvent pEvent) {
+        Node source = (Node) pEvent.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 }
