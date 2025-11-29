@@ -34,13 +34,13 @@ public class loginViewController {
         String username = usernameTextField.getText();
         String password = passwordField.getText();
 
-        AccountService accountService = new AccountService();
-        Account account = accountService.authenticate(username, password);
+        AccountService accountService = AccountService.getInstance();
+//        Account account = accountService.authenticate(username, password);
 
-        if (account == null) {
-            System.out.println("Invalid login!");
-            return;
-        }
+//        if (account == null) {
+//            System.out.println("Invalid login!");
+//            return;
+//        }
 
         try {
             FXMLLoader loader = new FXMLLoader(

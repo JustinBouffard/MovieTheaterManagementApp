@@ -1,35 +1,76 @@
 package com.example.theaterproject.Services;
 
 import com.example.theaterproject.Models.Account;
+import com.example.theaterproject.Models.Client;
+import com.example.theaterproject.Models.Manager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AccountService {
 
-    // Temporary in-memory storage (replace with DB later)
-    private static final List<Account> accounts = new ArrayList<>();
+    // Singleton instance
+    private static AccountService aInstance;
 
-    static {
-        // Default admin account for testing
-        accounts.add(new Account("manager", "cinemaPassword"));
-        accounts.add(new Account("client", "password"));
+    private final List<Client> aClientList = new ArrayList<>();
+    private final Manager aManager; // only one manager
+
+    private AccountService() {
+        // initialize manager account
+        this.aManager = new Manager("Manager","cinemaPassword");
     }
 
-    public Account authenticate(String username, String password) {
-        // EXAMPLE — replace with your real lookup (DB, list, file, etc.)
-        for (Account acc : AccountRepository.getAllAccounts()) {
-            if (acc.getUserName().equals(username) &&
-                    acc.getPassword().equals(password)) {
-                return acc;
+    public static AccountService getInstance() {
+        if (aInstance == null) {
+            aInstance = new AccountService();
+        }
+        return aInstance;
+    }
+
+    public void addClient(Client pClient) {
+        // check for duplicate before adding new client account
+        for (Account account : aClientList) {
+            if (account.getUserName().equals(pClient.getUserName())) {
+                throw new IllegalArgumentException("User already exists");
             }
         }
-        return null;
-    }
+        aClientList.add(pClient);
     }
 
-    public void addAccount(Account account) {
-        accounts.add(account);
+    public List<Client> getClients() {
+        return aClientList;
+    }
+
+    // Login Validation
+    public Account login(String pUsername, String pPassword) {
+
+        // check if manager
+        if (aManager != null &&
+                aManager.getUserName().equals(pUsername) &&
+                aManager.getPassword().equals(pPassword)) {
+            return aManager;
+        }
+
+        // check which client
+        for (Client client : aClientList) {
+            if (client.getUserName().equals(pUsername) &&
+                client.getPassword().equals(pPassword)) {
+                return client;
+            }
+        }
+
+        return null; // login failed or user not found
+
+        /*
+         * Can use this in login controller :
+         *
+         * if (user == null) {
+         *     showError("Invalid credentials");
+         * } else if (user instanceof Manager) {
+         *     loadManagerMainView();
+         * } else if (user instanceof Client) {
+         *     loadClientMainView();
+         * }
+         */
     }
 }
-
