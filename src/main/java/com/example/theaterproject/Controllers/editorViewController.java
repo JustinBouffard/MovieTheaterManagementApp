@@ -36,7 +36,7 @@ public class editorViewController {
     private void onShowroomsViewButtonClick(ActionEvent pEvent) {
         try {
             // Load the new window
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("showroom-edit-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("showroom-add-edit-view.fxml"));
             Parent root = fxmlLoader.load();
 
             // Create the new stage

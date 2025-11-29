@@ -1,9 +1,7 @@
 package com.example.theaterproject.Controllers;
 
-import com.example.theaterproject.Models.Movie;
 import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Models.Showroom;
-import com.example.theaterproject.Services.MovieService;
 import com.example.theaterproject.Services.ShowroomService;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,7 +15,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class ShowroomAddEditViewController {
     @FXML
@@ -116,11 +113,11 @@ public class ShowroomAddEditViewController {
         }
     }
 
-    private void showAlert(String message) {
+    private void showAlert(String pMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Something went wrong");
-        alert.setContentText(message);
+        alert.setContentText(pMessage);
         alert.showAndWait();
     }
 
