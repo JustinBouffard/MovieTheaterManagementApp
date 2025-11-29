@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="272.0" prefWidth="603.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.loginViewController">
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="272.0" prefWidth="603.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.LoginViewController">
     <children>
         <HBox maxHeight="75.0" minHeight="75.0" prefWidth="594.0" style="-fx-background-color: #540808;" VBox.vgrow="ALWAYS">
             <children>
