@@ -5,11 +5,7 @@ import com.example.theaterproject.Models.Showroom;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import com.example.theaterproject.Models.Movie;
-
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ScreeningService {
 
