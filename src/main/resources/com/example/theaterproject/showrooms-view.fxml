@@ -58,17 +58,12 @@
 
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="moviesViewButton" prefHeight="26.0" prefWidth="100.0" text="Movies">
+                  <Button fx:id="moviesViewButton" onAction="#onMoviesViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Movies">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="showroomsViewButton" prefHeight="26.0" prefWidth="100.0" text="Showrooms">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="statsViewButton" prefHeight="26.0" prefWidth="100.0" text="Stats">
+                  <Button fx:id="statsViewButton" onAction="#onStatsViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Stats">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>

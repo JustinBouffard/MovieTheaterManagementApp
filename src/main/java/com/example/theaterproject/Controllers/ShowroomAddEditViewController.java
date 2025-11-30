@@ -121,7 +121,7 @@ public class ShowroomAddEditViewController {
         alert.showAndWait();
     }
 
-    private void closeWindow(javafx.event.ActionEvent pEvent) {
+    private void closeWindow(ActionEvent pEvent) {
         Node source = (Node) pEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
