@@ -1,6 +1,5 @@
 package com.example.theaterproject.Controllers;
 
-import com.example.theaterproject.Models.Account;
 import com.example.theaterproject.Services.AccountService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +14,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class loginViewController {
+public class LoginViewController {
     @FXML
     private Button signInButton;
 

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="601.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.statsViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="601.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.StatsViewController">
     <children>
         <HBox maxHeight="75.0" minHeight="75.0" prefWidth="594.0" style="-fx-background-color: #540808;" VBox.vgrow="ALWAYS">
             <children>
@@ -22,7 +22,7 @@
                     </HBox.margin>
                 </Label>
                 <Region minWidth="40.0" HBox.hgrow="ALWAYS" />
-                <Label fx:id="pageTitleLabel" alignment="BOTTOM_CENTER" contentDisplay="CENTER" minHeight="75.0" text="Upcoming Movies" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
+                <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" minHeight="75.0" text="Theater Statistics" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
                     <HBox.margin>
                         <Insets left="50.0" right="50.0" />
                     </HBox.margin>
@@ -54,15 +54,15 @@
             <children>
                 <VBox prefHeight="200.0" prefWidth="100.0">
                     <children>
-                        <Button fx:id="moviesViewButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Movies">
+                        <Button mnemonicParsing="false" onAction="#onHomeButtonClick" prefHeight="26.0" prefWidth="100.0" text="Home">
                             <VBox.margin>
                                 <Insets bottom="10.0" />
                             </VBox.margin></Button>
-                        <Button fx:id="showroomsViewButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Showrooms">
+                        <Button mnemonicParsing="false" onAction="#onShowroomsButtonClick" prefHeight="26.0" prefWidth="100.0" text="Showrooms">
                             <VBox.margin>
                                 <Insets bottom="10.0" />
                             </VBox.margin></Button>
-                        <Button fx:id="statsViewButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Stats">
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Stats">
                             <VBox.margin>
                                 <Insets bottom="10.0" />
                             </VBox.margin></Button>

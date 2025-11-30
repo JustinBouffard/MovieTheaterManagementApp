@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.editorViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.EditorViewController">
     <children>
         <HBox maxHeight="75.0" minHeight="75.0" prefWidth="594.0" style="-fx-background-color: #540808;" VBox.vgrow="ALWAYS">
             <children>
@@ -54,7 +54,7 @@
             <children>
                 <VBox prefHeight="200.0" prefWidth="100.0">
                     <children>
-                        <Button fx:id="addMoviesViewButton" defaultButton="true" mnemonicParsing="false" onAction="#onAddMoviesViewButtonCLick" prefHeight="26.0" prefWidth="100.0" text="Add Movie">
+                        <Button fx:id="addMovieButton" defaultButton="true" mnemonicParsing="false" onAction="#onAddMovieButtonCLick" prefHeight="26.0" prefWidth="100.0" text="Add Movie">
                             <VBox.margin>
                                 <Insets bottom="5.0" />
                             </VBox.margin></Button>

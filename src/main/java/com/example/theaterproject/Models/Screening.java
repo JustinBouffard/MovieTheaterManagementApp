@@ -70,7 +70,7 @@ public class Screening {
      *
      * @return the seat number for this screening as an integer.
      */
-    public int geTicketCount() {
+    public int getTicketCount() {
         return this.aTicketCount;
     }
 

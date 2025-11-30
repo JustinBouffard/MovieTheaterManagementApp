@@ -36,7 +36,7 @@ public class ShowroomsViewController {
     private void onMoviesViewButtonClick(ActionEvent pEvent) {
         openWindow("main-view", pEvent);
     }
-    
+
     @FXML
     private void onStatsViewButtonClick(ActionEvent pEvent) {
         openWindow("stats-view", pEvent);
