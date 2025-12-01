@@ -5,7 +5,7 @@ import com.example.theaterproject.Models.Showroom;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import com.example.theaterproject.Models.Movie;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ScreeningService {
 
@@ -24,18 +24,18 @@ public class ScreeningService {
         return aInstance;
     }
 
-    public void createScreening(Showroom pShowroom, Movie pMovie, int pTicketCount, double pPricePerTicket, LocalDate pDate) {
-        Screening screening = new Screening(pMovie, pTicketCount, pPricePerTicket, pDate);
+    public void createScreening(Showroom pShowroom, Movie pMovie, int pTicketCount, double pPricePerTicket, LocalDateTime pDateTime) {
+        Screening screening = new Screening(pMovie, pTicketCount, pPricePerTicket, pDateTime);
         pShowroom.addScreening(screening);
         // add to screenings list
         aAllScreenings.add(screening);
     }
 
-    public void updateScreening(Screening pScreening, Movie pMovie, int pTicketCount, double pPricePerTicket, LocalDate pDate) {
+    public void updateScreening(Screening pScreening, Movie pMovie, int pTicketCount, double pPricePerTicket, LocalDateTime pDateTime) {
         pScreening.setMovie(pMovie);
         pScreening.setTicketCount(pTicketCount);
         pScreening.setPricePerTicket(pPricePerTicket);
-        pScreening.setDate(pDate);
+        pScreening.setDateTime(pDateTime);
     }
 
     // filter screening list by movie. for stats view

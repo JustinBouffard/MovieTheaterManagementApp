@@ -1,6 +1,7 @@
 package com.example.theaterproject.Models;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * The Screening class represents information about a specific movie screening,
@@ -25,7 +26,7 @@ public class Screening {
      */
     private double aPricePerTicket;
 
-    private LocalDate aDate;
+    private LocalDateTime aDateTime;
 
     /**
      * Constructs a Screening object representing a specific movie screening
@@ -34,8 +35,9 @@ public class Screening {
      * @param pMovie       The movie associated with this screening.
      * @param pTicketCount The seat number for this screening.
      * @param pPricePerTicket       The price of the screening.
+     * @param pDateTime    The date and time of the screening.
      */
-    public Screening(Movie pMovie, int pTicketCount, double pPricePerTicket, LocalDate pDate) {
+    public Screening(Movie pMovie, int pTicketCount, double pPricePerTicket, LocalDateTime pDateTime) {
         if (pMovie == null) {
             throw new IllegalArgumentException("Movie cannot be null");
         }
@@ -45,11 +47,17 @@ public class Screening {
         if (pPricePerTicket < 0) {
             throw new IllegalArgumentException("Price cannot be negative.");
         }
+        if (pDateTime == null) {
+            throw new IllegalArgumentException("DateTime cannot be null");
+        }
+        if (pDateTime.isBefore(LocalDateTime.now())) {
+            throw new IllegalArgumentException("DateTime cannot be in the past.");
+        }
 
         this.aMovie = pMovie;
         this.aTicketCount = pTicketCount;
         this.aPricePerTicket = pPricePerTicket;
-        this.aDate = pDate;
+        this.aDateTime = pDateTime;
     }
 
     /**
@@ -91,16 +99,18 @@ public class Screening {
         this.aPricePerTicket = pPricePerTicket;
     }
 
-    public LocalDate getDate() {
-        return aDate;
+    public LocalDateTime getDateTime() {
+        return aDateTime;
     }
 
-    public void setDate(LocalDate pDate) {
-        if(pDate.isBefore(LocalDate.now())) {
-            throw new IllegalArgumentException("Date cannot be in the past.");
+    public void setDateTime(LocalDateTime pDateTime) {
+        if (pDateTime == null) {
+            throw new IllegalArgumentException("DateTime cannot be null");
         }
-
-        this.aDate = pDate;
+        if (pDateTime.isBefore(LocalDateTime.now())) {
+            throw new IllegalArgumentException("DateTime cannot be in the past.");
+        }
+        this.aDateTime = pDateTime;
     }
 
     /**

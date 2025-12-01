@@ -1,6 +1,8 @@
 package com.example.theaterproject.Controllers;
 
+import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Models.Showroom;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ShowroomCardController {
     @FXML
@@ -28,7 +32,20 @@ public class ShowroomCardController {
     }
 
     public void setShowroomCard(Showroom pShowroom) {
+        ObservableList<Screening> screenings = pShowroom.getShowroomScreenings();
+        Screening earliestScreening = screenings.stream()
+                .min((s1, s2) -> s1.getDateTime().compareTo(s2.getDateTime()))
+                .orElse(null);
+
         this.aShowRoom = pShowroom;
+        this.aShowRoomNameLabel.setText(pShowroom.getShowroomName());
+        
+        if (earliestScreening != null) {
+            String formattedTime = earliestScreening.getDateTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+            this.aMovieInfoLabel.setText(earliestScreening.getMovie().getTitle() + " showing at " + formattedTime);
+        } else {
+            this.aMovieInfoLabel.setText("(No screenings available)");
+        }
     }
 
     private void openShowroomAddEditView() {

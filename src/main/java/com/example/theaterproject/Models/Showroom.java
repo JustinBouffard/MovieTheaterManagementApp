@@ -43,6 +43,12 @@ public class Showroom {
         this.aScreenings = pScreenings;
     }
 
+    public Showroom(){
+        this.aName = "";
+        this.aCapacity = 0;
+        this.aScreenings = FXCollections.observableArrayList();
+    }
+
     /**
      * Returns the name of the showroom.
      *
@@ -80,7 +86,7 @@ public class Showroom {
     }
 
     public ObservableList<Screening> getShowroomScreenings() {
-        return FXCollections.unmodifiableObservableList(this.aScreenings);
+        return this.aScreenings;
     }
 
     public void setShowroomScreenings(ObservableList<Screening> pScreenings) { this.aScreenings = pScreenings; }

@@ -5,12 +5,13 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="234.0" prefWidth="350" spacing="15" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.ScreeningAddEditViewController">
+<VBox prefHeight="234.0" prefWidth="350" spacing="15" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.ScreeningAddEditViewController">
 
     <children>
 
@@ -35,6 +36,23 @@
                 <Label text="Date:" />
                 <DatePicker fx:id="aDatePicker" prefWidth="300" />
             </VBox>
+         <VBox spacing="5">
+            <children>
+               <Label text="Time:" />
+               <HBox spacing="40.0">
+                  <children>
+                     <Label text="Hours" />
+                     <Label text="Minutes" />
+                  </children>
+               </HBox>
+               <HBox spacing="10.0">
+                  <children>
+                     <Spinner fx:id="aHoursSpinner" editable="true" prefWidth="60.0" />
+                     <Spinner fx:id="aMinutesSpinner" editable="true" prefWidth="60.0" />
+                  </children>
+               </HBox>
+            </children>
+         </VBox>
          <VBox spacing="5">
             <children>
                <Label text="Price Per Ticket:" />

@@ -13,6 +13,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class ScreeningAddEditViewController {
     @FXML
@@ -20,6 +22,12 @@ public class ScreeningAddEditViewController {
 
     @FXML
     private DatePicker aDatePicker;
+
+    @FXML
+    private Spinner<Integer> aHoursSpinner;
+
+    @FXML
+    private Spinner<Integer> aMinutesSpinner;
 
     @FXML
     private TextField aPriceField;
@@ -37,6 +45,27 @@ public class ScreeningAddEditViewController {
                 aPriceField.setText(oldValue);
             }
         });
+        aHoursSpinner.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                aHoursSpinner.getEditor().setText(oldValue);
+            } else if (!newValue.isEmpty()) {
+                int value = Integer.parseInt(newValue);
+                if (value > 23) {
+                    aHoursSpinner.getEditor().setText(oldValue);
+                }
+            }
+        });
+
+        aMinutesSpinner.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                aMinutesSpinner.getEditor().setText(oldValue);
+            } else if (!newValue.isEmpty()) {
+                int value = Integer.parseInt(newValue);
+                if (value > 59) {
+                    aMinutesSpinner.getEditor().setText(oldValue);
+                }
+            }
+        });
     }
 
     @FXML
@@ -45,12 +74,15 @@ public class ScreeningAddEditViewController {
             Movie selectedMovie = this.aMovieService.getMovies().get(aMovieComboBox.getSelectionModel().getSelectedIndex());
             int ticketCount = this.aShowroom.getShowroomCapacity();
             double pricePerTicket = Double.parseDouble(this.aPriceField.getText());
-            LocalDate date = this.aDatePicker.getValue();
+            LocalDateTime dateTime = LocalDateTime.of(
+                    this.aDatePicker.getValue(),
+                    LocalTime.of(this.aHoursSpinner.getValue(), this.aMinutesSpinner.getValue())
+            );
 
             if (this.aScreening == null) {
-                this.aScreeningService.createScreening(this.aShowroom, selectedMovie, ticketCount, pricePerTicket, date);
+                this.aScreeningService.createScreening(this.aShowroom, selectedMovie, ticketCount, pricePerTicket, dateTime);
             } else {
-                this.aScreeningService.updateScreening(this.aScreening, selectedMovie, ticketCount, pricePerTicket, date);
+                this.aScreeningService.updateScreening(this.aScreening, selectedMovie, ticketCount, pricePerTicket, dateTime);
             }
 
             closeWindow(pEvent);
@@ -78,8 +110,12 @@ public class ScreeningAddEditViewController {
         this.aMovieComboBox.getItems().addAll(this.aMovieService.getMovies().toString());
 
         if (this.aScreening != null) {
+            LocalDate screeningDate = this.aScreening.getDateTime().toLocalDate();
+            LocalTime screeningTime = this.aScreening.getDateTime().toLocalTime();
             this.aMovieComboBox.getSelectionModel().select(this.aScreening.getMovie().toString());
-            this.aDatePicker.setValue(this.aScreening.getDate());
+            this.aDatePicker.setValue(screeningDate);
+            this.aHoursSpinner.getValueFactory().setValue(screeningTime.getHour());
+            this.aMinutesSpinner.getValueFactory().setValue(screeningTime.getMinute());
             this.aPriceField.setText(String.valueOf(this.aShowroomService.getaDefaultTicketPrice()));
         }
     }
