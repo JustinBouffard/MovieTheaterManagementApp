@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import com.example.theaterproject.Models.Movie;
 
 import java.util.Collection;
+import java.util.List;
 
 public class MovieService {
 
@@ -24,6 +25,11 @@ public class MovieService {
 
     public ObservableList<Movie> getMovies() {
         return FXCollections.unmodifiableObservableList(aMovies);
+    }
+
+    public void setMovies(ObservableList<Movie> pMovies) {
+        aMovies.clear();
+        aMovies.setAll(pMovies);
     }
 
     public void addMovie(Movie pMovie) {

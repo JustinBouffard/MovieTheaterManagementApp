@@ -5,8 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Helper class for generating dummy data for testing and development purposes.
@@ -18,10 +16,10 @@ public class DummyDataHelper {
     /**
      * Creates a list of dummy Movie objects with realistic data.
      *
-     * @return a list of Movie objects
+     * @return an observable list of Movie objects
      */
-    public static List<Movie> getDummyMovies() {
-        List<Movie> movies = new ArrayList<>();
+    public static ObservableList<Movie> getDummyMovies() {
+        ObservableList<Movie> movies = FXCollections.observableArrayList();
         
         movies.add(new Movie("Action", "The Matrix", "The Wachowskis", 1999,
                 "A computer programmer discovers that reality is a simulation created by machines.",
@@ -61,10 +59,10 @@ public class DummyDataHelper {
     /**
      * Creates a list of dummy Account objects.
      *
-     * @return a list of Account objects
+     * @return an observable list of Account objects
      */
-    public static List<Account> getDummyAccounts() {
-        List<Account> accounts = new ArrayList<>();
+    public static ObservableList<Account> getDummyAccounts() {
+        ObservableList<Account> accounts = FXCollections.observableArrayList();
         
         accounts.add(new Account("admin_user", "password123"));
         accounts.add(new Account("theater_manager", "secure_pass"));
@@ -77,10 +75,10 @@ public class DummyDataHelper {
     /**
      * Creates a list of dummy Manager objects.
      *
-     * @return a list of Manager objects
+     * @return an observable list of Manager objects
      */
-    public static List<Manager> getDummyManagers() {
-        List<Manager> managers = new ArrayList<>();
+    public static ObservableList<Manager> getDummyManagers() {
+        ObservableList<Manager> managers = FXCollections.observableArrayList();
         
         managers.add(new Manager("john_manager", "manager123"));
         managers.add(new Manager("sarah_admin", "admin_pass"));
@@ -92,10 +90,10 @@ public class DummyDataHelper {
     /**
      * Creates a list of dummy Client objects with email addresses.
      *
-     * @return a list of Client objects
+     * @return an observable list of Client objects
      */
-    public static List<Client> getDummyClients() {
-        List<Client> clients = new ArrayList<>();
+    public static ObservableList<Client> getDummyClients() {
+        ObservableList<Client> clients = FXCollections.observableArrayList();
         
         clients.add(new Client("john_doe", "client123", "john.doe@email.com"));
         clients.add(new Client("jane_smith", "secure_pass", "jane.smith@email.com"));
@@ -110,11 +108,11 @@ public class DummyDataHelper {
      * Creates a list of dummy Screening objects.
      * Requires dummy movies to be created first.
      *
-     * @return a list of Screening objects
+     * @return an observable list of Screening objects
      */
-    public static List<Screening> getDummyScreenings() {
-        List<Screening> screenings = new ArrayList<>();
-        List<Movie> movies = getDummyMovies();
+    public static ObservableList<Screening> getDummyScreenings() {
+        ObservableList<Screening> screenings = FXCollections.observableArrayList();
+        ObservableList<Movie> movies = getDummyMovies();
         
         screenings.add(new Screening(movies.get(0), 150, 12.50, LocalDate.now().plusDays(1)));
         screenings.add(new Screening(movies.get(1), 200, 11.00, LocalDate.now().plusDays(2)));
@@ -130,11 +128,11 @@ public class DummyDataHelper {
      * Creates a list of dummy Showroom objects with screening capability.
      * Includes sample screenings for each showroom.
      *
-     * @return a list of Showroom objects
+     * @return an observable list of Showroom objects
      */
-    public static List<Showroom> getDummyShowrooms() {
-        List<Showroom> showrooms = new ArrayList<>();
-        List<Screening> allScreenings = getDummyScreenings();
+    public static ObservableList<Showroom> getDummyShowrooms() {
+        ObservableList<Showroom> showrooms = FXCollections.observableArrayList();
+        ObservableList<Screening> allScreenings = getDummyScreenings();
         
         // Showroom 1 - with first 3 screenings
         ObservableList<Screening> screenings1 = FXCollections.observableArrayList(
@@ -168,13 +166,13 @@ public class DummyDataHelper {
      * Creates a list of dummy Ticket objects.
      * Demonstrates tickets purchased by different clients for various screenings.
      *
-     * @return a list of Ticket objects
+     * @return an observable list of Ticket objects
      */
-    public static List<Ticket> getDummyTickets() {
-        List<Ticket> tickets = new ArrayList<>();
-        List<Client> clients = getDummyClients();
-        List<Screening> screenings = getDummyScreenings();
-        List<Movie> movies = getDummyMovies();
+    public static ObservableList<Ticket> getDummyTickets() {
+        ObservableList<Ticket> tickets = FXCollections.observableArrayList();
+        ObservableList<Client> clients = getDummyClients();
+        ObservableList<Screening> screenings = getDummyScreenings();
+        ObservableList<Movie> movies = getDummyMovies();
         
         // Client 1 buys multiple tickets
         tickets.add(new Ticket(movies.get(0), screenings.get(0), 12.50, clients.get(0)));
