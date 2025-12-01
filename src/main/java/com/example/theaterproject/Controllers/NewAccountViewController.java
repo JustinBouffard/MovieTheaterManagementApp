@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
-public class newAccountViewController {
+public class NewAccountViewController {
 
     @FXML
     private TextField usernameField;

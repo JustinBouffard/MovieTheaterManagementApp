@@ -3,11 +3,18 @@ package com.example.theaterproject.Controllers;
 import com.example.theaterproject.Models.Showroom;
 import com.example.theaterproject.Services.ShowroomService;
 import javafx.collections.ListChangeListener;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ShowroomsViewController {
 
@@ -25,6 +32,16 @@ public class ShowroomsViewController {
         });
     }
 
+    @FXML
+    private void onMoviesViewButtonClick(ActionEvent pEvent) {
+        openWindow("main-view", pEvent);
+    }
+
+    @FXML
+    private void onStatsViewButtonClick(ActionEvent pEvent) {
+        openWindow("stats-view", pEvent);
+    }
+
     private void fillShowroomGridPane() {
         this.aMovieGridPane.getChildren().clear();
 
@@ -33,7 +50,7 @@ public class ShowroomsViewController {
         int rows = 0;
 
         for (Showroom showroom : this.aShowroomService.getShowrooms()) {
-            addShowroomCard(showroom, columns, col);
+            addShowroomCard(showroom, col, rows);
 
             col++;
             if (col == columns) {
@@ -57,6 +74,28 @@ public class ShowroomsViewController {
         }
     }
 
+    private void openWindow(String pName, ActionEvent pEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(pName + ".fxml"));
+            Parent root = loader.load();
+
+            Stage newStage = new Stage();
+            newStage.setTitle(pName);
+            newStage.setScene(new Scene(root, 480, 350));
+            newStage.show();
+
+            closeWindow(pEvent);
+        } catch (IOException e) {
+            showAlert(e.getMessage());
+        }
+    }
+
+    private void closeWindow(ActionEvent pEvent) {
+        Node source = (Node) pEvent.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
     private void showAlert(String pMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
@@ -64,4 +103,5 @@ public class ShowroomsViewController {
         alert.setContentText(pMessage);
         alert.showAndWait();
     }
+
 }

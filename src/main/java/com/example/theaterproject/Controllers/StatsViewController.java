@@ -4,11 +4,19 @@ import com.example.theaterproject.Models.Movie;
 import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Services.MovieService;
 import com.example.theaterproject.Services.ScreeningService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
-public class statsViewController {
+import java.io.IOException;
+
+public class StatsViewController {
     // ListView for movies and screenings
     @FXML
     private ListView<Movie> moviesList;
@@ -68,5 +76,45 @@ public class statsViewController {
         numberTicketsLabel.setText("-");
         priceTicketsLabel.setText("-");
         revenueLabel.setText("-");
+    }
+
+    @FXML
+    private void onHomeButtonClick(ActionEvent pEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("com/example/theaterproject/editor-view.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Home");
+            stage.setScene(new Scene(root, 480, 350));
+            stage.show();
+
+            // Close current window
+            Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onShowroomsButtonClick(ActionEvent pEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("com/example/theaterproject/showrooms-view.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Showrooms");
+            stage.setScene(new Scene(root, 480, 350));
+            stage.show();
+
+            // Close current window
+            Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

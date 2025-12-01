@@ -38,6 +38,11 @@ public class ShowroomService {
         aShowrooms.remove(pShowroom);
     }
 
+    public void setShowrooms(ObservableList<Showroom> pShowrooms) {
+        aShowrooms.clear();
+        aShowrooms.addAll(pShowrooms);
+    }
+
     public void createShowroom(String pName, int pCapacity, ObservableList<Screening> pScreenings) {
         Showroom showroom = new Showroom(pName, pCapacity, pScreenings);
         this.aShowrooms.add(showroom);
