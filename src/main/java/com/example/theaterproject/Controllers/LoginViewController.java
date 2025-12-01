@@ -64,7 +64,7 @@ public class LoginViewController {
 
                 Stage stage = new Stage();
                 stage.setTitle("Theater Dashboard");
-                stage.setScene(new Scene(root));
+                stage.setScene(new Scene(root, 700, 400));
                 stage.show();
 
                 // close login window
