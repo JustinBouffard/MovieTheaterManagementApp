@@ -142,16 +142,16 @@ public class EditorViewController {
             VBox root = loader.load();
 
             EditorMovieCardController controller = loader.getController();
-            if (controller != null) {
-                controller.setData(
-                        movie,
-                        () -> onAddMovieButtonClick(),             // EDIT action
-                        () -> {                                 // DELETE action
-                            aMovieService.removeMovie(movie);
-                            populateGrid(aMovies);
-                        }
-                );
-            }
+//            if (controller != null) {
+//                controller.setData(
+//                        movie,
+//                        () -> onAddMovieButtonClick(),             // EDIT action
+//                        () -> {                                 // DELETE action
+//                            aMovieService.removeMovie(movie);
+//                            populateGrid(aMovies);
+//                        }
+//                );
+//            }
 
             return root;
 

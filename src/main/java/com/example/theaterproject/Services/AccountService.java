@@ -39,6 +39,9 @@ public class AccountService {
         aClientList.add(pClient);
     }
 
+    public Manager getManager() {
+        return aManager;
+    }
 
     public ObservableList<Client> getClients() {
         return aClientList;
