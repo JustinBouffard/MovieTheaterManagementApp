@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c58ca1d0-effb-4558-b8b8-438baf703402" name="Changes" comment=""/>
-    <list default="true" id="c58ca1d0-effb-4558-b8b8-438baf703402" name="Changes" comment="Working, working, im working but nothing else is.">
+    <list default="true" id="c58ca1d0-effb-4558-b8b8-438baf703402" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomAddEditViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomAddEditViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomsViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomsViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/showrooms-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/showrooms-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/newAccountViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/NewAccountViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/statsViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/StatsViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Services/ScreeningService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Services/ScreeningService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/new-account-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/new-account-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/stats-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/stats-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
