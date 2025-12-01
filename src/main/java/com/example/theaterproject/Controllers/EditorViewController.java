@@ -82,7 +82,7 @@ public class EditorViewController {
     private void onAddMovieButtonClick(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("add-edit-movie-view.fxml")
+                    getClass().getResource("/com/example/theaterproject/add-edit-movie-view.fxml")
             );
             Parent root = loader.load();
 
@@ -99,7 +99,7 @@ public class EditorViewController {
     @FXML
     private void onShowroomsViewButtonClick(ActionEvent pEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("showroom-add-edit-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/showroom-add-edit-view.fxml"));
             Parent root = fxmlLoader.load();
 
             Stage newStage = new Stage();
@@ -118,7 +118,7 @@ public class EditorViewController {
     @FXML
     private void onStatsViewButtonClick(ActionEvent pEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("stats-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/stats-view.fxml"));
             Parent root = fxmlLoader.load();
 
             Stage newStage = new Stage();
@@ -137,7 +137,7 @@ public class EditorViewController {
     private VBox loadCardForMovie(Movie movie) {
         try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("editor-movie-card-view.fxml")
+                    getClass().getResource("/com/example/theaterproject/editor-movie-card-view.fxml")
             );
             VBox root = loader.load();
 

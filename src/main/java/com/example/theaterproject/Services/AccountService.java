@@ -19,7 +19,7 @@ public class AccountService {
 
     private AccountService() {
         // initialize manager account
-        this.aManager = new Manager("Manager","cinemaPassword");
+        this.aManager = new Manager("Manager","Password");
     }
 
     public static AccountService getInstance() {

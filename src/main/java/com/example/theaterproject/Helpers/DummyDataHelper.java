@@ -64,7 +64,7 @@ public class DummyDataHelper {
     public static ObservableList<Account> getDummyAccounts() {
         ObservableList<Account> accounts = FXCollections.observableArrayList();
         
-        accounts.add(new Account("admin_user", "password123"));
+        accounts.add(new Account("admin", "password123"));
         accounts.add(new Account("theater_manager", "secure_pass"));
         accounts.add(new Account("ticket_seller", "pass456"));
         accounts.add(new Account("database_admin", "db_password"));

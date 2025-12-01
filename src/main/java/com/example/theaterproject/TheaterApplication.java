@@ -36,4 +36,8 @@ public class TheaterApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    public AccountService getAccountService() {
+        return accountService;
+    }
 }

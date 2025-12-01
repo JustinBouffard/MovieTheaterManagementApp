@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
@@ -32,52 +33,53 @@ public class LoginViewController {
 
     @FXML
     private void onSignInButtonClick(ActionEvent pEvent) {
-
         String username = usernameTextField.getText();
         String password = passwordField.getText();
 
-
         try {
+            // Example: Authenticate user
             Account managerAccount = accountService.getManager();
 
+            String fxmlPath;
+
             if (managerAccount.getUserName().equals(username) && managerAccount.getPassword().equals(password)) {
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("/com/example/theaterproject/editor-view.fxml")
-                );
-
-                Parent root = loader.load();
-
-                Stage stage = new Stage();
-                stage.setTitle("Theater Dashboard");
-                stage.setScene(new Scene(root));
-                stage.show();
-
-                // close login window
-                Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
-                currentStage.close();
+                fxmlPath = "/com/example/theaterproject/editor-view.fxml";
+                System.out.println("Manager login detected. Loading editor view...");
             } else {
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("/com/example/theaterproject/main-view.fxml")
-                );
-
-                Parent root = loader.load();
-
-                Stage stage = new Stage();
-                stage.setTitle("Theater Dashboard");
-                stage.setScene(new Scene(root));
-                stage.show();
-
-                // close login window
-                Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
-                currentStage.close();
-
+                fxmlPath = "/com/example/theaterproject/main-view.fxml";
+                System.out.println("Regular login detected. Loading main view...");
             }
 
+            // Debug: check if resource exists
+            if (getClass().getResource(fxmlPath) == null) {
+                System.err.println("FXML file not found: " + fxmlPath);
+                return;
+            }
+
+            // Load FXML safely
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Theater Dashboard");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Close current login window
+            Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
+            currentStage.close();
 
         } catch (IOException e) {
             e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Failed to load the view");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
         }
     }
+
 
 
     @FXML
