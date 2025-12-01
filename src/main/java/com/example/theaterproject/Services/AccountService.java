@@ -3,6 +3,8 @@ package com.example.theaterproject.Services;
 import com.example.theaterproject.Models.Account;
 import com.example.theaterproject.Models.Client;
 import com.example.theaterproject.Models.Manager;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,7 @@ public class AccountService {
     // Singleton instance
     private static AccountService aInstance;
 
-    private final List<Client> aClientList = new ArrayList<>();
+    private final ObservableList<Client> aClientList = FXCollections.observableArrayList();
     private final Manager aManager; // only one manager
 
     private AccountService() {
@@ -37,8 +39,19 @@ public class AccountService {
         aClientList.add(pClient);
     }
 
-    public List<Client> getClients() {
+
+    public ObservableList<Client> getClients() {
         return aClientList;
+    }
+
+    public void setClients(List<Client> pClients) {
+        // if list is null, clear current list
+        if (pClients == null) {
+            this.aClientList.clear();
+        } else {
+            // ObservableList.setAll replace the current list with provided list
+            this.aClientList.setAll(pClients);
+        }
     }
 
     // Login Validation
