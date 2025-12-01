@@ -1,5 +1,6 @@
 package com.example.theaterproject.Controllers;
 
+import com.example.theaterproject.Models.Account;
 import com.example.theaterproject.Services.AccountService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,35 +28,51 @@ public class LoginViewController {
     @FXML
     private PasswordField passwordField;
 
+    AccountService accountService = AccountService.getInstance();
+
     @FXML
     private void onSignInButtonClick(ActionEvent pEvent) {
 
         String username = usernameTextField.getText();
         String password = passwordField.getText();
 
-        AccountService accountService = AccountService.getInstance();
-//        Account account = accountService.authenticate(username, password);
-
-//        if (account == null) {
-//            System.out.println("Invalid login!");
-//            return;
-//        }
 
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/example/theaterproject/main-view.fxml")
-            );
+            Account managerAccount = accountService.getManager();
 
-            Parent root = loader.load();
+            if (managerAccount.getUserName().equals(username) && managerAccount.getPassword().equals(password)) {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("/com/example/theaterproject/editor-view.fxml")
+                );
 
-            Stage stage = new Stage();
-            stage.setTitle("Theater Dashboard");
-            stage.setScene(new Scene(root));
-            stage.show();
+                Parent root = loader.load();
 
-            // close login window
-            Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
-            currentStage.close();
+                Stage stage = new Stage();
+                stage.setTitle("Theater Dashboard");
+                stage.setScene(new Scene(root));
+                stage.show();
+
+                // close login window
+                Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
+                currentStage.close();
+            } else {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("/com/example/theaterproject/main-view.fxml")
+                );
+
+                Parent root = loader.load();
+
+                Stage stage = new Stage();
+                stage.setTitle("Theater Dashboard");
+                stage.setScene(new Scene(root));
+                stage.show();
+
+                // close login window
+                Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
+                currentStage.close();
+
+            }
+
 
         } catch (IOException e) {
             e.printStackTrace();

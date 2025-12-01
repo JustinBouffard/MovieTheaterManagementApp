@@ -17,7 +17,7 @@ public class AccountService {
 
     private AccountService() {
         // initialize manager account
-        this.aManager = new Manager("Manager","cinemaPassword");
+        this.aManager = new Manager("Manager","Password");
     }
 
     public static AccountService getInstance() {
@@ -36,6 +36,11 @@ public class AccountService {
         }
         aClientList.add(pClient);
     }
+
+    public Manager getManager() {
+        return this.aManager;
+    }
+
 
     public List<Client> getClients() {
         return aClientList;
