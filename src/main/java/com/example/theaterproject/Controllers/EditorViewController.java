@@ -99,7 +99,7 @@ public class EditorViewController {
     @FXML
     private void onShowroomsViewButtonClick(ActionEvent pEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/showroom-add-edit-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/showrooms-view.fxml"));
             Parent root = fxmlLoader.load();
 
             Stage newStage = new Stage();

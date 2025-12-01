@@ -62,7 +62,7 @@ public class ShowroomsViewController {
 
     private void addShowroomCard(Showroom pShowroom, int pColumn, int pRow) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("showroom-card-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/showroom-card-view.fxml"));
             Parent card = loader.load();
 
             ShowroomCardController controller = loader.getController();
@@ -76,7 +76,7 @@ public class ShowroomsViewController {
 
     private void openWindow(String pName, ActionEvent pEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(pName + ".fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/" + pName + ".fxml"));
             Parent root = loader.load();
 
             Stage newStage = new Stage();

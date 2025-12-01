@@ -1,6 +1,7 @@
 package com.example.theaterproject.Controllers;
 
 import com.example.theaterproject.Models.Showroom;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class ShowroomCardController {
@@ -34,7 +34,7 @@ public class ShowroomCardController {
     private void openShowroomAddEditView() {
         if (this.aShowRoom == null) return;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("showroom-add-edit-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/showroom-add-edit-view.fxml"));
             Parent root = loader.load();
 
             ShowroomAddEditViewController controller = loader.getController();
