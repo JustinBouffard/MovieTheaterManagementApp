@@ -61,6 +61,12 @@ public class NewAccountViewController {
             return;
         }
 
+        // make sure username isn't manager
+        if (aUsername.equalsIgnoreCase("manager")) {
+            showAlert(Alert.AlertType.ERROR, "Reserved Username", "Username cannot be " + aUsername);
+            return;
+        }
+
         // create new client account
         try {
             Client newClient = new Client(aUsername,aPassword,aEmail);
