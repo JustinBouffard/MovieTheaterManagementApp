@@ -3,6 +3,7 @@ package com.example.theaterproject.Controllers;
 import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Models.Showroom;
 import com.example.theaterproject.Services.ShowroomService;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +28,7 @@ public class ShowroomAddEditViewController {
     private ListView<Screening> aScreeningList;
 
     private Showroom aShowroom;
+    private ObservableList<Screening> aOriginalScreenings;
     private final ShowroomService aShowroomService = ShowroomService.getInstance();
 
     @FXML
@@ -50,7 +52,7 @@ public class ShowroomAddEditViewController {
             else
                 this.aShowroomService.updateShowroom(this.aShowroom, name, capacity, screenings);
 
-            closeWindow(pEvent);
+            closeWindow(pEvent, true);
         }
         catch (Exception e) {
             showAlert(e.getMessage());
@@ -80,7 +82,6 @@ public class ShowroomAddEditViewController {
             showAlert("You need to select a screening first");
             return;
         } else {
-            this.aShowroom.removeScreening(selectedScreening);
             this.aScreeningList.getItems().remove(selectedScreening);
         }
     }
@@ -91,6 +92,8 @@ public class ShowroomAddEditViewController {
         if (this.aShowroom != null) {
             this.aShowroomNameField.setText(pShowroom.getShowroomName());
             this.aCapacityTextField.setText(String.valueOf(pShowroom.getShowroomCapacity()));
+            // Store a copy of the original screenings for potential rollback
+            this.aOriginalScreenings = FXCollections.observableArrayList(pShowroom.getShowroomScreenings());
             this.aScreeningList.getItems().setAll(pShowroom.getShowroomScreenings());
         }
     }
@@ -108,6 +111,19 @@ public class ShowroomAddEditViewController {
             modal.initModality(Modality.APPLICATION_MODAL);
             modal.setTitle("Screening");
             modal.showAndWait();
+            
+            // Get the result screening from the controller
+            Screening resultScreening = controller.getResultScreening();
+            if (resultScreening != null) {
+                if (pScreening == null) {
+                    // If this is a new screening, add it to the list
+                    this.aScreeningList.getItems().add(resultScreening);
+                } else {
+                    // If editing, replace the old screening with the new one in the ListView
+                    int index = this.aScreeningList.getItems().indexOf(pScreening);
+                    this.aScreeningList.getItems().set(index, resultScreening);
+                }
+            }
         } catch (IOException e) {
             showAlert(e.getMessage());
         }
@@ -122,6 +138,15 @@ public class ShowroomAddEditViewController {
     }
 
     private void closeWindow(ActionEvent pEvent) {
+        closeWindow(pEvent, false);
+    }
+
+    private void closeWindow(ActionEvent pEvent, boolean pSaved) {
+        // If editing an existing showroom and user clicked cancel (not save), rollback screening changes
+        if (!pSaved && this.aShowroom != null && this.aOriginalScreenings != null) {
+            this.aShowroom.getShowroomScreenings().setAll(this.aOriginalScreenings);
+        }
+        
         Node source = (Node) pEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

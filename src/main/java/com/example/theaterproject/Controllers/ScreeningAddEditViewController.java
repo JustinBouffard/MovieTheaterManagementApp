@@ -4,7 +4,6 @@ import com.example.theaterproject.Models.Movie;
 import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Models.Showroom;
 import com.example.theaterproject.Services.MovieService;
-import com.example.theaterproject.Services.ScreeningService;
 import com.example.theaterproject.Services.ShowroomService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +17,7 @@ import java.time.LocalTime;
 
 public class ScreeningAddEditViewController {
     @FXML
-    private ComboBox<String> aMovieComboBox;
+    private ComboBox<Movie> aMovieComboBox;
 
     @FXML
     private DatePicker aDatePicker;
@@ -33,10 +32,11 @@ public class ScreeningAddEditViewController {
     private TextField aPriceField;
 
     private Screening aScreening;
+    private Screening aOriginalScreening;
     private Showroom aShowroom;
+    private Screening aResultScreening;
     private final MovieService aMovieService = MovieService.getInstance();
     private final ShowroomService aShowroomService = ShowroomService.getInstance();
-    private final ScreeningService aScreeningService = ScreeningService.getInstance();
 
     @FXML
     public void initialize() {
@@ -66,12 +66,22 @@ public class ScreeningAddEditViewController {
                 }
             }
         });
+        this.aHoursSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
+        this.aMinutesSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
     }
 
     @FXML
     private void onSaveButtonClick(ActionEvent pEvent) {
         try {
-            Movie selectedMovie = this.aMovieService.getMovies().get(aMovieComboBox.getSelectionModel().getSelectedIndex());
+            Movie selectedMovie = aMovieComboBox.getSelectionModel().getSelectedItem();
+            if (selectedMovie == null) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Invalid selection");
+                alert.setContentText("Please select a movie");
+                alert.showAndWait();
+                return;
+            }
             int ticketCount = this.aShowroom.getShowroomCapacity();
             double pricePerTicket = Double.parseDouble(this.aPriceField.getText());
             LocalDateTime dateTime = LocalDateTime.of(
@@ -80,9 +90,11 @@ public class ScreeningAddEditViewController {
             );
 
             if (this.aScreening == null) {
-                this.aScreeningService.createScreening(this.aShowroom, selectedMovie, ticketCount, pricePerTicket, dateTime);
+                // Creating a new screening - don't persist yet
+                this.aResultScreening = new Screening(selectedMovie, ticketCount, pricePerTicket, dateTime);
             } else {
-                this.aScreeningService.updateScreening(this.aScreening, selectedMovie, ticketCount, pricePerTicket, dateTime);
+                // Editing existing screening - create a modified copy, don't modify the original yet
+                this.aResultScreening = new Screening(selectedMovie, ticketCount, pricePerTicket, dateTime);
             }
 
             closeWindow(pEvent);
@@ -106,18 +118,24 @@ public class ScreeningAddEditViewController {
         fillView();
     }
 
+    public Screening getResultScreening() {
+        return this.aResultScreening;
+    }
+
     private void fillView() {
-        this.aMovieComboBox.getItems().addAll(this.aMovieService.getMovies().toString());
+        this.aMovieComboBox.getItems().addAll(this.aMovieService.getMovies());
 
         if (this.aScreening != null) {
             LocalDate screeningDate = this.aScreening.getDateTime().toLocalDate();
             LocalTime screeningTime = this.aScreening.getDateTime().toLocalTime();
-            this.aMovieComboBox.getSelectionModel().select(this.aScreening.getMovie().toString());
+            this.aMovieComboBox.getSelectionModel().select(this.aScreening.getMovie());
             this.aDatePicker.setValue(screeningDate);
             this.aHoursSpinner.getValueFactory().setValue(screeningTime.getHour());
             this.aMinutesSpinner.getValueFactory().setValue(screeningTime.getMinute());
-            this.aPriceField.setText(String.valueOf(this.aShowroomService.getaDefaultTicketPrice()));
+            this.aPriceField.setText(String.valueOf(this.aScreening.getPricePerTicket()));
         }
+        else
+            this.aPriceField.setText(String.valueOf(this.aShowroomService.getaDefaultTicketPrice()));
     }
 
     private void closeWindow(ActionEvent pEvent) {

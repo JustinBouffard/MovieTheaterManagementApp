@@ -121,6 +121,6 @@ public class Screening {
      */
     @Override
     public String toString() {
-        return aMovie.getTitle() + " " + this.aTicketCount + " " + aPricePerTicket;
+        return aMovie.getTitle();
     }
 }
