@@ -18,9 +18,9 @@ import java.io.IOException;
 public class UIService {
 
     private static UIService aInstance;
-    private static final String FXML_PATH_PREFIX = "/com/example/theaterproject/";
-    public static final int DEFAULT_SCREEN_WIDTH = 480;
-    public static final int DEFAULT_SCREEN_HEIGHT = 350;
+    private static final String aFxmlPathPrefix = "/com/example/theaterproject/";
+    public static final int aDefaultScreenWidth = 480;
+    public static final int aDefaultScreenHeight = 350;
 
     private UIService() {
     }
@@ -82,7 +82,7 @@ public class UIService {
      * Uses the default screen size.
      */
     public FXMLLoader openModalDialog(String pFxmlFileName, String pTitle) throws IOException {
-        return openModalDialog(pFxmlFileName, pTitle, DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
+        return openModalDialog(pFxmlFileName, pTitle, aDefaultScreenWidth, aDefaultScreenHeight);
     }
 
     /**
@@ -90,7 +90,7 @@ public class UIService {
      * The dialog is modal and will block interaction with other windows until closed.
      */
     public FXMLLoader openModalDialog(String pFxmlFileName, String pTitle, double pWidth, double pHeight) throws IOException {
-        FXMLLoader loader = new FXMLLoader(UIService.class.getResource(FXML_PATH_PREFIX + pFxmlFileName + ".fxml"));
+        FXMLLoader loader = new FXMLLoader(UIService.class.getResource(aFxmlPathPrefix + pFxmlFileName + ".fxml"));
         Parent root = loader.load();
 
         Stage modal = new Stage();
@@ -106,7 +106,7 @@ public class UIService {
      * Loads an FXML file and returns the FXMLLoader for accessing the controller.
      */
     public FXMLLoader loadFXML(String pFxmlFileName) throws IOException {
-        FXMLLoader loader = new FXMLLoader(UIService.class.getResource(FXML_PATH_PREFIX + pFxmlFileName + ".fxml"));
+        FXMLLoader loader = new FXMLLoader(UIService.class.getResource(aFxmlPathPrefix + pFxmlFileName + ".fxml"));
         loader.load();
         return loader;
     }
@@ -116,7 +116,7 @@ public class UIService {
      * Uses the default screen size.
      */
     public void openNewWindow(String pFxmlFileName, String pTitle, ActionEvent pEvent) throws IOException {
-        openNewWindow(pFxmlFileName, pTitle, pEvent, DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
+        openNewWindow(pFxmlFileName, pTitle, pEvent, aDefaultScreenWidth, aDefaultScreenHeight);
     }
 
     /**
@@ -124,7 +124,7 @@ public class UIService {
      * Uses custom dimensions.
      */
     public void openNewWindow(String pFxmlFileName, String pTitle, ActionEvent pEvent, double pWidth, double pHeight) throws IOException {
-        FXMLLoader loader = new FXMLLoader(UIService.class.getResource(FXML_PATH_PREFIX + pFxmlFileName + ".fxml"));
+        FXMLLoader loader = new FXMLLoader(UIService.class.getResource(aFxmlPathPrefix + pFxmlFileName + ".fxml"));
         javafx.scene.Parent root = loader.load();
 
         javafx.stage.Stage stage = new javafx.stage.Stage();
@@ -134,3 +134,4 @@ public class UIService {
 
         closeWindow(pEvent);
     }
+}

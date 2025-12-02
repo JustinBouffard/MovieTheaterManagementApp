@@ -45,7 +45,7 @@ public class ShowroomsViewController {
     @FXML
     private void onStatsViewButtonClick(ActionEvent pEvent) {
         try {
-            aUIService.openNewWindow("stats-view", "Statistics", pEvent, 900, 500);
+            aUIService.openNewWindow("stats-view", "Statistics", pEvent, 700, 500);
         } catch (IOException e) {
             aUIService.showErrorAlert("Error", e.getMessage());
         }
