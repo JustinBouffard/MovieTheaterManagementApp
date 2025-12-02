@@ -60,4 +60,25 @@ public class ShowroomService {
     public double getaDefaultTicketPrice() {
         return aDefaultTicketPrice;
     }
+
+    public ObservableList<Screening> getAllScreenings() {
+        ObservableList<Screening> screenings = FXCollections.observableArrayList();
+        for (Showroom showroom : this.aShowrooms) {
+            screenings.addAll(showroom.getShowroomScreenings());
+        }
+        return screenings;
+    }
+
+    // filter screening list by movie. for stats view
+    public ObservableList<Screening> getScreeningFor(Movie pMovie) {
+        ObservableList<Screening> result = FXCollections.observableArrayList();
+
+        // go through screening list. add to result list every screening that matches pMovie
+        for (Screening s : getAllScreenings()) {
+            if(s.getMovie().equals(pMovie)) {
+                result.add(s);
+            }
+        }
+        return result;
+    }
 }
