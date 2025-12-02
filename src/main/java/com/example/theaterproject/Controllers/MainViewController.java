@@ -33,15 +33,6 @@ public class MainViewController {
     @FXML
     private GridPane movieGridPane;
 
-    @FXML
-    private Label pageTitleLabel;
-
-    @FXML
-    private Button signOutButton;
-
-    @FXML
-    private Label userLabel;
-
     private final MovieService movieService = MovieService.getInstance();
 
     @FXML

@@ -11,37 +11,20 @@ import java.time.LocalDate;
  * </p>
  */
 public class Movie {
-    private String aGenre;
     private String aTitle;
-    private String aDirector;
-    private int aYear;
-    private String aDescription;
     private int aRuntime;
 
     /**
      * Creates a new Movie with the specified details.
      *
-     * @param pGenre the genre of the movie
      * @param pTitle the title of the movie
-     * @param pDirector the director of the movie
-     * @param pYear the year the movie was released
-     * @param pDescription a description of the movie
      * @param pRuntime the runtime of the movie
      */
-    public Movie(String pGenre, String pTitle, String pDirector, int pYear, String pDescription, int pRuntime) {
-        validateString(pGenre);
+    public Movie(String pTitle, int pRuntime) {
         validateString(pTitle);
-        validateString(pDirector);
-        validateYear(pYear);
-        validateString(pDescription);
         validateRuntime(pRuntime);
 
-
-        this.aGenre = pGenre;
         this.aTitle = pTitle;
-        this.aDirector = pDirector;
-        this.aYear = pYear;
-        this.aDescription = pDescription;
         this.aRuntime = pRuntime;
     }
 
@@ -52,11 +35,7 @@ public class Movie {
      * @param pMovie the movie to copy from
      */
     public Movie(Movie pMovie) {
-        this.aGenre = pMovie.aGenre;
         this.aTitle = pMovie.aTitle;
-        this.aDirector = pMovie.aDirector;
-        this.aYear = pMovie.aYear;
-        this.aDescription = pMovie.aDescription;
         this.aRuntime = pMovie.aRuntime;
     }
 
@@ -78,29 +57,6 @@ public class Movie {
     private void validateString(String pString) {
         if (pString == null || pString.isBlank()) {
             throw new IllegalArgumentException("Cannot be empty");
-        }
-    }
-
-    /**
-     * Validates that the provided year is within acceptable bounds.
-     *
-     * <p>The year must:</p>
-     * <ul>
-     *   <li>Be at least 1888 (the year of the first motion picture)</li>
-     *   <li>Not be more than one year in the future</li>
-     * </ul>
-     *
-     * @param pYear the year to validate
-     * @throws IllegalArgumentException if the year is before 1888 or more than one year in the future
-     */
-    private void validateYear(int pYear) {
-        int currentYear = LocalDate.now().getYear();
-        if (pYear < 1888) {
-            throw new IllegalArgumentException("The year cannot be before 1888.");
-        }
-
-        if (pYear > currentYear + 1) {
-            throw new IllegalArgumentException("The year cannot be further than the current year + 1 year");
         }
     }
 

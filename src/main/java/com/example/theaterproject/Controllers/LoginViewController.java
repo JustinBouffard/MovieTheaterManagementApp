@@ -17,12 +17,6 @@ import java.io.IOException;
 
 public class LoginViewController {
     @FXML
-    private Button signInButton;
-
-    @FXML
-    private Button newAccountButton;
-
-    @FXML
     private TextField usernameTextField;
 
     @FXML

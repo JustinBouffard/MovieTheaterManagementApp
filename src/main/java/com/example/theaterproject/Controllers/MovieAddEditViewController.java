@@ -4,7 +4,10 @@ import com.example.theaterproject.Models.Movie;
 import com.example.theaterproject.Services.MovieService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
@@ -12,6 +15,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 /**
@@ -52,45 +56,35 @@ public class MovieAddEditViewController {
         String title = (movieTitleTextField != null) ? movieTitleTextField.getText() : null;
         Integer runtime = (runtimeSpinner != null) ? runtimeSpinner.getValue() : null;
 
+        // Validate
         if (title == null || title.isBlank()) {
-            showAlert(Alert.AlertType.ERROR, "Validation error", "Title cannot be empty.");
+            showAlert("Title cannot be blank.");
             return;
         }
+
         if (runtime == null || runtime <= 0) {
-            showAlert(Alert.AlertType.ERROR, "Validation error", "Runtime must be a positive integer.");
+            showAlert("Runtime must be a positive number.");
             return;
         }
 
         try {
             if (editingMovie == null) {
-                Movie newMovie = new Movie(
-                        "Unknown",                 // genre
-                        title,                     // title
-                        "Unknown",                 // director
-                        LocalDate.now().getYear(), // year
-                        "",                        // description
-                        runtime                    // runtime (minutes)
-                );
+                Movie newMovie = new Movie(title, runtime);
                 movieService.addMovie(newMovie);
             } else {
-                // Movie has no setters in the current model, so replace the object.
-                Movie updated = new Movie(
-                        "Unknown",
-                        title,
-                        "Unknown",
-                        LocalDate.now().getYear(),
-                        "",
-                        runtime
-                );
+                Movie updated = new Movie(title, runtime);
                 movieService.removeMovie(editingMovie);
                 movieService.addMovie(updated);
             }
 
             closeWindow(event);
+            openWindow("editor-view", event);
+
         } catch (Exception e) {
-            showAlert(Alert.AlertType.ERROR, "Save failed", e.getMessage());
+            showAlert(e.getMessage());
         }
     }
+
 
     @FXML
     private void onCancelButtonClick(ActionEvent event) {
@@ -109,6 +103,22 @@ public class MovieAddEditViewController {
         }
     }
 
+    private void openWindow(String pName, ActionEvent pEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/" + pName + ".fxml"));
+            Parent root = loader.load();
+
+            Stage newStage = new Stage();
+            newStage.setTitle(pName);
+            newStage.setScene(new Scene(root, 480, 350));
+            newStage.show();
+
+            closeWindow(pEvent);
+        } catch (IOException e) {
+            showAlert(e.getMessage());
+        }
+    }
+
     private void closeWindow(ActionEvent event) {
         if (event == null) return;
         Node source = (Node) event.getSource();
@@ -116,11 +126,11 @@ public class MovieAddEditViewController {
         stage.close();
     }
 
-    private void showAlert(Alert.AlertType type, String title, String msg) {
-        Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(msg);
+    private void showAlert(String pMessage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Something went wrong");
+        alert.setContentText(pMessage);
         alert.showAndWait();
     }
 }

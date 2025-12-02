@@ -35,8 +35,23 @@ public class ShowroomsViewController {
     }
 
     @FXML
-    private void onMoviesViewButtonClick(ActionEvent pEvent) {
-        openWindow("main-view", pEvent);
+    private void onHomeViewButtonClick(ActionEvent pEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("com/example/theaterproject/editor-view.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Home");
+            stage.setScene(new Scene(root, 480, 350));
+            stage.show();
+
+            // Close current window
+            Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

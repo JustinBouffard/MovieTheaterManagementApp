@@ -12,15 +12,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 public class EditorViewController {
     @FXML
@@ -45,8 +43,8 @@ public class EditorViewController {
 
     @FXML
     public void initialize() {
-        if (moviesGridPane != null) {
-            moviesGridPane.getChildren().clear();
+        if (movieGridPane != null) {
+            movieGridPane.getChildren().clear();
         }
 
         aMovies = aMovieService.getMovies();
@@ -55,27 +53,80 @@ public class EditorViewController {
         populateGrid(aMovies);
     }
 
-    private void populateGrid(ObservableList<Movie> pMovies) {
-        if (moviesGridPane == null || pMovies == null) return;
+    private void populateGrid(javafx.collections.ObservableList<Movie> movies) {
+        movieGridPane.getChildren().clear();
 
-        moviesGridPane.getChildren().clear();
-        moviesGridPane.getColumnConstraints().clear();
-        moviesGridPane.setPadding(new Insets(PADDING));
-        moviesGridPane.setHgap(GAP);
-        moviesGridPane.setVgap(GAP);
+        if (movies == null || movies.isEmpty()) {
+            return;
+        }
 
-        for (int i = 0; i < pMovies.size(); i++) {
-            Movie m = pMovies.get(i);
-            int col = i % COLUMNS;
-            int row = i / COLUMNS;
+        // Determine number of columns from GridPane constraints if present, otherwise default to 3
+        int columns = 3;
+        if (movieGridPane.getColumnConstraints() != null && movieGridPane.getColumnConstraints().size() > 0) {
+            columns = Math.max(1, movieGridPane.getColumnConstraints().size());
+        }
 
-            VBox card = loadCardForMovie(m);
-            if (card != null) {
-                moviesGridPane.add(card, col, row);
-                GridPane.setVgrow(card, Priority.NEVER);
-                GridPane.setHgrow(card, Priority.NEVER);
+        int index = 0;
+        for (Movie movie : movies) {
+            try {
+                URL fxmlUrl = getClass().getResource("/com/example/theaterproject/movie-card-view.fxml");
+                if (fxmlUrl == null) {
+                    System.err.println("Could not locate movie-card-view.fxml");
+                    continue;
+                }
+
+                FXMLLoader loader = new FXMLLoader(fxmlUrl);
+                Parent card = loader.load();
+
+                if (fxmlUrl == null) {
+                    // nothing we can do for this card; print and skip
+                    System.err.println("Could not locate movie-card-view.fxml resource for movie: " + movie.getTitle());
+                    continue;
+                }
+
+                // If the FXML declares a controller and it supports setMovie, use it.
+                Object cardController = loader.getController();
+                if (cardController != null) {
+                    try {
+                        // Try to call setMovie reflectively (keeps coupling low)
+                        java.lang.reflect.Method setMovie = cardController.getClass().getMethod("setMovie", Movie.class);
+                        if (setMovie != null) {
+                            setMovie.invoke(cardController, movie);
+                        }
+                    } catch (NoSuchMethodException nsme) {
+                        // Controller exists but does not have setMovie(Movie) - fall back to namespace below
+                    } catch (Exception ex) {
+                        // Reflection invocation problem - print and continue with fallback
+                        ex.printStackTrace();
+                    }
+                }
+
+                // If controller was null or did not set the title, attempt namespace-based label injection as fallback
+                Map<String, Object> ns = loader.getNamespace();
+                Object titleObj = ns.get("movieTitleLabel");
+                Object screeningObj = ns.get("screeningTimeLabel");
+
+                if (titleObj instanceof Labeled) {
+                    ((Labeled) titleObj).setText(movie.getTitle());
+                }
+                if (screeningObj instanceof Labeled) {
+                    ((Labeled) screeningObj).setText("Screening: TBD");
+                }
+
+                int col = index % columns;
+                int row = index / columns;
+                movieGridPane.add(card, col, row);
+                GridPane.setMargin(card, new Insets(8));
+                index++;
+            } catch (IOException e) {
+                // Loading failed for this card; print stack trace and continue so other cards show
+                e.printStackTrace();
+            } catch (Exception e) {
+                // Catch-all to avoid one bad card breaking the grid
+                e.printStackTrace();
             }
         }
+
     }
 
     @FXML
