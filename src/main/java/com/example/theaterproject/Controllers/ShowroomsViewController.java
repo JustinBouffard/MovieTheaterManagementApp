@@ -1,17 +1,15 @@
 package com.example.theaterproject.Controllers;
 
+import com.example.theaterproject.Services.UIService;
 import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Models.Showroom;
 import com.example.theaterproject.Services.ShowroomService;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -36,12 +34,20 @@ public class ShowroomsViewController {
 
     @FXML
     private void onMoviesViewButtonClick(ActionEvent pEvent) {
-        openWindow("main-view", pEvent);
+        try {
+            UIService.openModalWindow("main-view", "Movies", pEvent);
+        } catch (IOException e) {
+            UIService.showErrorAlert("Error", e.getMessage());
+        }
     }
 
     @FXML
     private void onStatsViewButtonClick(ActionEvent pEvent) {
-        openWindow("stats-view", pEvent);
+        try {
+            UIService.openModalWindow("stats-view", "Statistics", pEvent);
+        } catch (IOException e) {
+            UIService.showErrorAlert("Error", e.getMessage());
+        }
     }
 
     @FXML
@@ -52,8 +58,8 @@ public class ShowroomsViewController {
 
     private void openShowroomAddEditView(Showroom pShowroom) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/showroom-add-edit-view.fxml"));
-            Parent root = loader.load();
+            FXMLLoader loader = UIService.loadFXML("showroom-add-edit-view");
+            Parent root = loader.getRoot();
 
             ShowroomAddEditViewController controller = loader.getController();
             controller.setShowroomEditView(pShowroom);
@@ -64,7 +70,7 @@ public class ShowroomsViewController {
             modal.setTitle("Showroom Add/Edit");
             modal.showAndWait();
         } catch (IOException e) {
-            showAlert(e.getMessage());
+            UIService.showErrorAlert("Error", e.getMessage());
         }
     }
 
@@ -88,8 +94,8 @@ public class ShowroomsViewController {
 
     private void addShowroomCard(Showroom pShowroom, int pColumn, int pRow) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/showroom-card-view.fxml"));
-            Parent card = loader.load();
+            FXMLLoader loader = UIService.loadFXML("showroom-card-view");
+            Parent card = loader.getRoot();
 
             ShowroomCardController controller = loader.getController();
             controller.setShowroomCard(pShowroom);
@@ -101,38 +107,8 @@ public class ShowroomsViewController {
 
             this.aMovieGridPane.add(card, pColumn, pRow);
         } catch (Exception e) {
-            showAlert(e.getMessage());
+            UIService.showErrorAlert("Error", e.getMessage());
         }
-    }
-
-    private void openWindow(String pName, ActionEvent pEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/" + pName + ".fxml"));
-            Parent root = loader.load();
-
-            Stage newStage = new Stage();
-            newStage.setTitle(pName);
-            newStage.setScene(new Scene(root, 480, 350));
-            newStage.show();
-
-            closeWindow(pEvent);
-        } catch (IOException e) {
-            showAlert(e.getMessage());
-        }
-    }
-
-    private void closeWindow(ActionEvent pEvent) {
-        Node source = (Node) pEvent.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
-    }
-
-    private void showAlert(String pMessage) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText("Something went wrong");
-        alert.setContentText(pMessage);
-        alert.showAndWait();
     }
 
 }

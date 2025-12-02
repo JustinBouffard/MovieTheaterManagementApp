@@ -3,12 +3,12 @@ package com.example.theaterproject.Controllers;
 import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Models.Showroom;
 import com.example.theaterproject.Services.ShowroomService;
+import com.example.theaterproject.Services.UIService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -32,8 +32,12 @@ public class ShowroomAddEditViewController {
 
     @FXML
     public void initialize() {
+        setupInputValidation();
+    }
+
+    private void setupInputValidation() {
         aCapacityTextField.textProperty().addListener((obs, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*(\\.\\d{0,2})?")) {
+            if (!newValue.matches("\\d*")) {
                 aCapacityTextField.setText(oldValue);
             }
         });
@@ -42,19 +46,17 @@ public class ShowroomAddEditViewController {
     @FXML
     private void onSaveButtonClick(ActionEvent pEvent) {
         try {
-            String name = this.aShowroomNameField.getText();
-            int capacity = Integer.parseInt(aCapacityTextField.getText());
-            ObservableList<Screening> screenings = aScreeningList.getItems();
+            String name = validateAndGetShowroomName();
+            if (name == null) return;
 
-            if (this.aShowroom == null)
-                this.aShowroomService.createShowroom(name, capacity, screenings);
-            else
-                this.aShowroomService.updateShowroom(this.aShowroom, name, capacity, screenings);
+            int capacity = validateAndGetCapacity();
+            if (capacity <= 0) return;
 
-            closeWindow(pEvent);
+            saveShowroom(name, capacity, pEvent);
+            UIService.closeWindow(pEvent);
         }
         catch (Exception e) {
-            showAlert(e.getMessage());
+            UIService.showErrorAlert("Save Error", "Failed to save showroom: " + e.getMessage());
         }
     }
 
@@ -67,21 +69,68 @@ public class ShowroomAddEditViewController {
     private void onEditScreeningButtonClick(ActionEvent pEvent) {
         Screening selectedScreening = this.aScreeningList.getSelectionModel().getSelectedItem();
         if (selectedScreening == null) {
-            showAlert("You need to select a screening first");
+            UIService.showErrorAlert("Selection Error", "Please select a screening to edit.");
             return;
-        } else {
-            openScreeningView(selectedScreening);
         }
+        openScreeningView(selectedScreening);
     }
 
     @FXML
     private void onRemoveScreeningButtonClick(ActionEvent pEvent) {
         Screening selectedScreening = this.aScreeningList.getSelectionModel().getSelectedItem();
         if (selectedScreening == null) {
-            showAlert("You need to select a screening first");
+            UIService.showErrorAlert("Selection Error", "Please select a screening to remove.");
             return;
+        }
+        this.aScreeningList.getItems().remove(selectedScreening);
+        UIService.showInfoAlert("Success", "Screening removed successfully.");
+    }
+
+    private String validateAndGetShowroomName() {
+        String name = this.aShowroomNameField.getText().trim();
+        if (name.isEmpty()) {
+            UIService.showErrorAlert("Validation Error", "Please enter a showroom name.");
+            return null;
+        }
+        if (name.length() > 100) {
+            UIService.showErrorAlert("Validation Error", "Showroom name cannot exceed 100 characters.");
+            return null;
+        }
+        return name;
+    }
+
+    private int validateAndGetCapacity() {
+        String capacityText = aCapacityTextField.getText().trim();
+        if (capacityText.isEmpty()) {
+            UIService.showErrorAlert("Validation Error", "Please enter the showroom capacity.");
+            return -1;
+        }
+        try {
+            int capacity = Integer.parseInt(capacityText);
+            if (capacity <= 0) {
+                UIService.showErrorAlert("Validation Error", "Capacity must be greater than 0.");
+                return -1;
+            }
+            if (capacity > 10000) {
+                UIService.showErrorAlert("Validation Error", "Capacity cannot exceed 10,000.");
+                return -1;
+            }
+            return capacity;
+        } catch (NumberFormatException e) {
+            UIService.showErrorAlert("Validation Error", "Capacity must be a valid integer.");
+            return -1;
+        }
+    }
+
+    private void saveShowroom(String name, int capacity, ActionEvent pEvent) {
+        ObservableList<Screening> screenings = aScreeningList.getItems();
+
+        if (this.aShowroom == null) {
+            this.aShowroomService.createShowroom(name, capacity, screenings);
+            UIService.showInfoAlert("Success", "Showroom created successfully.");
         } else {
-            this.aScreeningList.getItems().remove(selectedScreening);
+            this.aShowroomService.updateShowroom(this.aShowroom, name, capacity, screenings);
+            UIService.showInfoAlert("Success", "Showroom updated successfully.");
         }
     }
 
@@ -97,8 +146,8 @@ public class ShowroomAddEditViewController {
 
     private void openScreeningView(Screening pScreening) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/add-edit-screening-view.fxml"));
-            Parent root = loader.load();
+            FXMLLoader loader = UIService.loadFXML("add-edit-screening-view");
+            Parent root = loader.getRoot();
 
             ScreeningAddEditViewController controller = loader.getController();
             controller.setScreeningView(this.aShowroom, pScreening);
@@ -106,23 +155,28 @@ public class ShowroomAddEditViewController {
             Stage modal = new Stage();
             modal.setScene(new Scene(root));
             modal.initModality(Modality.APPLICATION_MODAL);
-            modal.setTitle("Screening");
+            modal.setTitle(pScreening == null ? "Add Screening" : "Edit Screening");
             modal.showAndWait();
-            
-            // Get the result screening from the controller
+
             Screening resultScreening = controller.getResultScreening();
             if (resultScreening != null) {
-                if (pScreening == null) {
-                    // If this is a new screening, add it to the list
-                    this.aScreeningList.getItems().add(resultScreening);
-                } else {
-                    // If editing, replace the old screening with the new one in the ListView
-                    int index = this.aScreeningList.getItems().indexOf(pScreening);
-                    this.aScreeningList.getItems().set(index, resultScreening);
-                }
+                handleScreeningResult(pScreening, resultScreening);
             }
         } catch (IOException e) {
-            showAlert(e.getMessage());
+            UIService.showErrorAlert("Loading Error", "Failed to open screening dialog: " + e.getMessage());
+        }
+    }
+
+    private void handleScreeningResult(Screening originalScreening, Screening resultScreening) {
+        if (originalScreening == null) {
+            // New screening
+            this.aScreeningList.getItems().add(resultScreening);
+            UIService.showInfoAlert("Success", "Screening added successfully.");
+        } else {
+            // Edited screening
+            int index = this.aScreeningList.getItems().indexOf(originalScreening);
+            this.aScreeningList.getItems().set(index, resultScreening);
+            UIService.showInfoAlert("Success", "Screening updated successfully.");
         }
     }
 
@@ -132,11 +186,5 @@ public class ShowroomAddEditViewController {
         alert.setHeaderText("Something went wrong");
         alert.setContentText(pMessage);
         alert.showAndWait();
-    }
-
-    private void closeWindow(ActionEvent pEvent) {
-        Node source = (Node) pEvent.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
     }
 }

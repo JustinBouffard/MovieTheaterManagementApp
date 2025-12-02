@@ -2,10 +2,9 @@ package com.example.theaterproject.Controllers;
 
 import com.example.theaterproject.Models.Movie;
 import com.example.theaterproject.Services.MovieService;
+import com.example.theaterproject.Services.UIService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -53,11 +52,11 @@ public class MovieAddEditViewController {
         Integer runtime = (runtimeSpinner != null) ? runtimeSpinner.getValue() : null;
 
         if (title == null || title.isBlank()) {
-            showAlert(Alert.AlertType.ERROR, "Validation error", "Title cannot be empty.");
+            UIService.showErrorAlert("Validation error", "Title cannot be empty.");
             return;
         }
         if (runtime == null || runtime <= 0) {
-            showAlert(Alert.AlertType.ERROR, "Validation error", "Runtime must be a positive integer.");
+            UIService.showErrorAlert("Validation error", "Runtime must be a positive integer.");
             return;
         }
 
@@ -86,15 +85,15 @@ public class MovieAddEditViewController {
                 movieService.addMovie(updated);
             }
 
-            closeWindow(event);
+            UIService.closeWindow(event);
         } catch (Exception e) {
-            showAlert(Alert.AlertType.ERROR, "Save failed", e.getMessage());
+            UIService.showErrorAlert("Save failed", e.getMessage());
         }
     }
 
     @FXML
     private void onCancelButtonClick(ActionEvent event) {
-        closeWindow(event);
+        UIService.closeWindow(event);
     }
 
     /**
@@ -107,20 +106,5 @@ public class MovieAddEditViewController {
             if (movieTitleTextField != null) movieTitleTextField.setText(movie.getTitle());
             // Movie model currently doesn't expose runtime getter; spinner stays at its default.
         }
-    }
-
-    private void closeWindow(ActionEvent event) {
-        if (event == null) return;
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
-    }
-
-    private void showAlert(Alert.AlertType type, String title, String msg) {
-        Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(msg);
-        alert.showAndWait();
     }
 }

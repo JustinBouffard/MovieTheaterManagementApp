@@ -2,25 +2,21 @@ package com.example.theaterproject.Controllers;
 
 import com.example.theaterproject.Models.Movie;
 import com.example.theaterproject.Services.MovieService;
+import com.example.theaterproject.Services.UIService;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 public class EditorViewController {
     @FXML
@@ -81,65 +77,41 @@ public class EditorViewController {
     @FXML
     private void onAddMovieButtonClick(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/example/theaterproject/add-edit-movie-view.fxml")
-            );
-            Parent root = loader.load();
+            FXMLLoader loader = UIService.loadFXML("add-edit-movie-view");
+            Parent root = loader.getRoot();
 
             // Replace the current window scene
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            UIService.showErrorAlert("Error", e.getMessage());
         }
     }
 
     @FXML
     private void onShowroomsViewButtonClick(ActionEvent pEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/showrooms-view.fxml"));
-            Parent root = fxmlLoader.load();
-
-            Stage newStage = new Stage();
-            newStage.setTitle("Statistics");
-            newStage.setScene(new Scene(root, 700, 500));
-            newStage.show();
-
-            Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
-            currentStage.close();
-
+            UIService.openModalWindow("showrooms-view", "Showrooms", pEvent, 700, 500);
         } catch (IOException e) {
-            e.printStackTrace();
+            UIService.showErrorAlert("Error", e.getMessage());
         }
     }
 
     @FXML
     private void onStatsViewButtonClick(ActionEvent pEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/stats-view.fxml"));
-            Parent root = fxmlLoader.load();
-
-            Stage newStage = new Stage();
-            newStage.setTitle("Statistics");
-            newStage.setScene(new Scene(root, 700, 500));
-            newStage.show();
-
-            Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
-            currentStage.close();
-
+            UIService.openModalWindow("stats-view", "Statistics", pEvent, 700, 500);
         } catch (IOException e) {
-            e.printStackTrace();
+            UIService.showErrorAlert("Error", e.getMessage());
         }
     }
 
     private VBox loadCardForMovie(Movie movie) {
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/example/theaterproject/editor-movie-card-view.fxml")
-            );
-            VBox root = loader.load();
+            FXMLLoader loader = UIService.loadFXML("editor-movie-card-view");
+            VBox root = loader.getRoot();
 
             EditorMovieCardController controller = loader.getController();
 //            if (controller != null) {
@@ -156,19 +128,8 @@ public class EditorViewController {
             return root;
 
         } catch (IOException e) {
-            e.printStackTrace();
+            UIService.showErrorAlert("Error", e.getMessage());
             return null;
         }
-    }
-
-
-
-    private void showAlert(Alert.AlertType type, String title, String message) {
-        Alert a = new Alert(type);
-        a.setTitle(title);
-        a.setHeaderText(null);
-        a.setContentText(message);
-        a.initModality(Modality.APPLICATION_MODAL);
-        a.showAndWait();
     }
 }

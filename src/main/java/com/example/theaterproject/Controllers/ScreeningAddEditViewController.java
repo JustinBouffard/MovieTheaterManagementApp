@@ -5,9 +5,9 @@ import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Models.Showroom;
 import com.example.theaterproject.Services.MovieService;
 import com.example.theaterproject.Services.ShowroomService;
+import com.example.theaterproject.Services.UIService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
@@ -35,7 +35,6 @@ public class ScreeningAddEditViewController {
     private TextField aTicketCountTextField;
 
     private Screening aScreening;
-    private Screening aOriginalScreening;
     private Showroom aShowroom;
     private Screening aResultScreening;
     private final MovieService aMovieService = MovieService.getInstance();
@@ -43,6 +42,11 @@ public class ScreeningAddEditViewController {
 
     @FXML
     public void initialize() {
+        setupInputValidationListeners();
+        setupSpinnerFactories();
+    }
+
+    private void setupInputValidationListeners() {
         aPriceField.textProperty().addListener((obs, oldValue, newValue) -> {
             if (!newValue.matches("\\d*(\\.\\d{0,2})?")) {
                 aPriceField.setText(oldValue);
@@ -63,7 +67,6 @@ public class ScreeningAddEditViewController {
                 }
             }
         });
-
         aMinutesSpinner.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 aMinutesSpinner.getEditor().setText(oldValue);
@@ -74,50 +77,116 @@ public class ScreeningAddEditViewController {
                 }
             }
         });
+    }
+
+    private void setupSpinnerFactories() {
         this.aHoursSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0));
         this.aMinutesSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
     }
 
     @FXML
     private void onSaveButtonClick(ActionEvent pEvent) {
+        // Validate inputs
+        Movie selectedMovie = validateAndGetMovie();
+        if (selectedMovie == null) return;
+
+        if (!validateDate()) return;
+        if (!validateTicketCount()) return;
+        if (!validatePrice()) return;
+
         try {
-            Movie selectedMovie = aMovieComboBox.getSelectionModel().getSelectedItem();
-            if (selectedMovie == null) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Invalid selection");
-                alert.setContentText("Please select a movie");
-                alert.showAndWait();
-                return;
-            }
-            int ticketCount = Integer.parseInt(this.aTicketCountTextField.getText());
-            double pricePerTicket = Double.parseDouble(this.aPriceField.getText());
-            LocalDateTime dateTime = LocalDateTime.of(
-                    this.aDatePicker.getValue(),
-                    LocalTime.of(this.aHoursSpinner.getValue(), this.aMinutesSpinner.getValue())
-            );
-
-            if (this.aScreening == null) {
-                // Creating a new screening - don't persist yet
-                this.aResultScreening = new Screening(selectedMovie, ticketCount, pricePerTicket, dateTime);
-            } else {
-                // Editing existing screening - create a modified copy, don't modify the original yet
-                this.aResultScreening = new Screening(selectedMovie, ticketCount, pricePerTicket, dateTime);
-            }
-
-            closeWindow(pEvent);
+            createScreening(selectedMovie, pEvent);
         } catch (Exception e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Something went wrong");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
+            UIService.showErrorAlert("Unexpected Error", "An error occurred while saving the screening: " + e.getMessage());
         }
     }
 
     @FXML
     private void onCancelButtonClick(ActionEvent pEvent) {
-        closeWindow(pEvent);
+        UIService.closeWindow(pEvent);
+    }
+
+    private Movie validateAndGetMovie() {
+        Movie selectedMovie = aMovieComboBox.getSelectionModel().getSelectedItem();
+        if (selectedMovie == null) {
+            UIService.showErrorAlert("Validation Error", "Please select a movie for the screening.");
+        }
+        return selectedMovie;
+    }
+
+    private boolean validateDate() {
+        if (this.aDatePicker.getValue() == null) {
+            UIService.showErrorAlert("Validation Error", "Please select a screening date.");
+            return false;
+        }
+        if (this.aDatePicker.getValue().isBefore(LocalDate.now())) {
+            UIService.showErrorAlert("Validation Error", "Screening date cannot be in the past.");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateTicketCount() {
+        String ticketCountText = this.aTicketCountTextField.getText().trim();
+        if (ticketCountText.isEmpty()) {
+            UIService.showErrorAlert("Validation Error", "Please enter the number of tickets.");
+            return false;
+        }
+        try {
+            int ticketCount = Integer.parseInt(ticketCountText);
+            if (ticketCount <= 0) {
+                UIService.showErrorAlert("Validation Error", "Ticket count must be greater than 0.");
+                return false;
+            }
+            if (ticketCount > 10000) {
+                UIService.showErrorAlert("Validation Error", "Ticket count cannot exceed 10,000.");
+                return false;
+            }
+            return true;
+        } catch (NumberFormatException e) {
+            UIService.showErrorAlert("Validation Error", "Ticket count must be a valid integer.");
+            return false;
+        }
+    }
+
+    private boolean validatePrice() {
+        String priceText = this.aPriceField.getText().trim();
+        if (priceText.isEmpty()) {
+            UIService.showErrorAlert("Validation Error", "Please enter the ticket price.");
+            return false;
+        }
+        try {
+            double pricePerTicket = Double.parseDouble(priceText);
+            if (pricePerTicket < 0) {
+                UIService.showErrorAlert("Validation Error", "Ticket price cannot be negative.");
+                return false;
+            }
+            if (pricePerTicket > 9999.99) {
+                UIService.showErrorAlert("Validation Error", "Ticket price cannot exceed $9,999.99.");
+                return false;
+            }
+            return true;
+        } catch (NumberFormatException e) {
+            UIService.showErrorAlert("Validation Error", "Ticket price must be a valid decimal number.");
+            return false;
+        }
+    }
+
+    private void createScreening(Movie selectedMovie, ActionEvent pEvent) {
+        int ticketCount = Integer.parseInt(this.aTicketCountTextField.getText());
+        double pricePerTicket = Double.parseDouble(this.aPriceField.getText());
+        LocalDateTime dateTime = LocalDateTime.of(
+                this.aDatePicker.getValue(),
+                LocalTime.of(this.aHoursSpinner.getValue(), this.aMinutesSpinner.getValue())
+        );
+
+        if (this.aScreening == null) {
+            this.aResultScreening = new Screening(selectedMovie, ticketCount, pricePerTicket, dateTime);
+        } else {
+            this.aResultScreening = new Screening(selectedMovie, ticketCount, pricePerTicket, dateTime);
+        }
+
+        UIService.closeWindow(pEvent);
     }
 
     public void setScreeningView(Showroom pShowroom, Screening pScreening) {
@@ -134,24 +203,25 @@ public class ScreeningAddEditViewController {
         this.aMovieComboBox.getItems().addAll(this.aMovieService.getMovies());
 
         if (this.aScreening != null) {
-            LocalDate screeningDate = this.aScreening.getDateTime().toLocalDate();
-            LocalTime screeningTime = this.aScreening.getDateTime().toLocalTime();
-            this.aMovieComboBox.getSelectionModel().select(this.aScreening.getMovie());
-            this.aDatePicker.setValue(screeningDate);
-            this.aHoursSpinner.getValueFactory().setValue(screeningTime.getHour());
-            this.aMinutesSpinner.getValueFactory().setValue(screeningTime.getMinute());
-            this.aPriceField.setText(String.valueOf(this.aScreening.getPricePerTicket()));
-            this.aTicketCountTextField.setText(String.valueOf(this.aScreening.getTicketCount()));
-        }
-        else{
-            this.aPriceField.setText(String.valueOf(this.aShowroomService.getaDefaultTicketPrice()));
-            this.aTicketCountTextField.setText(String.valueOf(this.aShowroom.getShowroomCapacity()));
+            populateExistingScreening();
+        } else {
+            populateNewScreeningDefaults();
         }
     }
 
-    private void closeWindow(ActionEvent pEvent) {
-        Node source = (Node) pEvent.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
+    private void populateExistingScreening() {
+        LocalDate screeningDate = this.aScreening.getDateTime().toLocalDate();
+        LocalTime screeningTime = this.aScreening.getDateTime().toLocalTime();
+        this.aMovieComboBox.getSelectionModel().select(this.aScreening.getMovie());
+        this.aDatePicker.setValue(screeningDate);
+        this.aHoursSpinner.getValueFactory().setValue(screeningTime.getHour());
+        this.aMinutesSpinner.getValueFactory().setValue(screeningTime.getMinute());
+        this.aPriceField.setText(String.valueOf(this.aScreening.getPricePerTicket()));
+        this.aTicketCountTextField.setText(String.valueOf(this.aScreening.getTicketCount()));
+    }
+
+    private void populateNewScreeningDefaults() {
+        this.aPriceField.setText(String.valueOf(this.aShowroomService.getaDefaultTicketPrice()));
+        this.aTicketCountTextField.setText(String.valueOf(this.aShowroom.getShowroomCapacity()));
     }
 }

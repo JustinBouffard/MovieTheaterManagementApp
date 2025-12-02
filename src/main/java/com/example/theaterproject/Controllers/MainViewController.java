@@ -2,6 +2,7 @@ package com.example.theaterproject.Controllers;
 
 import com.example.theaterproject.Models.Movie;
 import com.example.theaterproject.Services.MovieService;
+import com.example.theaterproject.Services.UIService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Labeled;
 import javafx.stage.Stage;
 
@@ -137,20 +137,9 @@ public class MainViewController {
     @FXML
     private void onSignOutButtonClick(ActionEvent pEvent){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/login-view.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle("Log In");
-            stage.setScene(new Scene(root, 700, 400));
-            stage.show();
-
-            // Close current window
-            Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
-            currentStage.close();
-
+            UIService.openModalWindow("login-view", "Log In", pEvent, 700, 400);
         } catch (IOException e) {
-            e.printStackTrace();
+            UIService.showErrorAlert("Error", e.getMessage());
         }
     }
 }

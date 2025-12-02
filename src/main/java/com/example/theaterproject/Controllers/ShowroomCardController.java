@@ -3,13 +3,13 @@ package com.example.theaterproject.Controllers;
 import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Models.Showroom;
 import com.example.theaterproject.Services.ShowroomService;
+import com.example.theaterproject.Services.UIService;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -59,8 +59,8 @@ public class ShowroomCardController {
     private void openShowroomAddEditView() {
         if (this.aShowRoom == null) return;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/showroom-add-edit-view.fxml"));
-            Parent root = loader.load();
+            FXMLLoader loader = UIService.loadFXML("showroom-add-edit-view");
+            Parent root = loader.getRoot();
 
             ShowroomAddEditViewController controller = loader.getController();
             controller.setShowroomEditView(this.aShowRoom);
@@ -71,15 +71,7 @@ public class ShowroomCardController {
             modal.setTitle("Showroom Add/Edit");
             modal.showAndWait();
         } catch (IOException e) {
-            showAlert(e.getMessage());
+            UIService.showErrorAlert("Error", e.getMessage());
         }
-    }
-
-    private void showAlert(String pMessage) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText("Something went wrong");
-        alert.setContentText(pMessage);
-        alert.showAndWait();
     }
 }

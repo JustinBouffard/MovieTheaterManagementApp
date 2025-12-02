@@ -4,10 +4,10 @@ import com.example.theaterproject.Models.Movie;
 import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Services.MovieService;
 import com.example.theaterproject.Services.ShowroomService;
+import com.example.theaterproject.Services.UIService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -81,40 +81,18 @@ public class StatsViewController {
     @FXML
     private void onHomeButtonClick(ActionEvent pEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("com/example/theaterproject/editor-view.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle("Home");
-            stage.setScene(new Scene(root, 480, 350));
-            stage.show();
-
-            // Close current window
-            Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
-            currentStage.close();
-
+            UIService.openModalWindow("editor-view", "Home", pEvent);
         } catch (IOException e) {
-            e.printStackTrace();
+            UIService.showErrorAlert("Error", e.getMessage());
         }
     }
 
     @FXML
     private void onShowroomsButtonClick(ActionEvent pEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("com/example/theaterproject/showrooms-view.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle("Showrooms");
-            stage.setScene(new Scene(root, 480, 350));
-            stage.show();
-
-            // Close current window
-            Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
-            currentStage.close();
-
+            UIService.openModalWindow("showrooms-view", "Showrooms", pEvent);
         } catch (IOException e) {
-            e.printStackTrace();
+            UIService.showErrorAlert("Error", e.getMessage());
         }
     }
 }
