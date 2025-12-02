@@ -93,7 +93,7 @@ public class EditorViewController {
     @FXML
     private void onShowroomsViewButtonClick(ActionEvent pEvent) {
         try {
-            UIService.openModalWindow("showrooms-view", "Showrooms", pEvent, 700, 500);
+            UIService.openModalWindow("showrooms-view", "Showrooms", pEvent, 900, 500);
         } catch (IOException e) {
             UIService.showErrorAlert("Error", e.getMessage());
         }
@@ -102,7 +102,7 @@ public class EditorViewController {
     @FXML
     private void onStatsViewButtonClick(ActionEvent pEvent) {
         try {
-            UIService.openModalWindow("stats-view", "Statistics", pEvent, 700, 500);
+            UIService.openModalWindow("stats-view", "Statistics", pEvent, 900, 500);
         } catch (IOException e) {
             UIService.showErrorAlert("Error", e.getMessage());
         }

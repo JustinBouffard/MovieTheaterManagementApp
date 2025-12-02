@@ -31,7 +31,7 @@ public class TheaterApplication extends Application {
         showroomService.setShowrooms(showrooms);
 
         FXMLLoader fxmlLoader = new FXMLLoader(TheaterApplication.class.getResource("login-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 300);
         stage.setTitle("Theatre");
         stage.setScene(scene);
         stage.show();

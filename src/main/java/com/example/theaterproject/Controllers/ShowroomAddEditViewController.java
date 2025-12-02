@@ -83,7 +83,6 @@ public class ShowroomAddEditViewController {
             return;
         }
         this.aScreeningList.getItems().remove(selectedScreening);
-        UIService.showInfoAlert("Success", "Screening removed successfully.");
     }
 
     private String validateAndGetShowroomName() {
@@ -169,22 +168,10 @@ public class ShowroomAddEditViewController {
 
     private void handleScreeningResult(Screening originalScreening, Screening resultScreening) {
         if (originalScreening == null) {
-            // New screening
             this.aScreeningList.getItems().add(resultScreening);
-            UIService.showInfoAlert("Success", "Screening added successfully.");
         } else {
-            // Edited screening
             int index = this.aScreeningList.getItems().indexOf(originalScreening);
             this.aScreeningList.getItems().set(index, resultScreening);
-            UIService.showInfoAlert("Success", "Screening updated successfully.");
         }
-    }
-
-    private void showAlert(String pMessage) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText("Something went wrong");
-        alert.setContentText(pMessage);
-        alert.showAndWait();
     }
 }

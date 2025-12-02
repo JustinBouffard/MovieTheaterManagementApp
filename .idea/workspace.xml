@@ -7,15 +7,12 @@
     <list default="true" id="c58ca1d0-effb-4558-b8b8-438baf703402" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/EditorViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/EditorViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/LoginViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/LoginViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/MainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/MovieAddEditViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/MovieAddEditViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/NewAccountViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/NewAccountViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ScreeningAddEditViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ScreeningAddEditViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomAddEditViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomAddEditViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomCardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomsViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomsViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/StatsViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/StatsViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/TheaterApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/TheaterApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

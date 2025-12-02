@@ -35,7 +35,7 @@ public class ShowroomsViewController {
     @FXML
     private void onMoviesViewButtonClick(ActionEvent pEvent) {
         try {
-            UIService.openModalWindow("main-view", "Movies", pEvent);
+            UIService.openModalWindow("main-view", "Movies", pEvent, 700, 400);
         } catch (IOException e) {
             UIService.showErrorAlert("Error", e.getMessage());
         }
@@ -44,7 +44,7 @@ public class ShowroomsViewController {
     @FXML
     private void onStatsViewButtonClick(ActionEvent pEvent) {
         try {
-            UIService.openModalWindow("stats-view", "Statistics", pEvent);
+            UIService.openModalWindow("stats-view", "Statistics", pEvent, 900, 500);
         } catch (IOException e) {
             UIService.showErrorAlert("Error", e.getMessage());
         }
