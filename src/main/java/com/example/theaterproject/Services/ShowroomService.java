@@ -27,7 +27,7 @@ public class ShowroomService {
     }
 
     public ObservableList<Showroom> getShowrooms() {
-        return FXCollections.unmodifiableObservableList(aShowrooms);
+        return aShowrooms;
     }
 
     public void addShowroom(Showroom pShowroom) {
@@ -51,8 +51,10 @@ public class ShowroomService {
     public void updateShowroom(Showroom pShowroom, String pName, int pCapacity, ObservableList<Screening> pScreenings) {
         pShowroom.setShowroomName(pName);
         pShowroom.setShowroomCapacity(pCapacity);
-        pShowroom.resetScreenings();
-        pShowroom.setShowroomScreenings(pScreenings);
+        // Instead of resetting and replacing, clear and add items to trigger listener
+        ObservableList<Screening> existingScreenings = pShowroom.getShowroomScreenings();
+        existingScreenings.clear();
+        existingScreenings.addAll(pScreenings);
     }
 
     public double getaDefaultTicketPrice() {

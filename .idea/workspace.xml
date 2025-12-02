@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c58ca1d0-effb-4558-b8b8-438baf703402" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomAddEditViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomAddEditViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +34,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/JustinBouffard/FinalProject.git&quot;,
-    &quot;accountId&quot;: &quot;d69045b1-6eb6-4364-a5db-6ea27b835a7b&quot;
+    &quot;accountId&quot;: &quot;6754ae1f-90f3-487e-920e-3af592faf790&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -55,6 +56,7 @@
   &quot;keyToString&quot;: {
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.TheaterApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
@@ -76,6 +78,13 @@
   }
 }</component>
   <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.theaterproject.TheaterApplication" />
+      <module name="TheaterProject" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="MovieTheater" />
       <method v="2">
@@ -91,8 +100,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26199.169" />
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-IU-252.26199.169" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
       </set>
     </attachedChunks>
   </component>
@@ -114,7 +123,10 @@
       <workItem from="1764439083536" duration="64000" />
       <workItem from="1764439350320" duration="27000" />
       <workItem from="1764439484787" duration="1306000" />
-      <workItem from="1764600110558" duration="995000" />
+      <workItem from="1764600110558" duration="4172000" />
+      <workItem from="1764616596670" duration="2734000" />
+      <workItem from="1764639078243" duration="3698000" />
+      <workItem from="1764642924732" duration="483000" />
     </task>
     <servers />
   </component>

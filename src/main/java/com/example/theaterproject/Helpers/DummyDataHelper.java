@@ -5,6 +5,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * Helper class for generating dummy data for testing and development purposes.
@@ -114,12 +116,12 @@ public class DummyDataHelper {
         ObservableList<Screening> screenings = FXCollections.observableArrayList();
         ObservableList<Movie> movies = getDummyMovies();
         
-        screenings.add(new Screening(movies.get(0), 150, 12.50, LocalDate.now().plusDays(1)));
-        screenings.add(new Screening(movies.get(1), 200, 11.00, LocalDate.now().plusDays(2)));
-        screenings.add(new Screening(movies.get(2), 180, 13.00, LocalDate.now().plusDays(3)));
-        screenings.add(new Screening(movies.get(3), 160, 10.50, LocalDate.now().plusDays(4)));
-        screenings.add(new Screening(movies.get(4), 140, 12.00, LocalDate.now().plusDays(5)));
-        screenings.add(new Screening(movies.get(5), 170, 11.50, LocalDate.now().plusDays(6)));
+        screenings.add(new Screening(movies.get(0), 150, 12.50, LocalDateTime.of(LocalDate.now().plusDays(1), LocalTime.of(14, 0))));
+        screenings.add(new Screening(movies.get(1), 200, 11.00, LocalDateTime.of(LocalDate.now().plusDays(2), LocalTime.of(16, 30))));
+        screenings.add(new Screening(movies.get(2), 180, 13.00, LocalDateTime.of(LocalDate.now().plusDays(3), LocalTime.of(19, 0))));
+        screenings.add(new Screening(movies.get(3), 160, 10.50, LocalDateTime.of(LocalDate.now().plusDays(4), LocalTime.of(18, 45))));
+        screenings.add(new Screening(movies.get(4), 140, 12.00, LocalDateTime.of(LocalDate.now().plusDays(5), LocalTime.of(20, 0))));
+        screenings.add(new Screening(movies.get(5), 170, 11.50, LocalDateTime.of(LocalDate.now().plusDays(6), LocalTime.of(15, 30))));
         
         return screenings;
     }

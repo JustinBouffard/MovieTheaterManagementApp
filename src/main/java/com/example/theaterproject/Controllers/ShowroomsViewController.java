@@ -1,8 +1,10 @@
 package com.example.theaterproject.Controllers;
 
+import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Models.Showroom;
 import com.example.theaterproject.Services.ShowroomService;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,6 +44,30 @@ public class ShowroomsViewController {
         openWindow("stats-view", pEvent);
     }
 
+    @FXML
+    private void onAddButtonClick(ActionEvent pEvent) {
+        System.out.println("Add Button clicked");
+        openShowroomAddEditView(null);
+    }
+
+    private void openShowroomAddEditView(Showroom pShowroom) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/showroom-add-edit-view.fxml"));
+            Parent root = loader.load();
+
+            ShowroomAddEditViewController controller = loader.getController();
+            controller.setShowroomEditView(pShowroom);
+
+            Stage modal = new Stage();
+            modal.setScene(new Scene(root));
+            modal.initModality(Modality.APPLICATION_MODAL);
+            modal.setTitle("Showroom Add/Edit");
+            modal.showAndWait();
+        } catch (IOException e) {
+            showAlert(e.getMessage());
+        }
+    }
+
     private void fillShowroomGridPane() {
         this.aMovieGridPane.getChildren().clear();
 
@@ -62,11 +88,16 @@ public class ShowroomsViewController {
 
     private void addShowroomCard(Showroom pShowroom, int pColumn, int pRow) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("showroom-card-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/showroom-card-view.fxml"));
             Parent card = loader.load();
 
             ShowroomCardController controller = loader.getController();
             controller.setShowroomCard(pShowroom);
+
+            // Listen for changes in screenings so card updates when screenings change
+            pShowroom.getShowroomScreenings().addListener((ListChangeListener<Screening>) change -> {
+                controller.setShowroomCard(pShowroom);
+            });
 
             this.aMovieGridPane.add(card, pColumn, pRow);
         } catch (Exception e) {
@@ -76,7 +107,7 @@ public class ShowroomsViewController {
 
     private void openWindow(String pName, ActionEvent pEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(pName + ".fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/" + pName + ".fxml"));
             Parent root = loader.load();
 
             Stage newStage = new Stage();
