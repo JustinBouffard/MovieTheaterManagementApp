@@ -103,8 +103,8 @@ public class EditorViewController {
             Parent root = fxmlLoader.load();
 
             Stage newStage = new Stage();
-            newStage.setTitle("Showrooms");
-            newStage.setScene(new Scene(root, 480, 350));
+            newStage.setTitle("Statistics");
+            newStage.setScene(new Scene(root, 700, 500));
             newStage.show();
 
             Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
@@ -123,7 +123,7 @@ public class EditorViewController {
 
             Stage newStage = new Stage();
             newStage.setTitle("Statistics");
-            newStage.setScene(new Scene(root, 480, 350));
+            newStage.setScene(new Scene(root, 700, 500));
             newStage.show();
 
             Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();

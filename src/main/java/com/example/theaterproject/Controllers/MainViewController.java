@@ -2,14 +2,18 @@ package com.example.theaterproject.Controllers;
 
 import com.example.theaterproject.Models.Movie;
 import com.example.theaterproject.Services.MovieService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Labeled;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,6 +35,9 @@ public class MainViewController {
 
     @FXML
     private Label pageTitleLabel;
+
+    @FXML
+    private Button signOutButton;
 
     @FXML
     private Label userLabel;
@@ -123,6 +130,27 @@ public class MainViewController {
                 // Catch-all to avoid one bad card breaking the grid
                 e.printStackTrace();
             }
+        }
+
+    }
+
+    @FXML
+    private void onSignOutButtonClick(ActionEvent pEvent){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/login-view.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Log In");
+            stage.setScene(new Scene(root, 700, 400));
+            stage.show();
+
+            // Close current window
+            Stage currentStage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
