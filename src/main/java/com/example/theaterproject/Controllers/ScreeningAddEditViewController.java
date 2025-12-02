@@ -39,6 +39,7 @@ public class ScreeningAddEditViewController {
     private Screening aResultScreening;
     private final MovieService aMovieService = MovieService.getInstance();
     private final ShowroomService aShowroomService = ShowroomService.getInstance();
+    private final UIService aUIService = UIService.getInstance();
 
     @FXML
     public void initialize() {
@@ -97,30 +98,30 @@ public class ScreeningAddEditViewController {
         try {
             createScreening(selectedMovie, pEvent);
         } catch (Exception e) {
-            UIService.showErrorAlert("Unexpected Error", "An error occurred while saving the screening: " + e.getMessage());
+            aUIService.showErrorAlert("Unexpected Error", "An error occurred while saving the screening: " + e.getMessage());
         }
     }
 
     @FXML
     private void onCancelButtonClick(ActionEvent pEvent) {
-        UIService.closeWindow(pEvent);
+        aUIService.closeWindow(pEvent);
     }
 
     private Movie validateAndGetMovie() {
         Movie selectedMovie = aMovieComboBox.getSelectionModel().getSelectedItem();
         if (selectedMovie == null) {
-            UIService.showErrorAlert("Validation Error", "Please select a movie for the screening.");
+            aUIService.showErrorAlert("Validation Error", "Please select a movie for the screening.");
         }
         return selectedMovie;
     }
 
     private boolean validateDate() {
         if (this.aDatePicker.getValue() == null) {
-            UIService.showErrorAlert("Validation Error", "Please select a screening date.");
+            aUIService.showErrorAlert("Validation Error", "Please select a screening date.");
             return false;
         }
         if (this.aDatePicker.getValue().isBefore(LocalDate.now())) {
-            UIService.showErrorAlert("Validation Error", "Screening date cannot be in the past.");
+            aUIService.showErrorAlert("Validation Error", "Screening date cannot be in the past.");
             return false;
         }
         return true;
@@ -129,22 +130,22 @@ public class ScreeningAddEditViewController {
     private boolean validateTicketCount() {
         String ticketCountText = this.aTicketCountTextField.getText().trim();
         if (ticketCountText.isEmpty()) {
-            UIService.showErrorAlert("Validation Error", "Please enter the number of tickets.");
+            aUIService.showErrorAlert("Validation Error", "Please enter the number of tickets.");
             return false;
         }
         try {
             int ticketCount = Integer.parseInt(ticketCountText);
             if (ticketCount <= 0) {
-                UIService.showErrorAlert("Validation Error", "Ticket count must be greater than 0.");
+                aUIService.showErrorAlert("Validation Error", "Ticket count must be greater than 0.");
                 return false;
             }
             if (ticketCount > 10000) {
-                UIService.showErrorAlert("Validation Error", "Ticket count cannot exceed 10,000.");
+                aUIService.showErrorAlert("Validation Error", "Ticket count cannot exceed 10,000.");
                 return false;
             }
             return true;
         } catch (NumberFormatException e) {
-            UIService.showErrorAlert("Validation Error", "Ticket count must be a valid integer.");
+            aUIService.showErrorAlert("Validation Error", "Ticket count must be a valid integer.");
             return false;
         }
     }
@@ -152,22 +153,22 @@ public class ScreeningAddEditViewController {
     private boolean validatePrice() {
         String priceText = this.aPriceField.getText().trim();
         if (priceText.isEmpty()) {
-            UIService.showErrorAlert("Validation Error", "Please enter the ticket price.");
+            aUIService.showErrorAlert("Validation Error", "Please enter the ticket price.");
             return false;
         }
         try {
             double pricePerTicket = Double.parseDouble(priceText);
             if (pricePerTicket < 0) {
-                UIService.showErrorAlert("Validation Error", "Ticket price cannot be negative.");
+                aUIService.showErrorAlert("Validation Error", "Ticket price cannot be negative.");
                 return false;
             }
             if (pricePerTicket > 9999.99) {
-                UIService.showErrorAlert("Validation Error", "Ticket price cannot exceed $9,999.99.");
+                aUIService.showErrorAlert("Validation Error", "Ticket price cannot exceed $9,999.99.");
                 return false;
             }
             return true;
         } catch (NumberFormatException e) {
-            UIService.showErrorAlert("Validation Error", "Ticket price must be a valid decimal number.");
+            aUIService.showErrorAlert("Validation Error", "Ticket price must be a valid decimal number.");
             return false;
         }
     }
@@ -186,7 +187,7 @@ public class ScreeningAddEditViewController {
             this.aResultScreening = new Screening(selectedMovie, ticketCount, pricePerTicket, dateTime);
         }
 
-        UIService.closeWindow(pEvent);
+        aUIService.closeWindow(pEvent);
     }
 
     public void setScreeningView(Showroom pShowroom, Screening pScreening) {

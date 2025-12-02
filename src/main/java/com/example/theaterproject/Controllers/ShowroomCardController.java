@@ -8,11 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -27,6 +23,7 @@ public class ShowroomCardController {
 
     private Showroom aShowRoom;
     private final ShowroomService aShowRoomService = ShowroomService.getInstance();
+    private final UIService aUIService = UIService.getInstance();
 
     @FXML
     private void onMoreButtonClick(ActionEvent pEvent) {
@@ -59,19 +56,12 @@ public class ShowroomCardController {
     private void openShowroomAddEditView() {
         if (this.aShowRoom == null) return;
         try {
-            FXMLLoader loader = UIService.loadFXML("showroom-add-edit-view");
-            Parent root = loader.getRoot();
-
+            FXMLLoader loader = aUIService.openModalDialog("showroom-add-edit-view", "Showroom Add/Edit");
+            
             ShowroomAddEditViewController controller = loader.getController();
             controller.setShowroomEditView(this.aShowRoom);
-
-            Stage modal = new Stage();
-            modal.setScene(new Scene(root));
-            modal.initModality(Modality.APPLICATION_MODAL);
-            modal.setTitle("Showroom Add/Edit");
-            modal.showAndWait();
         } catch (IOException e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
     }
 }

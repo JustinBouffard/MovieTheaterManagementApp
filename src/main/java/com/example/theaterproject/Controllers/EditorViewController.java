@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -34,6 +33,7 @@ public class EditorViewController {
     private ObservableList<Movie> aMovies;
 
     private final MovieService aMovieService = MovieService.getInstance();
+    private final UIService aUIService = UIService.getInstance();
 
     private static final int COLUMNS = 3;
     private static final int PADDING = 10;
@@ -77,8 +77,8 @@ public class EditorViewController {
     @FXML
     private void onAddMovieButtonClick(ActionEvent event) {
         try {
-            FXMLLoader loader = UIService.loadFXML("add-edit-movie-view");
-            Parent root = loader.getRoot();
+            FXMLLoader loader = aUIService.loadFXML("add-edit-movie-view");
+            javafx.scene.Parent root = loader.getRoot();
 
             // Replace the current window scene
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -86,31 +86,31 @@ public class EditorViewController {
             stage.show();
 
         } catch (IOException e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
     }
 
     @FXML
     private void onShowroomsViewButtonClick(ActionEvent pEvent) {
         try {
-            UIService.openModalWindow("showrooms-view", "Showrooms", pEvent, 900, 500);
+            aUIService.openNewWindow("showrooms-view", "Showrooms", pEvent, 900, 500);
         } catch (IOException e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
     }
 
     @FXML
     private void onStatsViewButtonClick(ActionEvent pEvent) {
         try {
-            UIService.openModalWindow("stats-view", "Statistics", pEvent, 900, 500);
+            aUIService.openNewWindow("stats-view", "Statistics", pEvent, 900, 500);
         } catch (IOException e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
     }
 
     private VBox loadCardForMovie(Movie movie) {
         try {
-            FXMLLoader loader = UIService.loadFXML("editor-movie-card-view");
+            FXMLLoader loader = aUIService.loadFXML("editor-movie-card-view");
             VBox root = loader.getRoot();
 
             EditorMovieCardController controller = loader.getController();
@@ -128,7 +128,7 @@ public class EditorViewController {
             return root;
 
         } catch (IOException e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
             return null;
         }
     }

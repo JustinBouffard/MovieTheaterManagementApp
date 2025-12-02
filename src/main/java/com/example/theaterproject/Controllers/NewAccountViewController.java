@@ -84,7 +84,7 @@ public class NewAccountViewController {
 
         // direct to main view after creation
         try {
-            UIService.openModalWindow("main-view", "Theater Dashboard", pEvent, 900, 500);
+            UIService.getInstance().openNewWindow("main-view", "Theater Dashboard", pEvent, 900, 500);
         } catch (IOException e) {
             UIService.showErrorAlert("Error", e.getMessage());
         }

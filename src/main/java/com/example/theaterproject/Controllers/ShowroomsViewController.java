@@ -22,6 +22,7 @@ public class ShowroomsViewController {
     private GridPane aMovieGridPane;
 
     private final ShowroomService aShowroomService = ShowroomService.getInstance();
+    private final UIService aUIService = UIService.getInstance();
 
     @FXML
     public void initialize() {
@@ -35,18 +36,18 @@ public class ShowroomsViewController {
     @FXML
     private void onMoviesViewButtonClick(ActionEvent pEvent) {
         try {
-            UIService.openModalWindow("main-view", "Movies", pEvent, 700, 400);
+            aUIService.openNewWindow("main-view", "Movies", pEvent, 700, 400);
         } catch (IOException e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
     }
 
     @FXML
     private void onStatsViewButtonClick(ActionEvent pEvent) {
         try {
-            UIService.openModalWindow("stats-view", "Statistics", pEvent, 900, 500);
+            aUIService.openNewWindow("stats-view", "Statistics", pEvent, 900, 500);
         } catch (IOException e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
     }
 
@@ -58,7 +59,7 @@ public class ShowroomsViewController {
 
     private void openShowroomAddEditView(Showroom pShowroom) {
         try {
-            FXMLLoader loader = UIService.loadFXML("showroom-add-edit-view");
+            FXMLLoader loader = aUIService.loadFXML("showroom-add-edit-view");
             Parent root = loader.getRoot();
 
             ShowroomAddEditViewController controller = loader.getController();
@@ -70,7 +71,7 @@ public class ShowroomsViewController {
             modal.setTitle("Showroom Add/Edit");
             modal.showAndWait();
         } catch (IOException e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
     }
 
@@ -94,7 +95,7 @@ public class ShowroomsViewController {
 
     private void addShowroomCard(Showroom pShowroom, int pColumn, int pRow) {
         try {
-            FXMLLoader loader = UIService.loadFXML("showroom-card-view");
+            FXMLLoader loader = aUIService.loadFXML("showroom-card-view");
             Parent card = loader.getRoot();
 
             ShowroomCardController controller = loader.getController();
@@ -107,7 +108,7 @@ public class ShowroomsViewController {
 
             this.aMovieGridPane.add(card, pColumn, pRow);
         } catch (Exception e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
     }
 

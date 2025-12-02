@@ -6,12 +6,9 @@ import com.example.theaterproject.Services.UIService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -29,6 +26,7 @@ public class LoginViewController {
     private PasswordField passwordField;
 
     AccountService accountService = AccountService.getInstance();
+    private final UIService aUIService = UIService.getInstance();
 
     @FXML
     private void onSignInButtonClick(ActionEvent pEvent) {
@@ -41,44 +39,21 @@ public class LoginViewController {
             Account managerAccount = accountService.getManager();
 
             if (managerAccount.getUserName().equals(username) && managerAccount.getPassword().equals(password)) {
-                FXMLLoader loader = UIService.loadFXML("editor-view");
-                Parent root = loader.getRoot();
-
-                Stage stage = new Stage();
-                stage.setTitle("Theater Dashboard");
-                stage.setScene(new Scene(root));
-                stage.show();
-
-                // close login window
-                Stage currentStage = (Stage) ((javafx.scene.Node) pEvent.getSource()).getScene().getWindow();
-                currentStage.close();
+                aUIService.openNewWindow("editor-view", "Theater Dashboard", pEvent);
             } else {
-                FXMLLoader loader = UIService.loadFXML("main-view");
-                Parent root = loader.getRoot();
-
-                Stage stage = new Stage();
-                stage.setTitle("Theater Dashboard");
-                stage.setScene(new Scene(root, 700, 400));
-                stage.show();
-
-                // close login window
-                Stage currentStage = (Stage) ((javafx.scene.Node) pEvent.getSource()).getScene().getWindow();
-                currentStage.close();
-
+                aUIService.openNewWindow("main-view", "Theater Dashboard", pEvent, 700, 400);
             }
-
-
         } catch (IOException e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
     }
 
     @FXML
     private void onNewAccountButtonClick(ActionEvent pEvent) {
         try {
-            UIService.openModalWindow("new-account-view", "New Account", pEvent);
+            aUIService.openNewWindow("new-account-view", "New Account", pEvent);
         } catch (IOException e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
 
     }

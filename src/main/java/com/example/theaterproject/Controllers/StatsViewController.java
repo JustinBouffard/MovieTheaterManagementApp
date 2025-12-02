@@ -33,6 +33,7 @@ public class StatsViewController {
 
     private final MovieService movieService = MovieService.getInstance();
     private final ShowroomService aShowroomService = ShowroomService.getInstance();
+    private final UIService aUIService = UIService.getInstance();
 
     @FXML
     private void initialize() {
@@ -81,18 +82,18 @@ public class StatsViewController {
     @FXML
     private void onHomeButtonClick(ActionEvent pEvent) {
         try {
-            UIService.openModalWindow("editor-view", "Home", pEvent);
+            aUIService.openNewWindow("editor-view", "Home", pEvent);
         } catch (IOException e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
     }
 
     @FXML
     private void onShowroomsButtonClick(ActionEvent pEvent) {
         try {
-            UIService.openModalWindow("showrooms-view", "Showrooms", pEvent, 900, 500);
+            aUIService.openNewWindow("showrooms-view", "Showrooms", pEvent, 900, 500);
         } catch (IOException e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
     }
 }
