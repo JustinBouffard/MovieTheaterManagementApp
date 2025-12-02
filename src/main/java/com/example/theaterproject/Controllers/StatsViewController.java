@@ -19,39 +19,39 @@ import java.io.IOException;
 public class StatsViewController {
     // ListView for movies and screenings
     @FXML
-    private ListView<Movie> moviesList;
+    private ListView<Movie> aMoviesList;
     @FXML
-    private ListView<Screening> screeningList;
+    private ListView<Screening> aScreeningList;
 
     // labels for the stats
     @FXML
-    private Label numberTicketsLabel;
+    private Label aNumberTicketsLabel;
     @FXML
-    private Label priceTicketsLabel;
+    private Label aPriceTicketsLabel;
     @FXML
-    private Label revenueLabel;
+    private Label aRevenueLabel;
 
-    private final MovieService movieService = MovieService.getInstance();
+    private final MovieService aMovieService = MovieService.getInstance();
     private final ShowroomService aShowroomService = ShowroomService.getInstance();
 
     @FXML
     private void initialize() {
         // populate movies list. Movie class toString method implicitly called.
-        moviesList.setItems(movieService.getMovies());
+        aMoviesList.setItems(aMovieService.getMovies());
 
         // when movie is selected display its screenings with ScreeningService.getScreeningFor
-        moviesList.getSelectionModel().selectedItemProperty().addListener((obs, oldMovie, newMovie) -> {
-            screeningList.getItems().clear();
+        aMoviesList.getSelectionModel().selectedItemProperty().addListener((obs, oldMovie, newMovie) -> {
+            aScreeningList.getItems().clear();
             clearDetails();
 
             // populate list of screenings for newly selected movie
             if (newMovie != null) {
-                screeningList.setItems(this.aShowroomService.getScreeningFor(newMovie));
+                aScreeningList.setItems(aShowroomService.getScreeningFor(newMovie));
             }
         });
 
         // display stats when screening is selected
-        screeningList.getSelectionModel().selectedItemProperty().addListener((obs,oldScr,scr) -> {
+        aScreeningList.getSelectionModel().selectedItemProperty().addListener((obs, oldScr, scr) -> {
             // clear details if no screening is selected
             if (scr == null) {
                 clearDetails();
@@ -63,9 +63,9 @@ public class StatsViewController {
             double revenue = sold * price;
 
             // set stats labels
-            numberTicketsLabel.setText(Integer.toString(sold));
-            priceTicketsLabel.setText(String.format("$%.2f", price));
-            revenueLabel.setText(String.format("$%.2f", revenue));
+            aNumberTicketsLabel.setText(Integer.toString(sold));
+            aPriceTicketsLabel.setText(String.format("$%.2f", price));
+            aRevenueLabel.setText(String.format("$%.2f", revenue));
         });
 
         // default state
@@ -73,9 +73,9 @@ public class StatsViewController {
     }
 
     private void clearDetails() {
-        numberTicketsLabel.setText("-");
-        priceTicketsLabel.setText("-");
-        revenueLabel.setText("-");
+        aNumberTicketsLabel.setText("-");
+        aPriceTicketsLabel.setText("-");
+        aRevenueLabel.setText("-");
     }
 
     @FXML

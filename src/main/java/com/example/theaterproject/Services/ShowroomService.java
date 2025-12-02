@@ -74,8 +74,13 @@ public class ShowroomService {
         ObservableList<Screening> result = FXCollections.observableArrayList();
 
         // go through screening list. add to result list every screening that matches pMovie
+        if (pMovie == null) {
+            return result;
+        }
+        String title = pMovie.getTitle();
         for (Screening s : getAllScreenings()) {
-            if(s.getMovie().equals(pMovie)) {
+            Movie m = s.getMovie();
+            if (m != null && m.getTitle() != null && m.getTitle().equals(title)) {
                 result.add(s);
             }
         }

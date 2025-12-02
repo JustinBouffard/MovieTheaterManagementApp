@@ -2,6 +2,7 @@ package com.example.theaterproject.Models;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * The Screening class represents information about a specific movie screening,
@@ -27,6 +28,8 @@ public class Screening {
     private double aPricePerTicket;
 
     private LocalDateTime aDateTime;
+
+    private final DateTimeFormatter FORMATER = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     /**
      * Constructs a Screening object representing a specific movie screening
@@ -121,6 +124,6 @@ public class Screening {
      */
     @Override
     public String toString() {
-        return aMovie.getTitle();
+        return aDateTime.format(FORMATER);
     }
 }

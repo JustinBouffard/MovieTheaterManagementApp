@@ -30,7 +30,7 @@ public class NewAccountViewController {
     @FXML
     private Button signUpButton;
 
-    private final Pattern emailPattern = Pattern.compile("^[^@]+@[^@]+\\.[^@]+$");
+    private final Pattern EMAIL_PATTERN = Pattern.compile("^[^@]+@[^@]+\\.[^@]+$");
 
     @FXML
     private void onSignUpButtonClick(ActionEvent pEvent) {
@@ -50,7 +50,7 @@ public class NewAccountViewController {
         }
 
         // check if email is in valid format
-        if (!emailPattern.matcher(aEmail).matches()) {
+        if (!EMAIL_PATTERN.matcher(aEmail).matches()) {
             showAlert(Alert.AlertType.ERROR, "Invalid Email", "Please enter a valid email address.");
             return;
         }
