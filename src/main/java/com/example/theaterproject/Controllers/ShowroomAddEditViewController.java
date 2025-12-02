@@ -28,7 +28,6 @@ public class ShowroomAddEditViewController {
     private ListView<Screening> aScreeningList;
 
     private Showroom aShowroom;
-    private ObservableList<Screening> aOriginalScreenings;
     private final ShowroomService aShowroomService = ShowroomService.getInstance();
 
     @FXML
@@ -52,7 +51,7 @@ public class ShowroomAddEditViewController {
             else
                 this.aShowroomService.updateShowroom(this.aShowroom, name, capacity, screenings);
 
-            closeWindow(pEvent, true);
+            closeWindow(pEvent);
         }
         catch (Exception e) {
             showAlert(e.getMessage());
@@ -92,8 +91,6 @@ public class ShowroomAddEditViewController {
         if (this.aShowroom != null) {
             this.aShowroomNameField.setText(pShowroom.getShowroomName());
             this.aCapacityTextField.setText(String.valueOf(pShowroom.getShowroomCapacity()));
-            // Store a copy of the original screenings for potential rollback
-            this.aOriginalScreenings = FXCollections.observableArrayList(pShowroom.getShowroomScreenings());
             this.aScreeningList.getItems().setAll(pShowroom.getShowroomScreenings());
         }
     }
@@ -138,15 +135,6 @@ public class ShowroomAddEditViewController {
     }
 
     private void closeWindow(ActionEvent pEvent) {
-        closeWindow(pEvent, false);
-    }
-
-    private void closeWindow(ActionEvent pEvent, boolean pSaved) {
-        // If editing an existing showroom and user clicked cancel (not save), rollback screening changes
-        if (!pSaved && this.aShowroom != null && this.aOriginalScreenings != null) {
-            this.aShowroom.getShowroomScreenings().setAll(this.aOriginalScreenings);
-        }
-        
         Node source = (Node) pEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
