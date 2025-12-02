@@ -69,7 +69,7 @@
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="usernameField" alignment="CENTER" maxWidth="200.0" minWidth="200.0" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="aUsernameField" alignment="CENTER" maxWidth="200.0" minWidth="200.0" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -91,7 +91,7 @@
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="emailField" alignment="CENTER" maxWidth="200.0" minWidth="200.0" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="aEmailField" alignment="CENTER" maxWidth="200.0" minWidth="200.0" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -116,7 +116,7 @@
                               <Insets top="5.0" />
                            </padding>
                         </Label>
-                        <PasswordField fx:id="passwordField" alignment="CENTER" maxWidth="200.0" minWidth="200.0" HBox.hgrow="ALWAYS">
+                        <PasswordField fx:id="aPasswordField" alignment="CENTER" maxWidth="200.0" minWidth="200.0" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -138,7 +138,7 @@
                               <Insets top="5.0" />
                            </padding>
                         </Label>
-                        <PasswordField fx:id="confirmPasswordField" alignment="CENTER" maxWidth="200.0" minWidth="200.0" HBox.hgrow="ALWAYS">
+                        <PasswordField fx:id="aConfirmPasswordField" alignment="CENTER" maxWidth="200.0" minWidth="200.0" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
