@@ -31,6 +31,9 @@ public class ScreeningAddEditViewController {
     @FXML
     private TextField aPriceField;
 
+    @FXML
+    private TextField aTicketCountTextField;
+
     private Screening aScreening;
     private Screening aOriginalScreening;
     private Showroom aShowroom;
@@ -41,6 +44,11 @@ public class ScreeningAddEditViewController {
     @FXML
     public void initialize() {
         aPriceField.textProperty().addListener((obs, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*(\\.\\d{0,2})?")) {
+                aPriceField.setText(oldValue);
+            }
+        });
+        aTicketCountTextField.textProperty().addListener((obs, oldValue, newValue) -> {
             if (!newValue.matches("\\d*(\\.\\d{0,2})?")) {
                 aPriceField.setText(oldValue);
             }
@@ -82,7 +90,7 @@ public class ScreeningAddEditViewController {
                 alert.showAndWait();
                 return;
             }
-            int ticketCount = this.aShowroom.getShowroomCapacity();
+            int ticketCount = Integer.parseInt(this.aTicketCountTextField.getText());
             double pricePerTicket = Double.parseDouble(this.aPriceField.getText());
             LocalDateTime dateTime = LocalDateTime.of(
                     this.aDatePicker.getValue(),
@@ -133,9 +141,12 @@ public class ScreeningAddEditViewController {
             this.aHoursSpinner.getValueFactory().setValue(screeningTime.getHour());
             this.aMinutesSpinner.getValueFactory().setValue(screeningTime.getMinute());
             this.aPriceField.setText(String.valueOf(this.aScreening.getPricePerTicket()));
+            this.aTicketCountTextField.setText(String.valueOf(this.aScreening.getTicketCount()));
         }
-        else
+        else{
             this.aPriceField.setText(String.valueOf(this.aShowroomService.getaDefaultTicketPrice()));
+            this.aTicketCountTextField.setText(String.valueOf(this.aShowroom.getShowroomCapacity()));
+        }
     }
 
     private void closeWindow(ActionEvent pEvent) {
