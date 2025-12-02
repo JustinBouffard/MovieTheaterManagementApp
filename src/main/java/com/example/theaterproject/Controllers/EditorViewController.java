@@ -12,7 +12,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
+// import javafx.scene.layout.GridPane; // no longer used after switching to TilePane
+import javafx.scene.layout.TilePane;
+import javafx.scene.layout.Region;
+import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -21,6 +24,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ScrollPane;
 
 public class EditorViewController {
 
@@ -28,18 +32,45 @@ public class EditorViewController {
     @FXML private Button showroomsViewButton;
     @FXML private Button statsViewButton;
 
-    @FXML private GridPane movieGridPane;
+    @FXML private TilePane movieGridPane;
+    @FXML private ScrollPane movieScrollPane;
 
     private ObservableList<Movie> aMovies;
     private final MovieService aMovieService = MovieService.getInstance();
 
-    private static final int COLUMNS = 3;
+    private static final int DEFAULT_COLUMNS = 3;
+    private static final double CARD_TILE_WIDTH = 160.0; // matches editor-movie-card-view.fxml prefWidth
 
     @FXML
     public void initialize() {
         movieGridPane.getChildren().clear();
+        // Ensure consistent spacing around and between cards
+        movieGridPane.setHgap(16);
+        movieGridPane.setVgap(16);
+        movieGridPane.setPadding(new Insets(10));
+        movieGridPane.setPrefColumns(DEFAULT_COLUMNS);
+        movieGridPane.setTileAlignment(Pos.TOP_LEFT);
+        // Use tile width to help TilePane wrap dynamically instead of forcing fixed columns/width
+        movieGridPane.setPrefTileWidth(CARD_TILE_WIDTH);
+
+        // Recalculate columns based on available viewport width to make layout responsive
+        if (movieScrollPane != null) {
+            movieScrollPane.viewportBoundsProperty().addListener((obs, oldBounds, newBounds) -> updateColumnsForWidth(newBounds.getWidth()));
+            // initialize once with current width if available
+            updateColumnsForWidth(movieScrollPane.getViewportBounds().getWidth());
+        }
         aMovies = aMovieService.getMovies();
         populateGrid(aMovies);
+    }
+
+    private void updateColumnsForWidth(double viewportWidth) {
+        if (viewportWidth <= 0) return;
+        double hgap = movieGridPane.getHgap();
+        double leftRightPad = movieGridPane.getPadding().getLeft() + movieGridPane.getPadding().getRight();
+        double available = Math.max(0, viewportWidth - leftRightPad);
+        int cols = (int) Math.floor((available + hgap) / (CARD_TILE_WIDTH + hgap));
+        if (cols < 1) cols = 1;
+        movieGridPane.setPrefColumns(cols);
     }
 
     private void populateGrid(ObservableList<Movie> movies) {
@@ -98,11 +129,8 @@ public class EditorViewController {
                     );
                 }
 
-                int col = index % COLUMNS;
-                int row = index / COLUMNS;
-
-                movieGridPane.add(card, col, row);
-                GridPane.setMargin(card, new Insets(8));
+                // TilePane handles layout and spacing; just add the card
+                movieGridPane.getChildren().add(card);
 
                 index++;
 

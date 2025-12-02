@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 /**
  * Controller for add-edit-movie-view.fxml / add-edit-movie UI.
