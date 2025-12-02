@@ -3,7 +3,6 @@ package com.example.theaterproject.Controllers;
 import com.example.theaterproject.Models.Movie;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 
@@ -19,9 +18,6 @@ public class EditorMovieCardController {
     private VBox root;
 
     @FXML
-    private ImageView posterImageView; // unused, kept for layout compatibility
-
-    @FXML
     private Label movieTitleLabel;
 
     @FXML
@@ -31,11 +27,6 @@ public class EditorMovieCardController {
     private Button removeButton;
 
     private Movie movie;
-
-    @FXML
-    private void initialize() {
-        // nothing to do here — values are injected via setData(...)
-    }
 
     /**
      * Set data for the card and wire actions.

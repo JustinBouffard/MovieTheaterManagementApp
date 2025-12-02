@@ -88,7 +88,17 @@ public class MovieAddEditViewController {
 
     @FXML
     private void onCancelButtonClick(ActionEvent event) {
-        closeWindow(event);
+        // Navigate back to the Editor view within the same Stage
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/editor-view.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            showAlert(e.getMessage());
+        }
     }
 
     /**
