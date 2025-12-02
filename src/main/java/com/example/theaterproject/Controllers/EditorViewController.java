@@ -31,7 +31,7 @@ public class EditorViewController {
     private Button statsViewButton;
 
     @FXML
-    private GridPane moviesGridPane;
+    private GridPane movieGridPane;
 
     private ObservableList<Movie> aMovies;
 
