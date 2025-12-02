@@ -2,6 +2,7 @@ package com.example.theaterproject.Controllers;
 
 import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Models.Showroom;
+import com.example.theaterproject.Services.ShowroomService;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,10 +26,17 @@ public class ShowroomCardController {
     private Label aMovieInfoLabel;
 
     private Showroom aShowRoom;
+    private final ShowroomService aShowRoomService = ShowroomService.getInstance();
 
     @FXML
     private void onMoreButtonClick(ActionEvent pEvent) {
         openShowroomAddEditView();
+    }
+
+    @FXML
+    private void onDeleteButtonClick(ActionEvent pEvent) {
+        aShowRoomService.removeShowroom(aShowRoom);
+
     }
 
     public void setShowroomCard(Showroom pShowroom) {

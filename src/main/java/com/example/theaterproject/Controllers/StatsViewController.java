@@ -3,7 +3,7 @@ package com.example.theaterproject.Controllers;
 import com.example.theaterproject.Models.Movie;
 import com.example.theaterproject.Models.Screening;
 import com.example.theaterproject.Services.MovieService;
-import com.example.theaterproject.Services.ScreeningService;
+import com.example.theaterproject.Services.ShowroomService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +32,7 @@ public class StatsViewController {
     private Label revenueLabel;
 
     private final MovieService movieService = MovieService.getInstance();
-    private final ScreeningService screeningService = ScreeningService.getInstance();
+    private final ShowroomService aShowroomService = ShowroomService.getInstance();
 
     @FXML
     private void initialize() {
@@ -46,7 +46,7 @@ public class StatsViewController {
 
             // populate list of screenings for newly selected movie
             if (newMovie != null) {
-                screeningList.setItems(screeningService.getScreeningFor(newMovie));
+                screeningList.setItems(this.aShowroomService.getScreeningFor(newMovie));
             }
         });
 
