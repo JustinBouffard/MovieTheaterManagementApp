@@ -84,10 +84,10 @@ public class LoginViewController {
 
             // Check if user is a manager
             if (authenticatedUser instanceof Manager) {
-                aUIService.openNewWindow("editor-view", "Theater Dashboard", pEvent);
+                aUIService.openNewWindow("editor-view", "Theater Dashboard", pEvent, 900,700);
             } else {
                 // User is a client
-                aUIService.openNewWindow("main-view", "Theater Dashboard", pEvent, 700, 400);
+                aUIService.openNewWindow("main-view", "Theater Dashboard", pEvent, 900, 700);
             }
         } catch (IOException e) {
             aUIService.showErrorAlert("Error", "An error occurred while loading the dashboard: " + e.getMessage());

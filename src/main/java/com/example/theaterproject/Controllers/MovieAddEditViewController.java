@@ -132,7 +132,7 @@ public class MovieAddEditViewController {
     private void onCancelButtonClick(ActionEvent pEvent) {
         // Navigate back to the Editor view within the same Stage
         try {
-            aUiService.openNewWindow("editor-view", "Editor View", pEvent);
+            aUiService.openNewWindow("editor-view", "Editor View", pEvent, 900,700);
         } catch (IOException e) {
             aUiService.showErrorAlert("Navigation Error", e.getMessage());
         }
