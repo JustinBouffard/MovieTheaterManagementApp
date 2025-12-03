@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="225.0" maxWidth="150.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="150.0" style="-fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.MovieCardController">
+<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="160.0" maxHeight="Infinity" maxWidth="Infinity" style="-fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.MovieCardController">
    <children>
       <Label fx:id="aMovieTitleLabel" text="Movie Title">
          <font>
