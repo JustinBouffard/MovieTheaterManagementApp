@@ -1,9 +1,15 @@
 package com.example.theaterproject.Controllers;
 
 import com.example.theaterproject.Models.Movie;
+import com.example.theaterproject.Services.UIService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 
 /**
  * Controller responsible for managing the UI elements and behavior of a movie card
@@ -17,7 +23,7 @@ public class MovieCardController {
     /**
      * Label UI component used to display the title of a movie in the movie card.
      * It is part of the FXML-defined UI and is linked to the controller with the `@FXML` annotation.
-     * This label is usually populated with the movie's title when the `setMovie` method is invoked.
+     * This label is usually populated with the movie's title when the `setaMovie` method is invoked.
      */
     @FXML
     private Label aMovieTitleLabel;
@@ -25,7 +31,7 @@ public class MovieCardController {
      * Label UI component used to display the screening time of a movie in the movie card.
      * It is part of the FXML-defined UI and is linked to the controller with the `@FXML` annotation.
      * This label is typically populated with the movie's screening time or a placeholder value
-     * when the `setMovie` method is invoked.
+     * when the `setaMovie` method is invoked.
      */
     @FXML
     private Label aScreeningTimeLabel;
@@ -45,9 +51,11 @@ public class MovieCardController {
      * <p>
      * Represents a specific Movie object whose details may be utilized to populate
      * the associated movie card view in the user interface. This object is generally
-     * set using the setMovie(Movie pMovie) method and accessed via getMovie().
+     * set using the setaMovie(Movie pMovie) method and accessed via getaMovie().
      */
     private Movie aMovie;
+
+    private final UIService aUIService = UIService.getInstance();
 
     /**
      * Updates the movie data displayed in the card view and sets up relevant UI interactions.
@@ -80,5 +88,40 @@ public class MovieCardController {
      */
     public Movie getaMovie() {
         return aMovie;
+    }
+
+    /**
+     * Handles the "See Screenings" button click event.
+     * Opens the show-screenings-view as a modal dialog with the screenings for the current movie.
+     *
+     * @param pEvent the action event triggered by clicking the "See Screenings" button
+     */
+    @FXML
+    private void onSeeScreeningsButtonClick(ActionEvent pEvent) {
+        if (aMovie == null) {
+            aUIService.showErrorAlert("Error", "No movie selected");
+            return;
+        }
+
+        try {
+            // Load the FXML first without showing it
+            FXMLLoader loader = aUIService.loadFXML("show-screenings-view");
+            Object controller = loader.getController();
+
+            // Set the movie on the controller before showing the modal
+            if (controller instanceof ShowScreeningsViewController) {
+                ((ShowScreeningsViewController) controller).setMovie(aMovie);
+            }
+
+            // Now open it as a modal dialog
+            Parent root = loader.getRoot();
+            javafx.stage.Stage modal = new javafx.stage.Stage();
+            modal.setScene(new javafx.scene.Scene(root, 600, 400));
+            modal.initModality(javafx.stage.Modality.APPLICATION_MODAL);
+            modal.setTitle("Screenings for " + aMovie.getTitle());
+            modal.showAndWait();
+        } catch (IOException e) {
+            aUIService.showErrorAlert("Error", "Failed to load screenings view: " + e.getMessage());
+        }
     }
 }

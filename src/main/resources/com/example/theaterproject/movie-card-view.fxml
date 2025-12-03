@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="225.0" maxWidth="150.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="150.0" style="-fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="225.0" maxWidth="150.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="150.0" style="-fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.MovieCardController">
    <children>
-      <ImageView fitHeight="165.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="NEVER" />
       <Label fx:id="aMovieTitleLabel" text="Movie Title">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="aScreeningTimeLabel" text="Screening" />
+      <Button mnemonicParsing="false" onAction="#onSeeScreeningsButtonClick" text="See Screenings" />
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
