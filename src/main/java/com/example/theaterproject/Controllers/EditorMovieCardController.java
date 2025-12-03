@@ -103,7 +103,7 @@ public class EditorMovieCardController {
      *
      * @return the movie object if one is set, or null if no movie is associated
      */
-    public Movie getaMovie() {
+    public Movie getMovie() {
         return aMovie;
     }
 
