@@ -141,7 +141,7 @@ public class NewAccountViewController {
 
             // direct to main view only after successful creation
             try {
-                aUiService.openNewWindow("main-view", "Theater Dashboard", pEvent, 900, 700);
+                aUiService.openNewWindow("main-view", "Theater Dashboard", pEvent, 700, 400);
             } catch (IOException e) {
                 aUiService.showErrorAlert("Error", e.getMessage());
             }

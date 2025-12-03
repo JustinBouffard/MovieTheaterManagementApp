@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="142.0" prefWidth="749.0" spacing="10.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.MainViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="142.0" prefWidth="749.0" spacing="10.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.MainViewController">
 
     <children>
 
@@ -28,11 +28,9 @@
                     </HBox.margin>
                 </Label>
 
-                <Region HBox.hgrow="ALWAYS" />
-
                 <Label fx:id="aPageTitleLabel" alignment="BOTTOM_CENTER" contentDisplay="CENTER" minHeight="75.0" text="Upcoming Movies" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
                     <HBox.margin>
-                        <Insets left="50.0" right="50.0" />
+                        <Insets left="160.0" />
                     </HBox.margin>
                     <font>
                         <Font size="14.0" />
@@ -41,7 +39,6 @@
                         <Insets bottom="10.0" />
                     </padding>
                 </Label>
-            <Region />
             <VBox prefHeight="75.0" prefWidth="0.0" HBox.hgrow="ALWAYS">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">

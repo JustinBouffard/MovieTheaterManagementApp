@@ -32,7 +32,7 @@
 
                 <Region HBox.hgrow="ALWAYS" />
 
-                <Label fx:id="userLabel" alignment="CENTER_RIGHT" text="Welcome, User" textFill="WHITE">
+                <Label fx:id="userLabel" alignment="CENTER_RIGHT" text="Welcome, Manager" textFill="WHITE">
                     <font><Font size="18" /></font>
                     <HBox.margin><Insets bottom="0" left="0" right="10" top="0" /></HBox.margin>
                 </Label>

@@ -103,7 +103,6 @@ public class ShowroomsViewController {
      */
     @FXML
     private void onAddButtonClick(ActionEvent pEvent) {
-        System.out.println("Add Button clicked");
         openShowroomAddEditView(null);
     }
 
@@ -176,6 +175,21 @@ public class ShowroomsViewController {
             this.aMovieGridPane.add(card, pColumn, pRow);
         } catch (Exception e) {
             aUIService.showErrorAlert("Error", "Failed to load showroom card: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Handles the sign out button click event.
+     * Opens the login view and closes the current window.
+     *
+     * @param pEvent the action event triggered by the sign out button
+     */
+    @FXML
+    private void onSignOutButtonClick(ActionEvent pEvent) {
+        try {
+            aUIService.openNewWindow("login-view", "Log In", pEvent, 600, 300);
+        } catch (IOException e) {
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
     }
 

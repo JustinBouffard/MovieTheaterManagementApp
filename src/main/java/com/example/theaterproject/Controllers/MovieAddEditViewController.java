@@ -108,7 +108,7 @@ public class MovieAddEditViewController {
             }
 
             aUiService.closeWindow(pEvent);
-            aUiService.openNewWindow("editor-view", "Editor View", pEvent);
+            aUiService.openNewWindow("editor-view", "Editor View", pEvent, 900, 700);
         } catch (Exception e) {
             aUiService.showErrorAlert("Save failed", e.getMessage());
         }

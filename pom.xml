@@ -71,6 +71,19 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <reportOutputDirectory>${basedir}/documentation</reportOutputDirectory>
+          <destDir>api</destDir>
+          <sourcepath>src/main/java</sourcepath>
+          <subpackages>com.example.theaterproject.Models:com.example.theaterproject.Services:com.example.theaterproject</subpackages>
+          <excludePackageNames>com.example.theaterproject.Controllers:com.example.theaterproject.Helpers</excludePackageNames>
+          <show>private</show>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>

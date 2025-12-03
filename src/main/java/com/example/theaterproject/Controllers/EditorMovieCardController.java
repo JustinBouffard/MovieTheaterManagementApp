@@ -22,7 +22,6 @@ public class EditorMovieCardController {
      * primarily used for grouping child components such as labels, buttons, and other UI elements
      * related to a specific movie card.
      */
-    
     @FXML
     private VBox aRoot;
     /**
@@ -105,14 +104,5 @@ public class EditorMovieCardController {
      */
     public Movie getMovie() {
         return aMovie;
-    }
-
-    /**
-     * Retrieves the root VBox container associated with this instance.
-     *
-     * @return the root VBox of this controller
-     */
-    public VBox getaRoot() {
-        return aRoot;
     }
 }

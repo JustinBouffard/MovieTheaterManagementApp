@@ -305,6 +305,11 @@ public class ScreeningAddEditViewController {
      */
     private void populateNewScreeningDefaults() {
         this.aPriceField.setText(String.valueOf(this.aShowroomService.getaDefaultTicketPrice()));
-        this.aTicketCountTextField.setText(String.valueOf(this.aShowroom.getShowroomCapacity()));
+        // If editing an existing showroom, use its capacity; otherwise use a default value
+        if (this.aShowroom != null) {
+            this.aTicketCountTextField.setText(String.valueOf(this.aShowroom.getShowroomCapacity()));
+        } else {
+            this.aTicketCountTextField.setText("100"); // Default ticket count for new screenings
+        }
     }
 }
