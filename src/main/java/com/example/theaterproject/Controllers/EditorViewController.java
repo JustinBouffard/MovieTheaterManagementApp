@@ -195,7 +195,7 @@ public class EditorViewController {
 
         for (Movie movie : movies) {
             try {
-                FXMLLoader loader = aUIService.loadFXML("/com/example/theaterproject/editor-movie-card-view.fxml");
+                FXMLLoader loader = aUIService.loadFXML("editor-movie-card-view");
 
                 VBox card = loader.getRoot();
                 EditorMovieCardController cardController = loader.getController();
@@ -207,7 +207,7 @@ public class EditorViewController {
                             // EDIT ACTION: switch to Add/Edit view and close Editor view (same window)
                             () -> {
                                 try {
-                                    FXMLLoader editLoader = aUIService.loadFXML("/com/example/theaterproject/add-edit-movie-view.fxml");
+                                    FXMLLoader editLoader = aUIService.loadFXML("add-edit-movie-view");
                                     Parent root = editLoader.getRoot();
                                     MovieAddEditViewController editController = editLoader.getController();
                                     if (editController != null) {
@@ -263,7 +263,7 @@ public class EditorViewController {
      */
     @FXML
     private void onAddMovieButtonClick(ActionEvent pEvent) {
-        switchView(pEvent, "/com/example/theaterproject/add-edit-movie-view.fxml");
+        switchView(pEvent, "add-edit-movie-view");
     }
 
     /**
@@ -281,7 +281,7 @@ public class EditorViewController {
      */
     @FXML
     private void onShowroomsViewButtonClick(ActionEvent pEvent) {
-        switchView(pEvent, "/com/example/theaterproject/showrooms-view.fxml");
+        switchView(pEvent, "showrooms-view");
     }
 
     /**
@@ -299,7 +299,7 @@ public class EditorViewController {
      */
     @FXML
     private void onStatsViewButtonClick(ActionEvent pEvent) {
-        switchView(pEvent, "/com/example/theaterproject/stats-view.fxml");
+        switchView(pEvent, "stats-view");
     }
 
 
@@ -310,12 +310,12 @@ public class EditorViewController {
      *
      * @param event    the {@code ActionEvent} that triggered the view switch. Used to retrieve
      *                 the current stage from the event source.
-     * @param fxmlPath the path to the FXML file that defines the new view to be loaded.
+     * @param pFileName the path to the FXML file that defines the new view to be loaded.
      *                 It should be a valid path within the application's resources.
      */
-    private void switchView(ActionEvent event, String fxmlPath) {
+    private void switchView(ActionEvent event, String pFileName) {
         try {
-            FXMLLoader loader = aUIService.loadFXML(fxmlPath);
+            FXMLLoader loader = aUIService.loadFXML(pFileName);
             Parent root = loader.getRoot();
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

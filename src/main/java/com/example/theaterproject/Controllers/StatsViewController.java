@@ -121,11 +121,6 @@ public class StatsViewController {
 
 
     /**
-     * Resets the statistic labels to a default placeholder value.
-     *
-     * <p>Called on initialization and when selections are cleared.</p>
-     */
-    /**
      * Clears the statistics labels by setting them to default placeholder values.
      * Used when no screening is selected or when filtering changes.
      */
@@ -135,13 +130,6 @@ public class StatsViewController {
         aRevenueLabel.setText("-");
     }
 
-    /**
-     * Handles navigation to the Home (editor) view.
-     *
-     * <p>Loads the {@code editor-view.fxml}, opens it in a new stage, and closes the current window.</p>
-     *
-     * @param pEvent the action event fired by the navigation button
-     */
     /**
      * Handles the "Home" button click event.
      * Navigates back to the editor (home) view.
@@ -157,13 +145,6 @@ public class StatsViewController {
         }
     }
 
-    /**
-     * Handles navigation to the Showrooms view.
-     *
-     * <p>Loads the {@code showrooms-view.fxml}, opens it in a new stage, and closes the current window.</p>
-     *
-     * @param pEvent the action event fired by the navigation button
-     */
     /**
      * Handles the "Showrooms" button click event.
      * Navigates to the showrooms view.

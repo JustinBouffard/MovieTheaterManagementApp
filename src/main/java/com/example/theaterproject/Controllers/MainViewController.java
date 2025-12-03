@@ -84,8 +84,8 @@ public class MainViewController {
 
         // Determine number of columns from GridPane constraints if present, otherwise default to 3
         int columns = 3;
-        if (movieGridPane.getColumnConstraints() != null && movieGridPane.getColumnConstraints().size() > 0) {
-            columns = Math.max(1, movieGridPane.getColumnConstraints().size());
+        if (movieGridPane.getColumnConstraints() != null && !movieGridPane.getColumnConstraints().isEmpty()) {
+            columns = movieGridPane.getColumnConstraints().size();
         }
 
         int index = 0;
@@ -94,7 +94,7 @@ public class MainViewController {
                 // Try relative resource first (same package), fall back to absolute path
                 URL fxmlUrl = getClass().getResource("movie-card-view.fxml");
                 if (fxmlUrl == null) {
-                    fxmlUrl = getClass().getResource("/com/example/theaterproject/movie-card-view.fxml");
+                    fxmlUrl = getClass().getResource("movie-card-view.fxml");
                 }
                 if (fxmlUrl == null) {
                     // nothing we can do for this card; print and skip
@@ -105,16 +105,14 @@ public class MainViewController {
                 FXMLLoader loader = new FXMLLoader(fxmlUrl);
                 Parent card = loader.load();
 
-                // If the FXML declares a controller and it supports setMovie, use it.
+                // If the FXML declares a controller, and it supports setMovie, use it.
                 Object cardController = loader.getController();
                 if (cardController != null) {
                     try {
                         // Try to call setMovie reflectively (keeps coupling low)
                         java.lang.reflect.Method setMovie = cardController.getClass().getMethod("setMovie", Movie.class);
-                        if (setMovie != null) {
-                            setMovie.invoke(cardController, movie);
-                        }
-                    } catch (NoSuchMethodException nsme) {
+                        setMovie.invoke(cardController, movie);
+                    } catch (NoSuchMethodException name) {
                         // Controller exists but does not have setMovie(Movie) - fall back to namespace below
                     } catch (Exception ex) {
                         // Reflection invocation problem - print and continue with fallback
@@ -150,13 +148,6 @@ public class MainViewController {
 
     }
 
-    /**
-     * Handles the click event for the "Sign Out" button. Opens the login view by loading the
-     * corresponding FXML file and displays it in a new stage. Closes the current window after
-     * successfully navigating to the login view.
-     *
-     * @param pEvent the action event triggered by clicking the "Sign Out" button
-     */
     /**
      * Handles the sign out button click event.
      * Opens the login view and closes the current window.

@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
  * Controller responsible for managing the UI elements and behavior of a movie card
  * in a JavaFX application. The movie card is designed to display a movie's title,
  * screening time, and an optional poster image.
- *
+ * <p>
  * This class is intended to work with an associated FXML layout file, where UI components
  * are defined and linked to the controller using the `@FXML` annotation.
  */
@@ -35,7 +35,7 @@ public class MovieCardController {
      * It encapsulates child components such as the movie title label, screening time label,
      * and optional poster image view. This container may also handle user interactions,
      * such as click events, for the movie card.
-     *
+     * <p>
      * This field is injected via FXML and linked to the corresponding VBox element
      * defined in the associated FXML file.
      */
@@ -43,7 +43,7 @@ public class MovieCardController {
     private VBox root;
     /**
      * The movie associated with this controller.
-     *
+     * <p>
      * Represents a specific Movie object whose details may be utilized to populate
      * the associated movie card view in the user interface. This object is generally
      * set using the setMovie(Movie pMovie) method and accessed via getMovie().

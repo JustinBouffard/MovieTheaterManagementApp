@@ -121,7 +121,8 @@ public class NewAccountViewController {
 
         // check if email is in valid format
         if (!EMAIL_PATTERN.matcher(email).matches()) {
-            aUiService.showErrorAlert("Invalid Email", "Please enter a valid email address.");            return;
+            aUiService.showErrorAlert("Invalid Email", "Please enter a valid email address.");
+            return;
         }
 
         // make sure passwords match

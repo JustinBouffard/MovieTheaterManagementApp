@@ -26,7 +26,7 @@ import java.io.IOException;
 public class MovieAddEditViewController {
     /**
      * Represents a button in the MovieAddEditViewController used for canceling the current
-     * operation. Typically triggers behavior to close the current window or reset inputs
+     * operation. Typically, triggers behavior to close the current window or reset inputs
      * without saving changes.
      */
     @FXML
@@ -40,10 +40,10 @@ public class MovieAddEditViewController {
     private Button aSaveButton;
     /**
      * Represents a TextField for entering or editing the title of a movie.
-     *
+     * <p>
      * This field is part of the user interface for adding or editing movie details
      * in the MovieAddEditViewController.
-     *
+     * <p>
      * It is expected that the input provided in this field will be validated or
      * used as part of the process to save or edit movie records.
      */
@@ -53,7 +53,7 @@ public class MovieAddEditViewController {
      * Represents a Spinner component within the MovieAddEditViewController UI that allows the user
      * to input or select the runtime (in minutes) for a movie.
      * This spinner is designed to handle integer values.
-     *
+     * <p>
      * This field is annotated with @FXML, indicating it is injected from the associated FXML file.
      */
     @FXML
@@ -81,15 +81,15 @@ public class MovieAddEditViewController {
     }
 
     /**
-     * Handles the event triggered by the Save button click.
+     * Handles the pEvent triggered by the Save button click.
      * Validates the input fields for movie title and runtime, and either adds a new movie or updates
      * an existing movie in the system. Displays error messages for invalid inputs or exceptions.
      * Closes the current window and opens the editor view upon successful operation.
      *
-     * @param event the ActionEvent triggered by the Save button click
+     * @param pEvent the ActionEvent triggered by the Save button click
      */
     @FXML
-    private void onSaveButtonClick(ActionEvent event) {
+    private void onSaveButtonClick(ActionEvent pEvent) {
         String title = (movieTitleTextField != null) ? movieTitleTextField.getText() : null;
         Integer runtime = (runtimeSpinner != null) ? runtimeSpinner.getValue() : null;
 
@@ -114,29 +114,32 @@ public class MovieAddEditViewController {
                 movieService.addMovie(updated);
             }
 
-            aUiService.closeWindow(event);
+            aUiService.closeWindow(pEvent);
+            aUiService.openNewWindow("editor-view", "Editor View", pEvent);
         } catch (Exception e) {
             aUiService.showErrorAlert("Save failed", e.getMessage());
         }
     }
 
     /**
-     * Handles the event triggered by the Cancel button click.
+     * Handles the pEvent triggered by the Cancel button click.
      * Navigates back to the editor view within the same stage. If an error occurs during
      * the process of loading the FXML file, an alert is displayed with the error message.
      *
-     * @param event the ActionEvent triggered by the Cancel button click
+     * @param pEvent the ActionEvent triggered by the Cancel button click
      */
     @FXML
-    private void onCancelButtonClick(ActionEvent event) {
+    private void onCancelButtonClick(ActionEvent pEvent) {
         // Navigate back to the Editor view within the same Stage
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/theaterproject/editor-view.fxml"));
-            Parent root = loader.load();
+            FXMLLoader loader = aUiService.loadFXML("add-edit-movie-view");
+            Parent root = loader.getRoot();
 
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+
+            aUiService.openNewWindow("editor-view", "Editor View", pEvent);
         } catch (IOException e) {
             aUiService.showErrorAlert("Navigation Error", e.getMessage());
         }

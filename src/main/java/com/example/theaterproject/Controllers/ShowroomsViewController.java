@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -30,11 +31,11 @@ public class ShowroomsViewController {
     @FXML
     private GridPane aMovieGridPane;
     @FXML
-    private javafx.scene.control.Button homeViewButton;
+    private Button homeViewButton;
     @FXML
-    private javafx.scene.control.Button statsViewButton;
+    private Button statsViewButton;
     @FXML
-    private javafx.scene.control.Button addButton;
+    private Button addButton;
 
     private final ShowroomService aShowroomService = ShowroomService.getInstance();
     private final UIService aUIService = UIService.getInstance();
@@ -61,7 +62,7 @@ public class ShowroomsViewController {
     @FXML
     private void onHomeViewButtonClick(ActionEvent pEvent) {
         try {
-            aUIService.openNewWindow("/com/example/theaterproject/editor-view.fxml", "Movies", pEvent, 700, 400);
+            aUIService.openNewWindow("editor-view", "Movies", pEvent, 700, 400);
         } catch (IOException e) {
             aUIService.showErrorAlert("Error", "Failed to load editor view: " + e.getMessage());
         }
@@ -76,7 +77,7 @@ public class ShowroomsViewController {
     @FXML
     private void onStatsViewButtonClick(ActionEvent pEvent) {
         try {
-            aUIService.openNewWindow("/com/example/theaterproject/stats-view.fxml", "Statistics", pEvent, 700, 500);
+            aUIService.openNewWindow("stats-view", "Statistics", pEvent, 700, 500);
         } catch (IOException e) {
             aUIService.showErrorAlert("Error", "Failed to load stats view: " + e.getMessage());
         }
@@ -101,7 +102,7 @@ public class ShowroomsViewController {
      */
     private void openShowroomAddEditView(Showroom pShowroom) {
         try {
-            FXMLLoader loader = aUIService.loadFXML("/com/example/theaterproject/showroom-add-edit-view.fxml");
+            FXMLLoader loader = aUIService.loadFXML("showroom-add-edit-view");
             Parent root = loader.getRoot();
 
             ShowroomAddEditViewController controller = loader.getController();
@@ -149,7 +150,7 @@ public class ShowroomsViewController {
      */
     private void addShowroomCard(Showroom pShowroom, int pColumn, int pRow) {
         try {
-            FXMLLoader loader = aUIService.loadFXML("/com/example/theaterproject/showroom-card-view.fxml");
+            FXMLLoader loader = aUIService.loadFXML("showroom-card-view");
             Parent card = loader.getRoot();
 
             ShowroomCardController controller = loader.getController();

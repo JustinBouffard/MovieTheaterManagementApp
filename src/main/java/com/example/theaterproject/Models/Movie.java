@@ -49,6 +49,15 @@ public class Movie {
     }
 
     /**
+     * Returns the runtime of this movie.
+     *
+     * @return the runtime in minutes
+     */
+    public int getRuntime() {
+        return this.aRuntime;
+    }
+
+    /**
      * Validates that the provided string is not null or blank.
      *
      * @param pString the string to validate

@@ -114,9 +114,15 @@ public class UIService {
      * Loads an FXML file and returns the FXMLLoader for accessing the controller.
      */
     public FXMLLoader loadFXML(String pFxmlFileName) throws IOException {
-        // Strip leading slash if present in pFxmlFileName
-        String fileName = pFxmlFileName.startsWith("/") ? pFxmlFileName.substring(1) : pFxmlFileName;
-        FXMLLoader loader = new FXMLLoader(UIService.class.getResource("/" + fileName));
+        // Handle both full paths and filename-only inputs
+        String resourcePath = pFxmlFileName;
+        if (!resourcePath.startsWith("/")) {
+            resourcePath = aFxmlPathPrefix + pFxmlFileName;
+        }
+        if (!resourcePath.endsWith(".fxml")) {
+            resourcePath = resourcePath + ".fxml";
+        }
+        FXMLLoader loader = new FXMLLoader(UIService.class.getResource(resourcePath));
         loader.load();
         return loader;
     }

@@ -219,7 +219,7 @@ public class ShowroomAddEditViewController {
      */
     private void openScreeningView(Screening pScreening) {
         try {
-            FXMLLoader loader = aUIService.loadFXML("/com/example/theaterproject/add-edit-screening-view.fxml");
+            FXMLLoader loader = aUIService.loadFXML("add-edit-screening-view");
             Parent root = loader.getRoot();
 
             ScreeningAddEditViewController controller = loader.getController();

@@ -90,7 +90,7 @@ public class ShowroomCardController {
     private void openShowroomAddEditView() {
         if (this.aShowRoom == null) return;
         try {
-            FXMLLoader loader = aUIService.loadFXML("/com/example/theaterproject/showroom-add-edit-view.fxml");
+            FXMLLoader loader = aUIService.loadFXML("showroom-add-edit-view");
             Parent root = loader.getRoot();
             
             ShowroomAddEditViewController controller = loader.getController();
