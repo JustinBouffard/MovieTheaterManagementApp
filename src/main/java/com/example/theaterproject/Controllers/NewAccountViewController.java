@@ -5,10 +5,6 @@ import com.example.theaterproject.Services.AccountService;
 import com.example.theaterproject.Services.UIService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -37,12 +33,6 @@ import java.util.regex.Pattern;
  * On successful account creation, this controller loads and shows
  * <code>/com/example/theaterproject/main-view.fxml</code> in a new {@link Stage}
  * and closes the current window.
- *
- * <p><strong>Threading note:</strong> All operations here are intended to run on
- * the JavaFX Application Thread.</p>
- *
- * @author pfelix7
- * @since 2025-12-02
  */
 public class NewAccountViewController {
 
