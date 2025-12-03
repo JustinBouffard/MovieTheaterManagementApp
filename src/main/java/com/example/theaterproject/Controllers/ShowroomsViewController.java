@@ -74,7 +74,7 @@ public class ShowroomsViewController {
     @FXML
     private void onHomeViewButtonClick(ActionEvent pEvent) {
         try {
-            aUIService.openNewWindow("editor-view", "Movies", pEvent, 700, 400);
+            aUIService.openNewWindow("editor-view", "Movies", pEvent, 900, 700);
         } catch (IOException e) {
             aUIService.showErrorAlert("Error", "Failed to load editor view: " + e.getMessage());
         }
