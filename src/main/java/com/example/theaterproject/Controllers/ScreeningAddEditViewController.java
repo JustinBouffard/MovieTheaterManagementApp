@@ -242,11 +242,7 @@ public class ScreeningAddEditViewController {
                 LocalTime.of(this.aHoursSpinner.getValue(), this.aMinutesSpinner.getValue())
         );
 
-        if (this.aScreening == null) {
-            this.aResultScreening = new Screening(selectedMovie, ticketCount, pricePerTicket, dateTime);
-        } else {
-            this.aResultScreening = new Screening(selectedMovie, ticketCount, pricePerTicket, dateTime);
-        }
+        this.aResultScreening = new Screening(selectedMovie, ticketCount, pricePerTicket, dateTime);
 
         aUIService.closeWindow(pEvent);
     }

@@ -63,7 +63,6 @@ public class ShowroomCardController {
     @FXML
     private void onDeleteButtonClick(ActionEvent pEvent) {
         aShowRoomService.removeShowroom(aShowRoom);
-
     }
 
     /**

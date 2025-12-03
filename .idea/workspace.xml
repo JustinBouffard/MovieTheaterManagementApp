@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad68dbb3-4993-4cc3-bb46-0bc6e5df46e7" name="Changes" comment="">
+    <list default="true" id="ad68dbb3-4993-4cc3-bb46-0bc6e5df46e7" name="Changes" comment="Fixed new screening overlapping with others">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomAddEditViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomAddEditViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomCardController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,12 +83,26 @@
       <workItem from="1764781490812" duration="304000" />
       <workItem from="1764790430121" duration="2081000" />
       <workItem from="1764793042671" duration="716000" />
-      <workItem from="1764813978229" duration="366000" />
+      <workItem from="1764813978229" duration="465000" />
+      <workItem from="1764825229210" duration="1042000" />
     </task>
+    <task id="LOCAL-00001" summary="Fixed new screening overlapping with others">
+      <option name="closed" value="true" />
+      <created>1764814439713</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1764814439713</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixed new screening overlapping with others" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed new screening overlapping with others" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
