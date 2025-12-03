@@ -63,7 +63,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="statsViewButton1" onAction="#onStatsViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Showroom">
+                  <Button fx:id="statsViewButton1" prefHeight="26.0" prefWidth="100.0" text="Showroom">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
