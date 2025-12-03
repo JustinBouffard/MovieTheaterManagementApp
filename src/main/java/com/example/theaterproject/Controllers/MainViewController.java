@@ -3,6 +3,7 @@ package com.example.theaterproject.Controllers;
 import com.example.theaterproject.Models.Movie;
 import com.example.theaterproject.Services.MovieService;
 import com.example.theaterproject.Services.UIService;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 import javafx.scene.control.Labeled;
+import javafx.collections.ListChangeListener;
 
 import java.io.IOException;
 import java.net.URL;
@@ -61,8 +63,16 @@ public class MainViewController {
      */
     @FXML
     private void initialize() {
-        // populate once at startup
-        populateGrid(aMovieService.getMovies());
+        // Get the underlying observable list from MovieService to listen to changes
+        ObservableList<Movie> movies = aMovieService.getMovies();
+        
+        // Populate initially with whatever movies are available
+        populateGrid(movies);
+        
+        // Listen for changes to the movie list and refresh grid when movies are added
+        movies.addListener((ListChangeListener<Movie>) change -> {
+            populateGrid(movies);
+        });
     }
 
     /**
@@ -93,15 +103,15 @@ public class MainViewController {
                 FXMLLoader loader = aUiService.loadFXML("movie-card-view");
                 Parent card = loader.getRoot();
 
-                // If the FXML declares a controller, and it supports setMovie, use it.
+                // If the FXML declares a controller, and it supports setaMovie, use it.
                 Object cardController = loader.getController();
                 if (cardController != null) {
                     try {
-                        // Try to call setMovie reflectively (keeps coupling low)
-                        java.lang.reflect.Method setMovie = cardController.getClass().getMethod("setMovie", Movie.class);
+                        // Try to call setaMovie reflectively (keeps coupling low)
+                        java.lang.reflect.Method setMovie = cardController.getClass().getMethod("setaMovie", Movie.class);
                         setMovie.invoke(cardController, movie);
                     } catch (NoSuchMethodException name) {
-                        // Controller exists but does not have setMovie(Movie) - fall back to namespace below
+                        // Controller exists but does not have setaMovie(Movie) - fall back to namespace below
                     } catch (Exception ex) {
                         // Reflection invocation problem - print and continue with fallback
                         ex.printStackTrace();
@@ -110,8 +120,8 @@ public class MainViewController {
 
                 // If controller was null or did not set the title, attempt namespace-based label injection as fallback
                 Map<String, Object> ns = loader.getNamespace();
-                Object titleObj = ns.get("movieTitleLabel");
-                Object screeningObj = ns.get("screeningTimeLabel");
+                Object titleObj = ns.get("aMovieTitleLabel");
+                Object screeningObj = ns.get("aScreeningTimeLabel");
 
                 if (titleObj instanceof Labeled) {
                     ((Labeled) titleObj).setText(movie.getTitle());

@@ -1,0 +1,6 @@
+module:com.example.theaterproject
+com.example.theaterproject
+com.example.theaterproject.Controllers
+com.example.theaterproject.Helpers
+com.example.theaterproject.Models
+com.example.theaterproject.Services

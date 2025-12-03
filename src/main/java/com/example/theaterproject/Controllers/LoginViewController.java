@@ -43,15 +43,8 @@ public class LoginViewController {
      */
     @FXML
     private PasswordField aPasswordField;
-    /**
-     * The accountService variable is an instance of the singleton {@link AccountService}
-     * class. It provides centralized management of user accounts, including authentication,
-     * client management, and access to manager-specific functionality.
-     *
-     * This instance is used by the {@code LoginViewController} class for handling actions
-     * such as user authentication and account initialization.
-     */
-    AccountService accountService = AccountService.getInstance();
+
+    AccountService aAccountService = AccountService.getInstance();
     private final UIService aUIService = UIService.getInstance();
 
     /**
@@ -75,7 +68,7 @@ public class LoginViewController {
 
         try {
             // Authenticate user using AccountService
-            Account authenticatedUser = accountService.login(username, password);
+            Account authenticatedUser = aAccountService.login(username, password);
 
             if (authenticatedUser == null) {
                 aUIService.showErrorAlert("Login Failed", "Invalid username or password.");

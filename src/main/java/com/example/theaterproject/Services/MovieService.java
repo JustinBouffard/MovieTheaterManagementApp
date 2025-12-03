@@ -38,12 +38,12 @@ public class MovieService {
     }
 
     /**
-     * Retrieves the unmodifiable observable list of all movies.
+     * Retrieves the observable list of all movies.
      *
-     * @return an unmodifiable ObservableList containing all movies
+     * @return an ObservableList containing all movies
      */
     public ObservableList<Movie> getMovies() {
-        return FXCollections.unmodifiableObservableList(aMovies);
+        return aMovies;
     }
 
     /**
