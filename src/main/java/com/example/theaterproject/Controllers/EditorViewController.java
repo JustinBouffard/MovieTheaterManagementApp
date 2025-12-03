@@ -12,43 +12,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.TilePane;
-import javafx.scene.layout.Region;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Optional;
 
 public class EditorViewController {
-    /**
-     * A button in the user interface that allows the user to initiate the process
-     * of adding a new movie. When clicked, this button triggers the corresponding
-     * event handler to perform the action associated with adding a movie to the
-     * system.
-     *
-     * This button is linked to an action event handler method that is expected to
-     * handle the logic for what occurs when the button is clicked.
-     */
-    @FXML private Button addMovieButton;
-    /**
-     * A button within the EditorViewController that, when clicked, navigates the user
-     * to the Showrooms View. This button is part of the JavaFX FXML structure.
-     */
-    @FXML private Button showroomsViewButton;
-    /**
-     * A button associated with the "Stats View" feature in the application.
-     * This button, when triggered, is expected to navigate the user to
-     * a view displaying statistical data or analytics related to the application's features.
-     *
-     * This field is linked with an FXML file and is injected at runtime by the JavaFX framework.
-     */
-    @FXML private Button statsViewButton;
+
     /**
      * The TilePane that serves as a dynamic container for displaying movie cards.
      * Each movie card represents individual movie data and is added to this pane
@@ -64,13 +39,13 @@ public class EditorViewController {
      * data is loaded, utilizing methods such as {@code populateGrid}.
      */
 
-    @FXML private TilePane movieGridPane;
+    @FXML private TilePane aMovieGridPane;
     /**
      * ScrollPane used to display movies in the editor view.
      * The content of this ScrollPane is dynamically managed to show a grid of movie cards.
      * Allows users to scroll through the list of movies.
      */
-    @FXML private ScrollPane movieScrollPane;
+    @FXML private ScrollPane aMovieScrollPane;
     /**
      * Stores a list of Movie objects displayed or managed within the user interface.
      *
@@ -131,35 +106,26 @@ public class EditorViewController {
      */
     @FXML
     public void initialize() {
-        movieGridPane.getChildren().clear();
+        aMovieGridPane.getChildren().clear();
         // Ensure consistent spacing around and between cards
-        movieGridPane.setHgap(16);
-        movieGridPane.setVgap(16);
-        movieGridPane.setPadding(new Insets(10));
-        movieGridPane.setPrefColumns(DEFAULT_COLUMNS);
-        movieGridPane.setTileAlignment(Pos.TOP_LEFT);
+        aMovieGridPane.setHgap(16);
+        aMovieGridPane.setVgap(16);
+        aMovieGridPane.setPadding(new Insets(10));
+        aMovieGridPane.setPrefColumns(DEFAULT_COLUMNS);
+        aMovieGridPane.setTileAlignment(Pos.TOP_LEFT);
         // Use tile width to help TilePane wrap dynamically instead of forcing fixed columns/width
-        movieGridPane.setPrefTileWidth(CARD_TILE_WIDTH);
+        aMovieGridPane.setPrefTileWidth(CARD_TILE_WIDTH);
 
         // Recalculate columns based on available viewport width to make layout responsive
-        if (movieScrollPane != null) {
-            movieScrollPane.viewportBoundsProperty().addListener((obs, oldBounds, newBounds) -> updateColumnsForWidth(newBounds.getWidth()));
+        if (aMovieScrollPane != null) {
+            aMovieScrollPane.viewportBoundsProperty().addListener((obs, oldBounds, newBounds) -> updateColumnsForWidth(newBounds.getWidth()));
             // initialize once with current width if available
-            updateColumnsForWidth(movieScrollPane.getViewportBounds().getWidth());
+            updateColumnsForWidth(aMovieScrollPane.getViewportBounds().getWidth());
         }
         aMovies = aMovieService.getMovies();
         populateGrid(aMovies);
     }
 
-    /**
-     * Updates the number of columns in the movie grid based on the available viewport width.
-     * The method calculates the number of columns that can fit within the given width,
-     * taking into account horizontal gaps and padding. If the calculated number of columns
-     * is less than 1, it sets the grid to have at least one column.
-     *
-     * @param viewportWidth the current width of the viewport used to determine the number of columns
-     *                      in the movie grid. A non-positive width results in no changes being made.
-     */
     /**
      * Updates the number of columns in the movie grid based on the available viewport width.
      * Recalculates columns dynamically to optimize layout responsiveness.
@@ -168,12 +134,12 @@ public class EditorViewController {
      */
     private void updateColumnsForWidth(double viewportWidth) {
         if (viewportWidth <= 0) return;
-        double hgap = movieGridPane.getHgap();
-        double leftRightPad = movieGridPane.getPadding().getLeft() + movieGridPane.getPadding().getRight();
+        double hgap = aMovieGridPane.getHgap();
+        double leftRightPad = aMovieGridPane.getPadding().getLeft() + aMovieGridPane.getPadding().getRight();
         double available = Math.max(0, viewportWidth - leftRightPad);
         int cols = (int) Math.floor((available + hgap) / (CARD_TILE_WIDTH + hgap));
         if (cols < 1) cols = 1;
-        movieGridPane.setPrefColumns(cols);
+        aMovieGridPane.setPrefColumns(cols);
     }
 
     /**
@@ -181,7 +147,7 @@ public class EditorViewController {
      * the existing movie grid content and dynamically generates movie cards for
      * each movie in the provided list. Each card includes actions for editing
      * or removing the movie.
-     *
+     * <p>
      * If the list of movies is null or empty, the grid remains empty.
      *
      * @param movies the list of movies to populate the grid with. Each movie in
@@ -189,7 +155,7 @@ public class EditorViewController {
      *               no cards will be displayed.
      */
     private void populateGrid(ObservableList<Movie> movies) {
-        movieGridPane.getChildren().clear();
+        aMovieGridPane.getChildren().clear();
 
         if (movies == null || movies.isEmpty()) return;
 
@@ -215,7 +181,7 @@ public class EditorViewController {
                                     }
 
                                     // Replace current scene so the editor window is effectively closed
-                                    Stage stage = (Stage) movieGridPane.getScene().getWindow();
+                                    Stage stage = (Stage) aMovieGridPane.getScene().getWindow();
                                     stage.setScene(new Scene(root));
                                     stage.show();
                                 } catch (IOException ex) {
@@ -239,7 +205,7 @@ public class EditorViewController {
                 }
 
                 // TilePane handles layout and spacing; just add the card
-                movieGridPane.getChildren().add(card);
+                aMovieGridPane.getChildren().add(card);
 
             } catch (IOException e) {
                 aUIService.showErrorAlert("Error", "Failed to load movie card: " + e.getMessage());
@@ -248,13 +214,6 @@ public class EditorViewController {
     }
 
 
-    /**
-     * Handles the event triggered by clicking the "Add Movie" button.
-     * This method switches the current scene to the Add/Edit Movie view,
-     * allowing users to create or edit movie entries.
-     *
-     * @param event the {@code ActionEvent} triggered by the button click.
-     */
     /**
      * Handles the "Add Movie" button click event.
      * Opens a modal dialog for adding a new movie.
@@ -266,13 +225,6 @@ public class EditorViewController {
         switchView(pEvent, "add-edit-movie-view");
     }
 
-    /**
-     * Handles the event triggered by clicking the "Showrooms View" button.
-     * This method switches the current scene to the Showrooms View,
-     * allowing users to view and manage theater showrooms.
-     *
-     * @param event the {@code ActionEvent} triggered by the button click.
-     */
     /**
      * Handles the "Showrooms View" button click event.
      * Opens the showrooms view in a new window.
@@ -288,13 +240,6 @@ public class EditorViewController {
         }
     }
 
-    /**
-     * Handles the event triggered by clicking the "Statistics View" button.
-     * This method switches the current scene to the Statistics View,
-     * allowing users to view theater-related statistical data.
-     *
-     * @param event the {@code ActionEvent} triggered by the button click.
-     */
     /**
      * Handles the "Stats View" button click event.
      * Opens the statistics view in a new window.
@@ -316,17 +261,17 @@ public class EditorViewController {
      * The method loads the specified FXML file, sets it as the scene for the current stage,
      * and displays the updated stage.
      *
-     * @param event    the {@code ActionEvent} that triggered the view switch. Used to retrieve
-     *                 the current stage from the event source.
+     * @param pEvent    the {@code ActionEvent} that triggered the view switch. Used to retrieve
+     *                 the current stage from the pEvent source.
      * @param pFileName the path to the FXML file that defines the new view to be loaded.
      *                 It should be a valid path within the application's resources.
      */
-    private void switchView(ActionEvent event, String pFileName) {
+    private void switchView(ActionEvent pEvent, String pFileName) {
         try {
             FXMLLoader loader = aUIService.loadFXML(pFileName);
             Parent root = loader.getRoot();
 
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
 

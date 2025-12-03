@@ -22,8 +22,9 @@ public class EditorMovieCardController {
      * primarily used for grouping child components such as labels, buttons, and other UI elements
      * related to a specific movie card.
      */
+    
     @FXML
-    private VBox root;
+    private VBox aRoot;
     /**
      * Displays the title of the movie associated with this movie card.
      *
@@ -34,7 +35,7 @@ public class EditorMovieCardController {
      * editor card.
      */
     @FXML
-    private Label movieTitleLabel;
+    private Label aMovieTitleLabel;
     /**
      * Represents a button for editing the movie associated with this editor movie card.
      *
@@ -44,7 +45,7 @@ public class EditorMovieCardController {
      * when the button is clicked.
      */
     @FXML
-    private Button editButton;
+    private Button aEditButton;
     /**
      * Represents a button for removing the movie associated with this editor movie card.
      *
@@ -54,7 +55,7 @@ public class EditorMovieCardController {
      * provided Runnable is executed when the button is clicked.
      */
     @FXML
-    private Button removeButton;
+    private Button aRemoveButton;
     /**
      * Holds a Movie object associated with the editor movie card.
      *
@@ -64,7 +65,7 @@ public class EditorMovieCardController {
      *
      * The movie's data, such as its title, can be displayed or managed using this instance.
      */
-    private Movie movie;
+    private Movie aMovie;
 
     /**
      * Updates the data displayed in the user interface with the specified movie
@@ -72,27 +73,27 @@ public class EditorMovieCardController {
      *
      * @param pMovie      the movie to display; can be null, in which case no movie data
      *                    is displayed
-     * @param editAction  a runnable defining the action to perform when the edit
+     * @param pEditAction  a runnable defining the action to perform when the edit
      *                    button is clicked; can be null
-     * @param removeAction a runnable defining the action to perform when the
+     * @param pRemoveAction a runnable defining the action to perform when the
      *                     remove button is clicked; can be null
      */
-    public void setData(Movie pMovie, Runnable editAction, Runnable removeAction) {
-        this.movie = pMovie;
+    public void setData(Movie pMovie, Runnable pEditAction, Runnable pRemoveAction) {
+        this.aMovie = pMovie;
 
-        if (movieTitleLabel != null) {
-            movieTitleLabel.setText(pMovie != null ? pMovie.getTitle() : "");
+        if (aMovieTitleLabel != null) {
+            aMovieTitleLabel.setText(pMovie != null ? pMovie.getTitle() : "");
         }
 
-        if (editButton != null) {
-            editButton.setOnAction(e -> {
-                if (editAction != null) editAction.run();
+        if (aEditButton != null) {
+            aEditButton.setOnAction(e -> {
+                if (pEditAction != null) pEditAction.run();
             });
         }
 
-        if (removeButton != null) {
-            removeButton.setOnAction(e -> {
-                if (removeAction != null) removeAction.run();
+        if (aRemoveButton != null) {
+            aRemoveButton.setOnAction(e -> {
+                if (pRemoveAction != null) pRemoveAction.run();
             });
         }
     }
@@ -102,8 +103,8 @@ public class EditorMovieCardController {
      *
      * @return the movie object if one is set, or null if no movie is associated
      */
-    public Movie getMovie() {
-        return movie;
+    public Movie getaMovie() {
+        return aMovie;
     }
 
     /**
@@ -111,7 +112,7 @@ public class EditorMovieCardController {
      *
      * @return the root VBox of this controller
      */
-    public VBox getRoot() {
-        return root;
+    public VBox getaRoot() {
+        return aRoot;
     }
 }

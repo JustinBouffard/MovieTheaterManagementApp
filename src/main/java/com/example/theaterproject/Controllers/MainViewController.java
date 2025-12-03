@@ -7,11 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 import javafx.scene.control.Labeled;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -42,7 +40,7 @@ public class MainViewController {
      * displaying movies to the user.
      */
     @FXML
-    private GridPane movieGridPane;
+    private GridPane aMovieGridPane;
     /**
      * Represents a singleton instance of the {@link MovieService} class,
      * which provides centralized management of movie-related data within the application.
@@ -51,7 +49,7 @@ public class MainViewController {
      * with the list of movies displayed in the user interface. It allows access to the
      * movie data and supports operations such as retrieving, adding, and removing movies.
      */
-    private final MovieService movieService = MovieService.getInstance();
+    private final MovieService aMovieService = MovieService.getInstance();
 
     private final UIService aUiService = UIService.getInstance();
 
@@ -64,32 +62,32 @@ public class MainViewController {
     @FXML
     private void initialize() {
         // populate once at startup
-        populateGrid(movieService.getMovies());
+        populateGrid(aMovieService.getMovies());
     }
 
     /**
-     * Populates the grid pane with movie cards based on the provided list of movies.
+     * Populates the grid pane with movie cards based on the provided list of pMovies.
      * Each movie is represented as a card created from an FXML template.
      * The grid is cleared before populating it with the new set of movie cards.
      *
-     * @param movies the list of movies to be displayed in the grid. If the list is null
+     * @param pMovies the list of pMovies to be displayed in the grid. If the list is null
      *               or empty, the grid will not be populated.
      */
-    private void populateGrid(javafx.collections.ObservableList<Movie> movies) {
-        movieGridPane.getChildren().clear();
+    private void populateGrid(javafx.collections.ObservableList<Movie> pMovies) {
+        aMovieGridPane.getChildren().clear();
 
-        if (movies == null || movies.isEmpty()) {
+        if (pMovies == null || pMovies.isEmpty()) {
             return;
         }
 
         // Determine number of columns from GridPane constraints if present, otherwise default to 3
         int columns = 3;
-        if (movieGridPane.getColumnConstraints() != null && !movieGridPane.getColumnConstraints().isEmpty()) {
-            columns = movieGridPane.getColumnConstraints().size();
+        if (aMovieGridPane.getColumnConstraints() != null && !aMovieGridPane.getColumnConstraints().isEmpty()) {
+            columns = aMovieGridPane.getColumnConstraints().size();
         }
 
         int index = 0;
-        for (Movie movie : movies) {
+        for (Movie movie : pMovies) {
             try {
                 // Load via UIService using application resource path
                 FXMLLoader loader = aUiService.loadFXML("movie-card-view");
@@ -124,7 +122,7 @@ public class MainViewController {
 
                 int col = index % columns;
                 int row = index / columns;
-                movieGridPane.add(card, col, row);
+                aMovieGridPane.add(card, col, row);
                 GridPane.setMargin(card, new Insets(8));
                 index++;
             } catch (IOException e) {

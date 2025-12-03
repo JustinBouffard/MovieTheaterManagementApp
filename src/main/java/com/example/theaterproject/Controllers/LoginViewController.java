@@ -1,7 +1,6 @@
 package com.example.theaterproject.Controllers;
 
 import com.example.theaterproject.Models.Account;
-import com.example.theaterproject.Models.Manager;
 import com.example.theaterproject.Services.AccountService;
 import com.example.theaterproject.Services.UIService;
 import javafx.event.ActionEvent;
@@ -29,29 +28,29 @@ public class LoginViewController {
      * and is used to capture the username input provided by the user.
      */
     @FXML
-    private TextField usernameTextField;
+    private TextField aUsernameTextField;
     /**
      * Represents the password input field on the login view. This field is used to
      * capture the user's password during the authentication process.
-     *
+     * <p>
      * The password entered in this field is sent to the authentication logic
      * when the user clicks the "Sign In" button.
-     *
+     * <p>
      * This field is part of the FXML file associated with the LoginViewController class,
      * and it is annotated with @FXML to indicate that it is injected at runtime
      * during FXML loading.
      */
     @FXML
-    private PasswordField passwordField;
+    private PasswordField aPasswordField;
     /**
      * The accountService variable is an instance of the singleton {@link AccountService}
      * class. It provides centralized management of user accounts, including authentication,
      * client management, and access to manager-specific functionality.
-     *
+     * <p>
      * This instance is used by the {@code LoginViewController} class for handling actions
      * such as user authentication and account initialization.
      */
-    AccountService accountService = AccountService.getInstance();
+    AccountService aAccountService = AccountService.getInstance();
     private final UIService aUIService = UIService.getInstance();
 
     /**
@@ -64,33 +63,20 @@ public class LoginViewController {
     @FXML
     private void onSignInButtonClick(ActionEvent pEvent) {
 
-        String username = usernameTextField.getText();
-        String password = passwordField.getText();
+        String username = aUsernameTextField.getText();
+        String password = aPasswordField.getText();
 
-        // Validate input fields
-        if (username.isBlank() || password.isBlank()) {
-            aUIService.showErrorAlert("Validation Error", "Please enter both username and password.");
-            return;
-        }
 
         try {
-            // Authenticate user using AccountService
-            Account authenticatedUser = accountService.login(username, password);
+            Account managerAccount = aAccountService.getManager();
 
-            if (authenticatedUser == null) {
-                aUIService.showErrorAlert("Login Failed", "Invalid username or password.");
-                return;
-            }
-
-            // Check if user is a manager
-            if (authenticatedUser instanceof Manager) {
-                aUIService.openNewWindow("editor-view", "Theater Dashboard", pEvent, 900,700);
+            if (managerAccount.getUserName().equals(username) && managerAccount.getPassword().equals(password)) {
+                aUIService.openNewWindow("editor-view", "Theater Dashboard", pEvent);
             } else {
-                // User is a client
-                aUIService.openNewWindow("main-view", "Theater Dashboard", pEvent, 900, 700);
+                aUIService.openNewWindow("main-view", "Theater Dashboard", pEvent, 700, 400);
             }
         } catch (IOException e) {
-            aUIService.showErrorAlert("Error", "An error occurred while loading the dashboard: " + e.getMessage());
+            aUIService.showErrorAlert("Error", e.getMessage());
         }
     }
 

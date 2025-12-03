@@ -9,12 +9,12 @@
 <VBox maxHeight="225.0" maxWidth="150.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="150.0" style="-fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="165.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="NEVER" />
-      <Label fx:id="movieTitleLabel" text="Movie Title">
+      <Label fx:id="aMovieTitleLabel" text="Movie Title">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="screeningTimeLabel" text="Screening" />
+      <Label fx:id="aScreeningTimeLabel" text="Screening" />
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

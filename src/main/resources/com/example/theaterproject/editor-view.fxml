@@ -22,7 +22,7 @@
                     </HBox.margin>
                 </Label>
                 <Region minWidth="40.0" HBox.hgrow="ALWAYS" />
-                <Label fx:id="pageTitleLabel" alignment="BOTTOM_CENTER" contentDisplay="CENTER" minHeight="75.0" text="Movie Editing" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
+                <Label fx:id="aPageTitleLabel" alignment="BOTTOM_CENTER" contentDisplay="CENTER" minHeight="75.0" text="Movie Editing" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
                     <HBox.margin>
                         <Insets left="50.0" right="50.0" />
                     </HBox.margin>
@@ -34,7 +34,7 @@
                     </padding>
                 </Label>
                 <Region minWidth="40.0" HBox.hgrow="ALWAYS" />
-                <Label fx:id="userLabel" alignment="TOP_RIGHT" contentDisplay="RIGHT" text="Welcome, Manager" textAlignment="RIGHT" textFill="WHITE" HBox.hgrow="ALWAYS">
+                <Label fx:id="aUserLabel" alignment="TOP_RIGHT" contentDisplay="RIGHT" text="Welcome, Manager" textAlignment="RIGHT" textFill="WHITE" HBox.hgrow="ALWAYS">
                     <font>
                         <Font size="18.0" />
                     </font>
@@ -76,11 +76,11 @@
                     <HBox.margin>
                         <Insets left="10.0" />
                     </HBox.margin></Separator>
-            <ScrollPane fx:id="movieScrollPane" prefHeight="200.0" prefWidth="465.0" fitToWidth="true" HBox.hgrow="ALWAYS">
+            <ScrollPane fx:id="aMovieScrollPane" prefHeight="200.0" prefWidth="465.0" fitToWidth="true" HBox.hgrow="ALWAYS">
                <content>
                   <VBox>
                      <children>
-                        <TilePane fx:id="movieGridPane" prefHeight="200.0" VBox.vgrow="ALWAYS" />
+                        <TilePane fx:id="aMovieGridPane" prefHeight="200.0" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                </content>

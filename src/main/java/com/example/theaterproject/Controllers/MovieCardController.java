@@ -3,7 +3,6 @@ package com.example.theaterproject.Controllers;
 import com.example.theaterproject.Models.Movie;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 /**
@@ -21,7 +20,7 @@ public class MovieCardController {
      * This label is usually populated with the movie's title when the `setMovie` method is invoked.
      */
     @FXML
-    private Label movieTitleLabel;
+    private Label aMovieTitleLabel;
     /**
      * Label UI component used to display the screening time of a movie in the movie card.
      * It is part of the FXML-defined UI and is linked to the controller with the `@FXML` annotation.
@@ -29,7 +28,7 @@ public class MovieCardController {
      * when the `setMovie` method is invoked.
      */
     @FXML
-    private Label screeningTimeLabel;
+    private Label aScreeningTimeLabel;
     /**
      * VBox container that serves as the root element of the movie card UI.
      * It encapsulates child components such as the movie title label, screening time label,
@@ -40,7 +39,7 @@ public class MovieCardController {
      * defined in the associated FXML file.
      */
     @FXML
-    private VBox root;
+    private VBox aRoot;
     /**
      * The movie associated with this controller.
      * <p>
@@ -48,24 +47,7 @@ public class MovieCardController {
      * the associated movie card view in the user interface. This object is generally
      * set using the setMovie(Movie pMovie) method and accessed via getMovie().
      */
-    private Movie movie;
-
-    /**
-     * Initializes the controller after its root element has been completely processed.
-     * This method sets default values to ensure fields are in a known and predictable state.
-     * Specifically, it clears the text values of the movie title and screening time labels
-     * if they are not null.
-     */
-    @FXML
-    private void initialize() {
-        // set sensible defaults if needed
-        if (movieTitleLabel != null) {
-            movieTitleLabel.setText("");
-        }
-        if (screeningTimeLabel != null) {
-            screeningTimeLabel.setText("");
-        }
-    }
+    private Movie aMovie;
 
     /**
      * Updates the movie data displayed in the card view and sets up relevant UI interactions.
@@ -74,17 +56,17 @@ public class MovieCardController {
      *
      * @param pMovie the Movie object to display in this card. If null, the card will show placeholder values.
      */
-    public void setMovie(Movie pMovie) {
-        this.movie = pMovie;
-        if (movieTitleLabel != null && pMovie != null) {
-            movieTitleLabel.setText(pMovie.getTitle());
+    public void setaMovie(Movie pMovie) {
+        this.aMovie = pMovie;
+        if (aMovieTitleLabel != null && pMovie != null) {
+            aMovieTitleLabel.setText(pMovie.getTitle());
         }
-        if (screeningTimeLabel != null) {
+        if (aScreeningTimeLabel != null) {
             // Movie doesn't currently carry screening/time info; show placeholder or other movie data
-            screeningTimeLabel.setText("Screening: TBD");
+            aScreeningTimeLabel.setText("Screening: TBD");
         }
-        if (root != null) {
-            root.setOnMouseClicked(evt -> {
+        if (aRoot != null) {
+            aRoot.setOnMouseClicked(evt -> {
                 // open details, navigate, etc.
                 System.out.println("Clicked card for: " + (pMovie != null ? pMovie.getTitle() : "unknown"));
             });
@@ -96,7 +78,7 @@ public class MovieCardController {
      *
      * @return the Movie instance linked to this controller, or null if no movie is assigned
      */
-    public Movie getMovie() {
-        return movie;
+    public Movie getaMovie() {
+        return aMovie;
     }
 }

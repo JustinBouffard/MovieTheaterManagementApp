@@ -26,13 +26,13 @@
         <VBox spacing="5" VBox.vgrow="ALWAYS">
             <Label text="Title" />
             <!-- Match controller field name: MovieAddEditViewController.movieTitleTextField -->
-            <TextField fx:id="movieTitleTextField" />
+            <TextField fx:id="aMovieTitleTextField"/>
         </VBox>
 
         <VBox spacing="5">
             <Label text="Runtime" />
             <!-- Match controller field name: MovieAddEditViewController.runtimeSpinner -->
-            <Spinner fx:id="runtimeSpinner" />
+            <Spinner fx:id="aRuntimeSpinner" />
         </VBox>
 
         <HBox alignment="CENTER_RIGHT" spacing="10" VBox.vgrow="ALWAYS">
