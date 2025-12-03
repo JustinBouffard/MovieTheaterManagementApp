@@ -139,15 +139,17 @@ public class NewAccountViewController {
 
             aUiService.showInfoAlert("Account Created", "Account has been successfully created.");
 
-        } catch (IllegalArgumentException e) {
-            aUiService.showErrorAlert("Invalid account information", e.getMessage());
-        }
+            // direct to main view only after successful creation
+            try {
+                aUiService.openNewWindow("main-view", "Theater Dashboard", pEvent, 900, 700);
+            } catch (IOException e) {
+                aUiService.showErrorAlert("Error", e.getMessage());
+            }
 
-        // direct to main view after creation
-        try {
-            aUiService.openNewWindow("main-view", "Theater Dashboard", pEvent, 900, 700);
-        } catch (IOException e) {
-            aUiService.showErrorAlert("Error", e.getMessage());
+        } catch (IllegalArgumentException e) {
+            // e.g., duplicate username or invalid data; stop flow and do not navigate
+            aUiService.showErrorAlert("Invalid account information", e.getMessage());
+            return;
         }
     }
 
