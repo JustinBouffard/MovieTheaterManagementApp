@@ -132,17 +132,5 @@ public class AccountService {
         }
 
         return null; // login failed or user not found
-
-        /*
-         * Can use this in login controller :
-         *
-         * if (user == null) {
-         *     showError("Invalid credentials");
-         * } else if (user instanceof Manager) {
-         *     loadManagerMainView();
-         * } else if (user instanceof Client) {
-         *     loadClientMainView();
-         * }
-         */
     }
 }
