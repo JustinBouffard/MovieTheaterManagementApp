@@ -28,12 +28,21 @@ import java.io.IOException;
  */
 public class ShowroomAddEditViewController {
     @FXML
+    /**
+     * Text field for entering or editing the showroom name.
+     */
     private TextField aShowroomNameField;
 
     @FXML
+    /**
+     * Text field for entering the capacity; numeric-only validation applied.
+     */
     private TextField aCapacityTextField;
 
     @FXML
+    /**
+     * List view displaying the screenings associated with the showroom.
+     */
     private ListView<Screening> aScreeningList;
 
     private Showroom aShowroom;

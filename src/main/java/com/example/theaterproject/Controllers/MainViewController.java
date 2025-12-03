@@ -91,19 +91,9 @@ public class MainViewController {
         int index = 0;
         for (Movie movie : movies) {
             try {
-                // Try relative resource first (same package), fall back to absolute path
-                URL fxmlUrl = getClass().getResource("movie-card-view.fxml");
-                if (fxmlUrl == null) {
-                    fxmlUrl = getClass().getResource("movie-card-view.fxml");
-                }
-                if (fxmlUrl == null) {
-                    // nothing we can do for this card; print and skip
-                    System.err.println("Could not locate movie-card-view.fxml resource for movie: " + movie.getTitle());
-                    continue;
-                }
-
-                FXMLLoader loader = new FXMLLoader(fxmlUrl);
-                Parent card = loader.load();
+                // Load via UIService using application resource path
+                FXMLLoader loader = aUiService.loadFXML("movie-card-view");
+                Parent card = loader.getRoot();
 
                 // If the FXML declares a controller, and it supports setMovie, use it.
                 Object cardController = loader.getController();

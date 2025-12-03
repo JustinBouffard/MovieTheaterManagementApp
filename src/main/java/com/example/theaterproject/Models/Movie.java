@@ -11,8 +11,8 @@ import java.time.LocalDate;
  * </p>
  */
 public class Movie {
-    private String aTitle;
-    private int aRuntime;
+    private final String aTitle;
+    private final int aRuntime;
 
     /**
      * Creates a new Movie with the specified details.

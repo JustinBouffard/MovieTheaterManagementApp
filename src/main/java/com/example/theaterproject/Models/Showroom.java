@@ -22,7 +22,9 @@ public class Showroom {
      * The seating capacity of the showroom.
      */
     private int aCapacity;
-
+    /**
+     * The list of screenings scheduled in this showroom.
+     */
     private ObservableList<Screening> aScreenings;
 
     /**
@@ -30,6 +32,13 @@ public class Showroom {
      *
      * @param pName     the name of the showroom
      * @param pCapacity the seating capacity of the showroom
+     */
+    /**
+     * Constructs a new {@code Showroom} with the specified name, capacity, and screenings.
+     *
+     * @param pName        the name of the showroom; must not be blank
+     * @param pCapacity    the seating capacity; must be greater than zero
+     * @param pScreenings  the initial list of screenings for this showroom; must not be {@code null}
      */
     public Showroom(String pName, int pCapacity, ObservableList<Screening> pScreenings) {
         if (pName == null || pName.isBlank()) {
@@ -43,6 +52,9 @@ public class Showroom {
         this.aScreenings = pScreenings;
     }
 
+    /**
+     * Default constructor creating an empty showroom with zero capacity and no screenings.
+     */
     public Showroom(){
         this.aName = "";
         this.aCapacity = 0;
@@ -121,6 +133,9 @@ public class Showroom {
         this.aScreenings.remove(pScreening);
     }
 
+    /**
+     * Removes all screenings currently scheduled in this showroom.
+     */
     public void resetScreenings() {
         this.aScreenings.clear();
     }
