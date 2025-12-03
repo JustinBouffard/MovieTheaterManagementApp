@@ -71,9 +71,9 @@ public class LoginViewController {
             Account managerAccount = accountService.getManager();
 
             if (managerAccount.getUserName().equals(username) && managerAccount.getPassword().equals(password)) {
-                aUIService.openNewWindow("editor-view", "Theater Dashboard", pEvent);
+                aUIService.openNewWindow("editor-view", "Theater Dashboard", pEvent, 900,700);
             } else {
-                aUIService.openNewWindow("main-view", "Theater Dashboard", pEvent, 700, 400);
+                aUIService.openNewWindow("main-view", "Theater Dashboard", pEvent, 900, 700);
             }
         } catch (IOException e) {
             aUIService.showErrorAlert("Error", e.getMessage());

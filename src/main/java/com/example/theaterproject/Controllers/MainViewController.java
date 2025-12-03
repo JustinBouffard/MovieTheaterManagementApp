@@ -157,7 +157,7 @@ public class MainViewController {
     @FXML
     private void onSignOutButtonClick(ActionEvent pEvent) {
         try {
-            aUiService.openNewWindow("login-view", "Log In", pEvent, 900, 500);
+            aUiService.openNewWindow("login-view", "Log In", pEvent, 600, 300);
         } catch (IOException e) {
             aUiService.showErrorAlert("Error", e.getMessage());
         }

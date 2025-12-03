@@ -135,7 +135,7 @@ public class StatsViewController {
     @FXML
     private void onHomeButtonClick(ActionEvent pEvent) {
         try {
-            aUIService.openNewWindow("editor-view", "Home", pEvent);
+            aUIService.openNewWindow("editor-view", "Home", pEvent, 900,700);
         } catch (IOException e) {
             aUIService.showErrorAlert("Error", e.getMessage());
         }
@@ -150,7 +150,7 @@ public class StatsViewController {
     @FXML
     private void onShowroomsButtonClick(ActionEvent pEvent) {
         try {
-            aUIService.openNewWindow("showrooms-view", "Showrooms", pEvent, 900, 500);
+            aUIService.openNewWindow("showrooms-view", "Showrooms", pEvent, 900, 700);
         } catch (IOException e) {
             aUIService.showErrorAlert("Error", e.getMessage());
         }

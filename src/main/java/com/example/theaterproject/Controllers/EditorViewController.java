@@ -281,7 +281,11 @@ public class EditorViewController {
      */
     @FXML
     private void onShowroomsViewButtonClick(ActionEvent pEvent) {
-        switchView(pEvent, "showrooms-view");
+        try {
+            aUIService.openNewWindow("showrooms-view", "Showrooms", pEvent, 900, 700);
+        } catch (IOException e) {
+            aUIService.showErrorAlert("Error", e.getMessage());
+        }
     }
 
     /**
@@ -299,7 +303,11 @@ public class EditorViewController {
      */
     @FXML
     private void onStatsViewButtonClick(ActionEvent pEvent) {
-        switchView(pEvent, "stats-view");
+        try {
+            aUIService.openNewWindow("stats-view", "Showrooms", pEvent, 700, 500);
+        } catch (IOException e) {
+            aUIService.showErrorAlert("Error", e.getMessage());
+        }
     }
 
 
