@@ -132,13 +132,6 @@ public class MovieAddEditViewController {
     private void onCancelButtonClick(ActionEvent pEvent) {
         // Navigate back to the Editor view within the same Stage
         try {
-            FXMLLoader loader = aUiService.loadFXML("add-edit-movie-view");
-            Parent root = loader.getRoot();
-
-            Stage stage = (Stage) ((Node) pEvent.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-
             aUiService.openNewWindow("editor-view", "Editor View", pEvent);
         } catch (IOException e) {
             aUiService.showErrorAlert("Navigation Error", e.getMessage());
