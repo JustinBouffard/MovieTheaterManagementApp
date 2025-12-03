@@ -26,9 +26,14 @@ public class Screening {
      * Represents the price of a single ticket of that screening
      */
     private double aPricePerTicket;
-
+    /**
+     * The date and time when this screening takes place.
+     */
     private LocalDateTime aDateTime;
 
+    /**
+     * Formatter used to render the date-time in {@code toString()}.
+     */
     private final DateTimeFormatter FORMATER = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     /**

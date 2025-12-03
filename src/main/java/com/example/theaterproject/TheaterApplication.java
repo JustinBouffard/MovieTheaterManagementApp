@@ -23,9 +23,11 @@ public class TheaterApplication extends Application {
     public void start(Stage stage) throws IOException {
         ObservableList<Movie> movies = DummyDataHelper.getDummyMovies();
         ObservableList<Showroom> showrooms = DummyDataHelper.getDummyShowrooms();
+        ObservableList<Client> clients = DummyDataHelper.getDummyClients();
 
         movieService.setMovies(movies);
         showroomService.setShowrooms(showrooms);
+        accountService.setClients(new java.util.ArrayList<>(clients));
 
         FXMLLoader fxmlLoader = new FXMLLoader(TheaterApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 300);

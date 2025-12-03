@@ -9,7 +9,9 @@ package com.example.theaterproject.Models;
  * </p>
  */
 public class Client extends Account {
-
+    /**
+     * The email address associated with this client account.
+     */
     private String aEmail;
 
     /**

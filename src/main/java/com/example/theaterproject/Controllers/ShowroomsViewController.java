@@ -29,12 +29,24 @@ import java.io.IOException;
 public class ShowroomsViewController {
 
     @FXML
+    /**
+     * Grid pane used to display showroom cards in a tiled layout.
+     */
     private GridPane aMovieGridPane;
     @FXML
+    /**
+     * Navigation button returning to the editor (movies) view.
+     */
     private Button homeViewButton;
     @FXML
+    /**
+     * Navigation button opening the statistics view.
+     */
     private Button statsViewButton;
     @FXML
+    /**
+     * Button to open the add showroom dialog.
+     */
     private Button addButton;
 
     private final ShowroomService aShowroomService = ShowroomService.getInstance();

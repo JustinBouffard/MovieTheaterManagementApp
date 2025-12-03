@@ -28,9 +28,15 @@ import java.time.format.DateTimeFormatter;
  */
 public class ShowroomCardController {
     @FXML
+    /**
+     * Label showing the showroom's display name.
+     */
     private Label aShowRoomNameLabel;
 
     @FXML
+    /**
+     * Label showing info about the next screening (movie and time).
+     */
     private Label aMovieInfoLabel;
 
     private Showroom aShowRoom;
