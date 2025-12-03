@@ -7,7 +7,7 @@ package com.example.theaterproject.Models;
  * <p><b>Note:</b> In a real-world application, passwords should never be stored
  * in plain text. Proper hashing and security practices should be used.</p>
  */
-public abstract class Account {
+public class Account {
     private String aUserName;
     private String aPassword;
 
@@ -92,7 +92,7 @@ public abstract class Account {
     private void validateUsername(String pUsername) {
         if (pUsername == null || pUsername.isBlank())
             throw new IllegalArgumentException("Username cannot be blank.");
-        if (!pUsername.matches("[A-Za-z0-9_]"))
+        if (!pUsername.matches("[A-Za-z0-9_]+"))
             throw new IllegalArgumentException("Username can only be composed of letters, numbers and underscores");
     }
 

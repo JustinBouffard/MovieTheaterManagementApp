@@ -4,25 +4,39 @@ package com.example.theaterproject.Models;
  * Represents a ticket for a movie screening in the theater project system.
  *
  * <p>
- * This class associates a movie, screening, price, and client together to form
- * a complete ticket record.
+ * A {@code Ticket} associates a movie, a specific screening, a purchase price,
+ * and the client who purchased it. This class ensures that all required
+ * information is valid upon creation.
  * </p>
  */
 public class Ticket {
-    private Movie aMovie;
+    /**
+     * The specific screening (date, time, auditorium) tied to this ticket.
+     */
     private Screening aScreening;
+
+    /**
+     * The price paid for this ticket.
+     */
     private double aPrice;
+
+    /**
+     * The client who purchased this ticket.
+     */
     private Client aClient;
 
     /**
-     * Creates a new Ticket with the specified details.
+     * Creates a new {@code Ticket} with the specified details.
      *
-     * @param pMovie the movie for this ticket
-     * @param pScreening the screening for this ticket
-     * @param pPrice the price of the ticket
-     * @param pClient the client purchasing the ticket
+     * @param pMovie the movie for this ticket; must not be {@code null}
+     * @param pScreening the screening for this ticket; must not be {@code null}
+     * @param pPrice the price of the ticket; must be zero or positive
+     * @param pClient the client purchasing the ticket; must not be {@code null}
+     *
+     * @throws IllegalArgumentException if any parameter is invalid
      */
     public Ticket(Movie pMovie, Screening pScreening, double pPrice, Client pClient) {
+
         if (pMovie == null) {
             throw new IllegalArgumentException("Movie cannot be null");
         }
@@ -35,46 +49,51 @@ public class Ticket {
         if (pClient == null) {
             throw new IllegalArgumentException("Client cannot be null");
         }
-        this.aMovie = pMovie;
+
         this.aScreening = pScreening;
-        // get screening count up
         this.aPrice = pPrice;
         this.aClient = pClient;
     }
 
     /**
-     * Returns a copy of the movie associated with this ticket.
+     * Returns the screening information for this ticket.
      *
-     * @return a copy of the movie
-     */
-    public Movie getMovie() {
-        return new Movie(this.aMovie);
-    }
-
-    /**
-     * Returns the screening associated with this ticket.
-     *
-     * @return the screening
+     * @return the screening object
      */
     public Screening getScreening() {
-        return this.aScreening;
+        return aScreening;
     }
 
     /**
      * Returns the price of this ticket.
      *
-     * @return the ticket price
+     * @return the ticket price as a double
      */
     public double getPrice() {
-        return this.aPrice;
+        return aPrice;
     }
 
     /**
-     * Returns a copy of the client associated with this ticket.
+     * Returns the client who purchased this ticket.
      *
-     * @return a copy of the client
+     * @return the client object
      */
     public Client getClient() {
-        return new Client(this.aClient);
+        return aClient;
+    }
+
+    /**
+     * Returns a string representation of this ticket, including movie,
+     * screening, price, and client.
+     *
+     * @return a formatted string describing the ticket
+     */
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                ", screening=" + aScreening +
+                ", price=" + aPrice +
+                ", client=" + aClient +
+                '}';
     }
 }

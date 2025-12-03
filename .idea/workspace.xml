@@ -4,16 +4,132 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c58ca1d0-effb-4558-b8b8-438baf703402" name="Changes" comment="">
+    <list default="true" id="ad68dbb3-4993-4cc3-bb46-0bc6e5df46e7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/EditorMovieCardController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/EditorViewController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/LoginViewController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/MainViewController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/MovieAddEditViewController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/MovieCardController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/NewAccountViewController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/ScreeningAddEditViewController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/ShowroomAddEditViewController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/ShowroomCardController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/ShowroomsViewController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/StatsViewController.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Controllers/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Helpers/DummyDataHelper.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Helpers/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Helpers/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Models/Account.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Models/Client.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Models/Manager.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Models/Movie.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Models/Screening.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Models/Showroom.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Models/Ticket.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Models/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Models/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Services/AccountService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Services/MovieService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Services/ShowroomService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Services/UIService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Services/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/Services/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/TheaterApplication.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/com/example/theaterproject/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/com.example.theaterproject/module-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/constant-values.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-11.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-13.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-15.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index-files/index-9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/legal/dejavufonts.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSans-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSans-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSans-BoldOblique.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSans-BoldOblique.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSans-Oblique.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSans-Oblique.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSans.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSans.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSansMono-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSansMono-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSansMono-BoldOblique.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSansMono-BoldOblique.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSansMono-Oblique.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSansMono-Oblique.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSansMono.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSansMono.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSerif-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSerif-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSerif-BoldItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSerif-BoldItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSerif-Italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSerif-Italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSerif.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/DejaVuLGCSerif.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/fonts/dejavu.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/glass.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/left.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/link.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/right.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/resource-files/x.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/script-files/jquery-3.7.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/script-files/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/script-files/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/script-files/search-page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/script-files/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/type-search-index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/TheaterApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Screening.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Screening.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Showroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Showroom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Models/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/EditorMovieCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/EditorMovieCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/EditorViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/EditorViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/LoginViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/LoginViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/MovieAddEditViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/MovieAddEditViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/NewAccountViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/NewAccountViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ScreeningAddEditViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ScreeningAddEditViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomsViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/ShowroomsViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/StatsViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/theaterproject/Controllers/StatsViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/editor-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/editor-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/showroom-add-edit-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/showroom-add-edit-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/showrooms-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/showrooms-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/stats-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/theaterproject/stats-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,50 +150,40 @@
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;JustinBouffard&quot;
+    &quot;assignee&quot;: &quot;Hamington2021&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/JustinBouffard/FinalProject.git&quot;,
-    &quot;accountId&quot;: &quot;d69045b1-6eb6-4364-a5db-6ea27b835a7b&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/JustinBouffard/FinalProject.git",
+    "accountId": "6754ae1f-90f3-487e-920e-3af592faf790"
   }
-}</component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
+}]]></component>
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
 }</component>
-  <component name="ProjectId" id="35kKoB0to3NnlBk0tERoScG69U5" />
+  <component name="ProjectId" id="36LMdaUr3ZS4sb84eeuAAkFiDG0" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.HelloApplication.executor": "Run",
     "Application.TheaterApplication.executor": "Run",
+    "JavaScript Debug.index.html.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "features/org-service-and-docs",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/F/Local/Github/FinalProject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -85,28 +191,32 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-84258761d1cc-intellij.indexing.shared.core-IU-243.28141.18" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.28141.18" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
       </set>
     </attachedChunks>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c58ca1d0-effb-4558-b8b8-438baf703402" name="Changes" comment="" />
-      <created>1763648802193</created>
+      <changelist id="ad68dbb3-4993-4cc3-bb46-0bc6e5df46e7" name="Changes" comment="" />
+      <created>1764781488049</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1763648802193</updated>
-      <workItem from="1763648803492" duration="236000" />
-      <workItem from="1763649265990" duration="524000" />
-      <workItem from="1763650125680" duration="646000" />
-      <workItem from="1763668241661" duration="2457000" />
-      <workItem from="1763831041725" duration="326000" />
+      <updated>1764781488049</updated>
+      <workItem from="1764781490812" duration="304000" />
+      <workItem from="1764790430121" duration="2081000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>

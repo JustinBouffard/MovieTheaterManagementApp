@@ -9,14 +9,17 @@ package com.example.theaterproject.Models;
  * </p>
  */
 public class Client extends Account {
-
+    /**
+     * The email address associated with this client account.
+     */
     private String aEmail;
 
     /**
-     * Creates a new Client with the specified username and password.
+     * Creates a new Client with the specified username, password, and email.
      *
      * @param pUserName the username for the client
      * @param pPassword the password for the client
+     * @param pEmail    the email address for the client
      */
     public Client(String pUserName, String pPassword, String pEmail) {
         super(pUserName, pPassword);
@@ -32,5 +35,23 @@ public class Client extends Account {
     public Client(Client pClient) {
         super(pClient);
         this.aEmail = pClient.aEmail;
+    }
+
+    /**
+     * Retrieves the email address associated with this client.
+     *
+     * @return the email address
+     */
+    public String getEmail() {
+        return this.aEmail;
+    }
+
+    /**
+     * Sets the email address for this client.
+     *
+     * @param pEmail the new email address
+     */
+    public void setEmail(String pEmail) {
+        this.aEmail = pEmail;
     }
 }

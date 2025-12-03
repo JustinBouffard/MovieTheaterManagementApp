@@ -11,6 +11,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>25</maven.compiler.source>
+    <maven.compiler.target>25</maven.compiler.target>
 <junit.version>5.12.1</junit.version>  </properties>
 
   <dependencies>
@@ -68,6 +70,19 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <reportOutputDirectory>${basedir}/documentation</reportOutputDirectory>
+          <destDir>api</destDir>
+          <sourcepath>src/main/java</sourcepath>
+          <subpackages>com.example.theaterproject.Models:com.example.theaterproject.Services:com.example.theaterproject</subpackages>
+          <excludePackageNames>com.example.theaterproject.Controllers:com.example.theaterproject.Helpers</excludePackageNames>
+          <show>private</show>
+        </configuration>
       </plugin>
     </plugins>
   </build>

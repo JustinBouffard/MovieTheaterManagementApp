@@ -10,7 +10,6 @@ package com.example.theaterproject.Models;
  * </p>
  */
 public class Manager extends Account {
-
     /**
      * Creates a new Manager with the specified username and password.
      *
