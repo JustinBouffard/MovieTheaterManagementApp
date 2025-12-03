@@ -87,8 +87,8 @@
                       <RowConstraints maxHeight="214.0" minHeight="10.0" prefHeight="214.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ListView fx:id="screeningList" prefHeight="145.0" prefWidth="234.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <ListView fx:id="moviesList" prefHeight="214.0" prefWidth="219.0" GridPane.rowIndex="1" />
+                        <ListView fx:id="aScreeningList" prefHeight="145.0" prefWidth="234.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ListView fx:id="aMoviesList" prefHeight="214.0" prefWidth="219.0" GridPane.rowIndex="1" />
                         <Label prefHeight="17.0" prefWidth="78.0" text="List of movies" />
                         <Label text="List of screenings" GridPane.columnIndex="1" />
                      </children>
@@ -119,9 +119,9 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="numberTicketsLabel" prefHeight="27.0" prefWidth="220.0" style="-fx-border-color: gray; -fx-background-color: white; -fx-border-radius: 4; -fx-border-width: 1; -fx-padding: 4 6 4 6;" GridPane.columnIndex="1" />
-                        <Label fx:id="priceTicketsLabel" prefHeight="27.0" prefWidth="220.0" style="-fx-border-color: gray; -fx-background-color: white; -fx-border-radius: 4; -fx-border-width: 1; -fx-padding: 4 6 4 6;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="revenueLabel" prefHeight="27.0" prefWidth="220.0" style="-fx-border-color: gray; -fx-background-color: white; -fx-border-radius: 4; -fx-border-width: 1; -fx-padding: 4 6 4 6;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="aNumberTicketsLabel" prefHeight="27.0" prefWidth="220.0" style="-fx-border-color: gray; -fx-background-color: white; -fx-border-radius: 4; -fx-border-width: 1; -fx-padding: 4 6 4 6;" GridPane.columnIndex="1" />
+                        <Label fx:id="aPriceTicketsLabel" prefHeight="27.0" prefWidth="220.0" style="-fx-border-color: gray; -fx-background-color: white; -fx-border-radius: 4; -fx-border-width: 1; -fx-padding: 4 6 4 6;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="aRevenueLabel" prefHeight="27.0" prefWidth="220.0" style="-fx-border-color: gray; -fx-background-color: white; -fx-border-radius: 4; -fx-border-width: 1; -fx-padding: 4 6 4 6;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children>

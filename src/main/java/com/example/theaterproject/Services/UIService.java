@@ -90,7 +90,15 @@ public class UIService {
      * The dialog is modal and will block interaction with other windows until closed.
      */
     public FXMLLoader openModalDialog(String pFxmlFileName, String pTitle, double pWidth, double pHeight) throws IOException {
-        FXMLLoader loader = new FXMLLoader(UIService.class.getResource(aFxmlPathPrefix + pFxmlFileName + ".fxml"));
+        // Handle both full paths and filename-only inputs
+        String resourcePath = pFxmlFileName;
+        if (!resourcePath.startsWith("/")) {
+            resourcePath = aFxmlPathPrefix + pFxmlFileName;
+        }
+        if (!resourcePath.endsWith(".fxml")) {
+            resourcePath = resourcePath + ".fxml";
+        }
+        FXMLLoader loader = new FXMLLoader(UIService.class.getResource(resourcePath));
         Parent root = loader.load();
 
         Stage modal = new Stage();
@@ -106,7 +114,9 @@ public class UIService {
      * Loads an FXML file and returns the FXMLLoader for accessing the controller.
      */
     public FXMLLoader loadFXML(String pFxmlFileName) throws IOException {
-        FXMLLoader loader = new FXMLLoader(UIService.class.getResource(aFxmlPathPrefix + pFxmlFileName + ".fxml"));
+        // Strip leading slash if present in pFxmlFileName
+        String fileName = pFxmlFileName.startsWith("/") ? pFxmlFileName.substring(1) : pFxmlFileName;
+        FXMLLoader loader = new FXMLLoader(UIService.class.getResource("/" + fileName));
         loader.load();
         return loader;
     }
@@ -124,7 +134,15 @@ public class UIService {
      * Uses custom dimensions.
      */
     public void openNewWindow(String pFxmlFileName, String pTitle, ActionEvent pEvent, double pWidth, double pHeight) throws IOException {
-        FXMLLoader loader = new FXMLLoader(UIService.class.getResource(aFxmlPathPrefix + pFxmlFileName + ".fxml"));
+        // Handle both full paths and filename-only inputs
+        String resourcePath = pFxmlFileName;
+        if (!resourcePath.startsWith("/")) {
+            resourcePath = aFxmlPathPrefix + pFxmlFileName;
+        }
+        if (!resourcePath.endsWith(".fxml")) {
+            resourcePath = resourcePath + ".fxml";
+        }
+        FXMLLoader loader = new FXMLLoader(UIService.class.getResource(resourcePath));
         javafx.scene.Parent root = loader.load();
 
         javafx.stage.Stage stage = new javafx.stage.Stage();

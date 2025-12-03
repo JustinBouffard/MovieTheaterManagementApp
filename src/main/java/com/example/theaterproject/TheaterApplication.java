@@ -22,10 +22,7 @@ public class TheaterApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         ObservableList<Movie> movies = DummyDataHelper.getDummyMovies();
-        List<Account> accounts = DummyDataHelper.getDummyAccounts();
-        List<Client> clients = DummyDataHelper.getDummyClients();
         ObservableList<Showroom> showrooms = DummyDataHelper.getDummyShowrooms();
-        List<Ticket> tickets = DummyDataHelper.getDummyTickets();
 
         movieService.setMovies(movies);
         showroomService.setShowrooms(showrooms);

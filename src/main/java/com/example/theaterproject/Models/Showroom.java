@@ -85,16 +85,38 @@ public class Showroom {
         this.aCapacity = pCapacity;
     }
 
+    /**
+     * Retrieves the list of screenings for this showroom.
+     *
+     * @return an ObservableList of screenings in this showroom
+     */
     public ObservableList<Screening> getShowroomScreenings() {
         return this.aScreenings;
     }
 
-    public void setShowroomScreenings(ObservableList<Screening> pScreenings) { this.aScreenings = pScreenings; }
+    /**
+     * Sets the list of screenings for this showroom.
+     *
+     * @param pScreenings the new list of screenings
+     */
+    public void setShowroomScreenings(ObservableList<Screening> pScreenings) {
+        this.aScreenings = pScreenings;
+    }
 
+    /**
+     * Adds a screening to this showroom's list of screenings.
+     *
+     * @param pScreening the screening to add
+     */
     public void addScreening(Screening pScreening) {
         this.aScreenings.add(pScreening);
     }
 
+    /**
+     * Removes a screening from this showroom's list of screenings.
+     *
+     * @param pScreening the screening to remove
+     */
     public void removeScreening(Screening pScreening) {
         this.aScreenings.remove(pScreening);
     }

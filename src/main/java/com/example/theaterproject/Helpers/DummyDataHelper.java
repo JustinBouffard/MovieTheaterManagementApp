@@ -23,37 +23,21 @@ public class DummyDataHelper {
     public static ObservableList<Movie> getDummyMovies() {
         ObservableList<Movie> movies = FXCollections.observableArrayList();
         
-        movies.add(new Movie("Action", "The Matrix", "The Wachowskis", 1999,
-                "A computer programmer discovers that reality is a simulation created by machines.",
-                136));
+        movies.add(new Movie("The Matrix", 136));
         
-        movies.add(new Movie("Drama", "The Shawshank Redemption", "Frank Darabont", 1994,
-                "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-                142));
+        movies.add(new Movie("The Shawshank Redemption", 142));
         
-        movies.add(new Movie("Science Fiction", "Inception", "Christopher Nolan", 2010,
-                "A skilled thief who steals corporate secrets through the use of dream-sharing technology.",
-                148));
+        movies.add(new Movie("Inception", 148));
         
-        movies.add(new Movie("Comedy", "Pulp Fiction", "Quentin Tarantino", 1994,
-                "The lives of two mob hitmen, a boxer, a gangster and his wife intertwine in four tales of violence and redemption.",
-                154));
+        movies.add(new Movie("Pulp Fiction", 154));
         
-        movies.add(new Movie("Horror", "The Shining", "Stanley Kubrick", 1980,
-                "A family isolated by heavy snow becomes the focus of sinister forces when they take over a remote hotel for the winter.",
-                146));
+        movies.add(new Movie("The Shining", 146));
         
-        movies.add(new Movie("Animation", "Spirited Away", "Hayao Miyazaki", 2001,
-                "During her family's move, a sullen girl wanders into a world ruled by gods, witches, and spirits.",
-                125));
+        movies.add(new Movie("Spirited Away", 125));
         
-        movies.add(new Movie("Romance", "Titanic", "James Cameron", 1997,
-                "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
-                194));
+        movies.add(new Movie("Titanic", 194));
         
-        movies.add(new Movie("Thriller", "The Dark Knight", "Christopher Nolan", 2008,
-                "When the menace known as the Joker wreaks havoc, Batman must accept one of the greatest tests.",
-                152));
+        movies.add(new Movie("The Dark Knight",152));
         
         return movies;
     }
@@ -203,9 +187,7 @@ public class DummyDataHelper {
      * @return a Movie object
      */
     public static Movie getSingleDummyMovie() {
-        return new Movie("Action", "The Matrix", "The Wachowskis", 1999,
-                "A computer programmer discovers that reality is a simulation created by machines.",
-                136);
+        return new Movie("The Matrix", 136);
     }
 
     /**

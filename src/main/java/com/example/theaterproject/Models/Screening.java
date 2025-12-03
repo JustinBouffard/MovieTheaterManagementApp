@@ -2,6 +2,7 @@ package com.example.theaterproject.Models;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * The Screening class represents information about a specific movie screening,
@@ -27,6 +28,8 @@ public class Screening {
     private double aPricePerTicket;
 
     private LocalDateTime aDateTime;
+
+    private final DateTimeFormatter FORMATER = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     /**
      * Constructs a Screening object representing a specific movie screening
@@ -69,6 +72,11 @@ public class Screening {
         return this.aMovie;
     }
 
+    /**
+     * Sets the movie for this screening.
+     *
+     * @param pMovie the movie to associate with this screening
+     */
     public void setMovie(Movie pMovie) {
         this.aMovie = pMovie;
     }
@@ -82,6 +90,11 @@ public class Screening {
         return this.aTicketCount;
     }
 
+    /**
+     * Sets the number of tickets available for this screening.
+     *
+     * @param aTicketCount the number of tickets
+     */
     public void setTicketCount(int aTicketCount) {
         this.aTicketCount = aTicketCount;
     }
@@ -95,14 +108,29 @@ public class Screening {
         return aPricePerTicket;
     }
 
+    /**
+     * Sets the price per ticket for this screening.
+     *
+     * @param pPricePerTicket the price per ticket
+     */
     public void setPricePerTicket(double pPricePerTicket) {
         this.aPricePerTicket = pPricePerTicket;
     }
 
+    /**
+     * Retrieves the date and time of this screening.
+     *
+     * @return the LocalDateTime of this screening
+     */
     public LocalDateTime getDateTime() {
         return aDateTime;
     }
 
+    /**
+     * Sets the date and time for this screening.
+     *
+     * @param pDateTime the LocalDateTime to set
+     */
     public void setDateTime(LocalDateTime pDateTime) {
         if (pDateTime == null) {
             throw new IllegalArgumentException("DateTime cannot be null");
@@ -121,6 +149,6 @@ public class Screening {
      */
     @Override
     public String toString() {
-        return aMovie.getTitle();
+        return aDateTime.format(FORMATER);
     }
 }

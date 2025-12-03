@@ -8,8 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 import javafx.scene.control.Labeled;
@@ -20,30 +18,49 @@ import java.net.URL;
 import java.util.Map;
 
 /**
- * Controller for the main view. Populates the GridPane once with movie cards
- * loaded from movie-card-view.fxml for each Movie provided by MovieService.
+ * The MainViewController class is responsible for managing the main view of the application.
  *
- * This version is more robust about FXML resource paths and supports two ways
- * of populating a loaded card:
- *  - If the card FXML specifies a controller with a setMovie(...) API, that controller is used.
- *  - Otherwise, the code falls back to using the FXMLLoader namespace to find fx:id nodes.
+ * <p>
+ * This class loads and displays a grid of movie cards and handles user interactions such as
+ * signing out. It primarily interacts with the {@code movieGridPane} to display movie information
+ * and utilizes the {@code MovieService} singleton to retrieve the list of movies.
+ * It uses FXML annotations for initializing and managing UI elements.
+ * </p>
  */
 public class MainViewController {
-
+    /**
+     * Represents a grid pane used to display a collection of movies in the main view.
+     *
+     * This field is linked to the FXML file associated with the MainViewController and is used
+     * to create a structured layout of movie-related components or information.
+     *
+     * The grid pane is populated dynamically with movie data, where each movie is represented
+     * as a visual component within the pane. It allows seamless organization and presentation
+     * of movies in a grid-based arrangement.
+     *
+     * This field is initialized and managed as part of the application's user interface for
+     * displaying movies to the user.
+     */
     @FXML
     private GridPane movieGridPane;
-
-    @FXML
-    private Label pageTitleLabel;
-
-    @FXML
-    private Button signOutButton;
-
-    @FXML
-    private Label userLabel;
-
+    /**
+     * Represents a singleton instance of the {@link MovieService} class,
+     * which provides centralized management of movie-related data within the application.
+     *
+     * This variable is used by the {@code MainViewController} to populate and interact
+     * with the list of movies displayed in the user interface. It allows access to the
+     * movie data and supports operations such as retrieving, adding, and removing movies.
+     */
     private final MovieService movieService = MovieService.getInstance();
 
+    private final UIService aUiService = UIService.getInstance();
+
+    /**
+     * Initializes the main view controller. This method is automatically invoked
+     * when the associated FXML is loaded. It prepares the view by populating the
+     * grid with movie cards using the current list of movies provided by the
+     * movieService.
+     */
     @FXML
     private void initialize() {
         // populate once at startup
@@ -51,13 +68,12 @@ public class MainViewController {
     }
 
     /**
-     * Loads a movie-card-view.fxml for each movie and places it into the GridPane.
+     * Populates the grid pane with movie cards based on the provided list of movies.
+     * Each movie is represented as a card created from an FXML template.
+     * The grid is cleared before populating it with the new set of movie cards.
      *
-     * This method tries first to use a controller defined inside the card FXML
-     * (and call setMovie(movie) on it). If that is not present it falls back
-     * to the namespace label-setting approach used previously.
-     *
-     * @param movies the list of movies to display (may be empty)
+     * @param movies the list of movies to be displayed in the grid. If the list is null
+     *               or empty, the grid will not be populated.
      */
     private void populateGrid(javafx.collections.ObservableList<Movie> movies) {
         movieGridPane.getChildren().clear();
@@ -134,12 +150,25 @@ public class MainViewController {
 
     }
 
+    /**
+     * Handles the click event for the "Sign Out" button. Opens the login view by loading the
+     * corresponding FXML file and displays it in a new stage. Closes the current window after
+     * successfully navigating to the login view.
+     *
+     * @param pEvent the action event triggered by clicking the "Sign Out" button
+     */
+    /**
+     * Handles the sign out button click event.
+     * Opens the login view and closes the current window.
+     *
+     * @param pEvent the action event triggered by the sign out button
+     */
     @FXML
-    private void onSignOutButtonClick(ActionEvent pEvent){
+    private void onSignOutButtonClick(ActionEvent pEvent) {
         try {
-            UIService.getInstance().openNewWindow("login-view", "Log In", pEvent, 900, 500);
+            aUiService.openNewWindow("login-view", "Log In", pEvent, 900, 500);
         } catch (IOException e) {
-            UIService.showErrorAlert("Error", e.getMessage());
+            aUiService.showErrorAlert("Error", e.getMessage());
         }
     }
 }

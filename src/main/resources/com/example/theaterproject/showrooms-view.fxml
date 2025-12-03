@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.ShowroomsViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.theaterproject.Controllers.ShowroomsViewController">
    <children>
       <HBox maxHeight="75.0" minHeight="75.0" prefWidth="594.0" style="-fx-background-color: #540808;" VBox.vgrow="ALWAYS">
          <children>
@@ -58,7 +50,7 @@
 
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="moviesViewButton" onAction="#onMoviesViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Movies">
+                  <Button fx:id="homeViewButton" onAction="#onHomeViewButtonClick" prefHeight="26.0" prefWidth="100.0" text="Home">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -98,7 +90,7 @@
             <Region prefHeight="196.0" prefWidth="16.0" />
             <VBox alignment="BOTTOM_RIGHT" HBox.hgrow="NEVER">
                <children>
-                  <Button fx:id="addButton" onAction="#onAddButtonClick" mnemonicParsing="false" prefHeight="29.0" prefWidth="58.0" text="Add" />
+                  <Button fx:id="addButton" mnemonicParsing="false" onAction="#onAddButtonClick" prefHeight="29.0" prefWidth="58.0" text="Add" />
                </children>
             </VBox>
 

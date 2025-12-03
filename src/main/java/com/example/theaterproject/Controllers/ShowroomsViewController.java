@@ -16,14 +16,33 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Controller for the showrooms view.
+ *
+ * <p>
+ * Manages the display and interaction with showroom cards in a grid layout.
+ * Provides navigation to other views and handles showroom creation/editing.
+ * Automatically updates the grid when showrooms are added, modified, or removed.
+ * </p>
+ */
 public class ShowroomsViewController {
 
     @FXML
     private GridPane aMovieGridPane;
+    @FXML
+    private javafx.scene.control.Button homeViewButton;
+    @FXML
+    private javafx.scene.control.Button statsViewButton;
+    @FXML
+    private javafx.scene.control.Button addButton;
 
     private final ShowroomService aShowroomService = ShowroomService.getInstance();
     private final UIService aUIService = UIService.getInstance();
 
+    /**
+     * Initializes the showrooms view.
+     * Populates the grid with showroom cards and adds a listener to update the grid when showrooms change.
+     */
     @FXML
     public void initialize() {
         fillShowroomGridPane();
@@ -33,33 +52,56 @@ public class ShowroomsViewController {
         });
     }
 
+    /**
+     * Handles the "Home View" button click event.
+     * Navigates back to the editor view (movies view).
+     *
+     * @param pEvent the action event triggered by the button
+     */
     @FXML
-    private void onMoviesViewButtonClick(ActionEvent pEvent) {
+    private void onHomeViewButtonClick(ActionEvent pEvent) {
         try {
-            aUIService.openNewWindow("main-view", "Movies", pEvent, 700, 400);
+            aUIService.openNewWindow("/com/example/theaterproject/editor-view.fxml", "Movies", pEvent, 700, 400);
         } catch (IOException e) {
-            aUIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", "Failed to load editor view: " + e.getMessage());
         }
     }
 
+    /**
+     * Handles the "Stats View" button click event.
+     * Navigates to the statistics view.
+     *
+     * @param pEvent the action event triggered by the button
+     */
     @FXML
     private void onStatsViewButtonClick(ActionEvent pEvent) {
         try {
-            aUIService.openNewWindow("stats-view", "Statistics", pEvent, 700, 500);
+            aUIService.openNewWindow("/com/example/theaterproject/stats-view.fxml", "Statistics", pEvent, 700, 500);
         } catch (IOException e) {
-            aUIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", "Failed to load stats view: " + e.getMessage());
         }
     }
 
+    /**
+     * Handles the "Add" button click event.
+     * Opens a dialog to create a new showroom.
+     *
+     * @param pEvent the action event triggered by the button
+     */
     @FXML
     private void onAddButtonClick(ActionEvent pEvent) {
         System.out.println("Add Button clicked");
         openShowroomAddEditView(null);
     }
 
+    /**
+     * Opens the showroom add/edit dialog.
+     *
+     * @param pShowroom the showroom to edit, or null to create a new showroom
+     */
     private void openShowroomAddEditView(Showroom pShowroom) {
         try {
-            FXMLLoader loader = aUIService.loadFXML("showroom-add-edit-view");
+            FXMLLoader loader = aUIService.loadFXML("/com/example/theaterproject/showroom-add-edit-view.fxml");
             Parent root = loader.getRoot();
 
             ShowroomAddEditViewController controller = loader.getController();
@@ -71,10 +113,14 @@ public class ShowroomsViewController {
             modal.setTitle("Showroom Add/Edit");
             modal.showAndWait();
         } catch (IOException e) {
-            aUIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", "Failed to load showroom dialog: " + e.getMessage());
         }
     }
 
+    /**
+     * Populates the grid pane with showroom cards.
+     * Clears existing cards and creates new ones for all showrooms in the service.
+     */
     private void fillShowroomGridPane() {
         this.aMovieGridPane.getChildren().clear();
 
@@ -93,9 +139,17 @@ public class ShowroomsViewController {
         }
     }
 
+    /**
+     * Adds a showroom card to the grid at the specified position.
+     * Sets up a listener to update the card when the showroom's screenings change.
+     *
+     * @param pShowroom the showroom to display
+     * @param pColumn the column position in the grid
+     * @param pRow the row position in the grid
+     */
     private void addShowroomCard(Showroom pShowroom, int pColumn, int pRow) {
         try {
-            FXMLLoader loader = aUIService.loadFXML("showroom-card-view");
+            FXMLLoader loader = aUIService.loadFXML("/com/example/theaterproject/showroom-card-view.fxml");
             Parent card = loader.getRoot();
 
             ShowroomCardController controller = loader.getController();
@@ -108,7 +162,7 @@ public class ShowroomsViewController {
 
             this.aMovieGridPane.add(card, pColumn, pRow);
         } catch (Exception e) {
-            aUIService.showErrorAlert("Error", e.getMessage());
+            aUIService.showErrorAlert("Error", "Failed to load showroom card: " + e.getMessage());
         }
     }
 
