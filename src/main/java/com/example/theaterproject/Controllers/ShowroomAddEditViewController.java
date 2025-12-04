@@ -16,6 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 /**
  * Controller for the showroom add/edit dialog view.
@@ -252,11 +253,31 @@ public class ShowroomAddEditViewController {
     /**
      * Handles the result from the screening dialog.
      * Adds the new screening to the list if it's a new screening, or updates the existing one.
+     * Validates that no two screenings overlap in the showroom, considering movie runtime.
      *
      * @param originalScreening the original screening (null if creating a new one)
      * @param resultScreening the screening returned from the dialog
      */
     private void handleScreeningResult(Screening originalScreening, Screening resultScreening) {
+        LocalDateTime newScreeningStart = resultScreening.getDateTime();
+        LocalDateTime newScreeningEnd = newScreeningStart.plusMinutes(resultScreening.getMovie().getRuntime());
+        
+        for (Screening existingScreening : this.aScreeningList.getItems()) {
+            if (originalScreening != null && existingScreening == originalScreening) {
+                continue;
+            }
+            
+            LocalDateTime existingStart = existingScreening.getDateTime();
+            LocalDateTime existingEnd = existingStart.plusMinutes(existingScreening.getMovie().getRuntime());
+            
+            if (!(newScreeningEnd.isBefore(existingStart) || newScreeningStart.isAfter(existingEnd))) {
+                aUIService.showErrorAlert("Time Conflict", 
+                    "Cannot schedule screening from " + newScreeningStart + " to " + newScreeningEnd + ". " +
+                    "Another screening is already scheduled from " + existingStart + " to " + existingEnd + ".");
+                return;
+            }
+        }
+        
         if (originalScreening == null) {
             this.aScreeningList.getItems().add(resultScreening);
         } else {
